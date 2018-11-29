@@ -1,2 +1,2 @@
 # GxUi
-GxUi前端vue框架
+GxUi基于vue框架开发的前端插件
