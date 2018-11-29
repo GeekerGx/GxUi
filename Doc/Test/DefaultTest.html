@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../../Lib/Layer/layer.js"></script>
+    <script src="../../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../../Gx.All.Style.js"></script>
+    <script src="../../Gx.All.Script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link href="../../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="Default"></div>
+    <div id="DefaultNoMount"></div>
+</body>
+<script>
+    Gx.ui.createDefault("Default", {
+        value: "����1"
+    });
+    var DefaultNoMount = Gx.ui.createDefault({
+        value: "����2"
+    });
+    document.getElementById("DefaultNoMount").appendChild(DefaultNoMount.$el);
+</script>
+
+</html>

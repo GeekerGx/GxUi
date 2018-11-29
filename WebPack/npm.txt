@@ -1,0 +1,10 @@
+npm init
+
+//正常分类
+npm i webpack webpack-cli 
+npm i vue vue-loader vue-template-compiler 
+npm i babel-loader babel-core babel-plugin-syntax-jsx babel-plugin-jsx-v-model babel-plugin-transform-vue-jsx babel-helper-vue-jsx-merge-props 
+npm i less css-loader less-loader style-loader 
+
+//压缩版
+npm i webpack webpack-cli vue less vue-loader css-loader vue-template-compiler less-loader style-loader babel-loader babel-core babel-plugin-syntax-jsx babel-plugin-jsx-v-model babel-plugin-transform-vue-jsx babel-helper-vue-jsx-merge-props 

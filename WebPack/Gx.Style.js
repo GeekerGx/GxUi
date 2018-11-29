@@ -1,0 +1,1 @@
+import '../Style/Gx.Base.less';

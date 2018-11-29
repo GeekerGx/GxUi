@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../../Lib/Layer/layer.js"></script>
+    <script src="../../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../../Gx.All.Style.js"></script>
+    <script src="../../Gx.All.Script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link href="../../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="compinentsTest"></div>
+    <div id="test"></div>
+</body>
+<script>
+    var data = [
+        { ID: "-1", NAME: "��ѡ��" },
+        { ID: "0", NAME: "0" },
+        { ID: "1", NAME: "1" },
+    ];
+    var selectForData = Gx.ui.createSelect(null, {
+        data: data
+    });
+
+    var selectForChange = Gx.ui.createSelect(null, {
+        data: data,
+        change: function () {
+            var that = this;
+            alert("value:" + that.value + ";text:" + that.text + ";");
+        }
+    });
+
+    var selectForField = Gx.ui.createSelect(null, {
+        data: data,
+        valueField: "ID",
+        textField: function (data) {
+            return data.ID + "-" + data.NAME;
+        }
+    });
+
+    var compinentsTest = Gx.ui.createComponents("compinentsTest", {
+        coms: [
+            selectForData,
+            selectForChange,
+            selectForField
+        ]
+    });
+</script>
+
+</html>

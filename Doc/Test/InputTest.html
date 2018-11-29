@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../../Lib/Layer/layer.js"></script>
+    <script src="../../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../../Gx.All.Style.js"></script>
+    <script src="../../Gx.All.Script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link href="../../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="inputForPlaceholder"></div>
+    <div id="inputForChange"></div>
+    <div id="inputForTypeByNumber"></div>
+    <div id="inputForTypeByPassword"></div>
+    <div id="inputForTypeByDate"></div>
+    <div id="inputForTypeByTextarea"></div>
+</body>
+<script>
+    var inputForPlaceholder = Gx.ui.createInput("inputForPlaceholder", {
+        placeholder: "777"
+    });
+
+    var inputForChange = Gx.ui.createInput("inputForChange", {
+        change: function () {
+            alert(this.value);
+        }
+    });
+    var inputForTypeByNumber = Gx.ui.createInput("inputForTypeByNumber", {
+        type: "number",
+        validation: function (value) {
+            if (value > 3) {
+                alert("��ֵ����!");
+                return false;
+            }
+            return true;
+        }
+    });
+    var inputForTypeByPassword = Gx.ui.createInput("inputForTypeByPassword", {
+        type: "password",
+        validation: function (value) {
+            var exp = (/^[0-9]+$/).test(value);
+            if (!exp) {
+                alert("������");
+            }
+        }
+    });
+    var inputForTypeByDate = Gx.ui.createInput("inputForTypeByDate", {
+        type: "date"
+    });
+    var inputForTypeByTextarea = Gx.ui.createInput("inputForTypeByTextarea", {
+        type: "textarea"
+    });
+</script>
+
+</html>

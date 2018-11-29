@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../../Lib/Layer/layer.js"></script>
+    <script src="../../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../../Gx.All.Style.js"></script>
+    <script src="../../Gx.All.Script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link href="../../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="selectForData"></div>
+    <div id="selectForChange"></div>
+    <div id="selectForField"></div>
+    <div id="selectForNoMount"></div>
+    <div id="selectForfixedItems"></div>
+</body>
+<script>
+    var data = [
+        { ID: "0", NAME: "0", test: "123" },
+        { ID: "1", NAME: "1", test: "123" },
+    ];
+    var selectForData = Gx.ui.createSelect("selectForData", {
+        data: data
+    });
+    var selectForChange = Gx.ui.createSelect("selectForChange", {
+        data: data,
+        change: function () {
+            var that = this;
+            alert("value:" + that.value + ";text:" + that.text + ";");
+        }
+    });
+    var selectForField = Gx.ui.createSelect("selectForField", {
+        data: data,
+        valueField: "ID",
+        textField: function (data) {
+            return data.ID + "-" + data.NAME;
+        }
+    });
+    var selectForNoMount = Gx.ui.createSelect({
+        data: data,
+        valueField: "ID",
+        textField: function (data) {
+            return data.ID + "-" + data.NAME;
+        }
+    });
+    selectForNoMount.appendChildTo("selectForNoMount");
+    var selectForfixedItems = Gx.ui.createSelect('selectForfixedItems', {
+        fixedItems: [
+            { ID: "-1", NAME: "请选择" }
+        ],
+        data: data,
+        valueField: "ID",
+        textField: function (data) {
+            return data.ID + "-" + data.NAME;
+        }
+    });
+</script>
+
+</html>
