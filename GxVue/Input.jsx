@@ -8,7 +8,8 @@
                 type={this.type}
                 placeholder={this.placeholder}
                 onChange={this._baseChange}
-                onBlur={this._baseOnblur}
+                onBlur={this._baseOnBlur}
+                onFocus={this._baseOnFocus}
             />;
             switch (this.type) {
                 case "textarea":
@@ -42,15 +43,16 @@
         //方法
         methods: {
             _baseChange: function () {
-                //自定义change方法
                 this.change();
             },
-            _baseOnblur: function () {
+            _baseOnBlur: function () {
                 //验证
                 if (this.validation(this.value)) {
-                    //自定义change方法
-                    this.onblur();
+                    this.onBlur();
                 }
+            },
+            _baseOnFocus:function(){
+                this.onFocus();
             }
         },
         data: function () {
@@ -78,7 +80,15 @@
                     };
                 }
             },
+            //失焦焦点
             onblur: {
+                "default": function () {
+                    return function () {
+                    };
+                }
+            },
+            //获得焦点
+            onFocus:{
                 "default": function () {
                     return function () {
                     };
