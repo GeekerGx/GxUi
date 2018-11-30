@@ -34,16 +34,16 @@
         type: "number",
         validation: function (value) {
             if (value > 3) {
-                alert("不能大于3!");
+                console.log("不能大于3!");
                 return false;
             }
             return true;
         },
         change:function(){
-            alert(this.value);
+            console.log(this.value);
         },
         onblur:function(){
-            alert("失去焦点:"+this.value);
+            console.log("失去焦点:"+this.value);
         }
     });
     var inputForTypeByPassword = Gx.ui.createInput("inputForTypeByPassword", {

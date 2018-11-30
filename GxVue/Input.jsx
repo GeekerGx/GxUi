@@ -16,11 +16,12 @@
                     input.tag = "textarea";
                     break;
                 case "number":
+                    input.data.attrs.type = "text";
+                    console.log(input);
                     break;
                 default:
                     break;
             }
-            console.log(input);
             return (input);
         },
         //计算属性
@@ -34,6 +35,7 @@
                 set: function (val) {
                     var obj = this.$el;
                     obj.value = val;
+                    this._baseChange();
                 }
             }
         },
@@ -46,12 +48,29 @@
                 this.change();
             },
             _baseOnBlur: function () {
+                switch (this.type) {
+                    case "number":
+                        this.value = Gx.convert.toNumber(this.value, true);
+                        break;
+                    default:
+                        break;
+                }
                 //验证
                 if (this.validation(this.value)) {
                     this.onBlur();
                 }
             },
-            _baseOnFocus:function(){
+            _baseOnFocus: function () {
+                switch (this.type) {
+                    case "number":
+                        var num = this.value.toString().replace(/,/g, '');
+                        if (num) {
+                            this.value = Gx.convert.toNumber(num);
+                        }
+                        break;
+                    default:
+                        break;
+                }
                 this.onFocus();
             }
         },
@@ -81,14 +100,14 @@
                 }
             },
             //失焦焦点
-            onblur: {
+            onBlur: {
                 "default": function () {
                     return function () {
                     };
                 }
             },
             //获得焦点
-            onFocus:{
+            onFocus: {
                 "default": function () {
                     return function () {
                     };
