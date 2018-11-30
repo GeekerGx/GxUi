@@ -34,7 +34,7 @@
         type: "number",
         validation: function (value) {
             if (value > 3) {
-                alert("��ֵ����!");
+                alert("不能大于3!");
                 return false;
             }
             return true;
@@ -45,7 +45,7 @@
         validation: function (value) {
             var exp = (/^[0-9]+$/).test(value);
             if (!exp) {
-                alert("������");
+                alert("只能算是数字");
             }
         }
     });
