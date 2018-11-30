@@ -22,13 +22,13 @@
                 arr[index].appendChild(item.$el);
             });
         },
-        //��������
+        //计算属性
         computed: {
         },
-        //��������
+        //侦听属性
         watch: {
         },
-        //����
+        //方法
         methods: {
         },
         data: function () {

@@ -4,24 +4,25 @@
 (function (win) {
     var Default = Vue.extend({
         render: function (h) {
-            if(this.type=='textarea'){
-                return (
-                    <textarea
-                        placeholder={this.placeholder}
-                        onChange={this.baseChange}
-                    />
-                );
-            }else{
-                return (
-                    <input
-                        type={this.type}
-                        placeholder={this.placeholder}
-                        onChange={this.baseChange}
-                    />
-                );
+            var input = <input
+                type={this.type}
+                placeholder={this.placeholder}
+                onChange={this._baseChange}
+                onBlur={this._baseOnblur}
+            />;
+            switch (this.type) {
+                case "textarea":
+                    input.tag = "textarea";
+                    break;
+                case "number":
+                    break;
+                default:
+                    break;
             }
+            console.log(input);
+            return (input);
         },
-        //��������
+        //计算属性
         computed: {
             value: {
                 cache: false,
@@ -35,16 +36,23 @@
                 }
             }
         },
-        //��������
+        //侦听属性
         watch: {
         },
-        //����
+        //方法
         methods: {
-            baseChange: function () {                
-                //��֤
-                if(this.validation(this.value)){
-                    //�Զ���change����
+            _baseChange: function () {
+                //验证
+                if (this.validation(this.value)) {
+                    //自定义change方法
                     this.change();
+                }
+            },
+            _baseOnblur: function () {
+                //验证
+                if (this.validation(this.value)) {
+                    //自定义change方法
+                    this.onblur();
                 }
             }
         },
@@ -56,8 +64,9 @@
             type: {
                 "default": "text"
             },
+            //提示
             placeholder: "",
-            //������ʽ������֤����
+            //验证方法
             validation: {
                 "default": function () {
                     return function (value) {
@@ -65,8 +74,14 @@
                     };
                 }
             },
-            //change�¼�
+            //change事件
             change: {
+                "default": function () {
+                    return function () {
+                    };
+                }
+            },
+            onblur: {
                 "default": function () {
                     return function () {
                     };
@@ -74,7 +89,7 @@
             }
         }
     });
-        
+
     Gx.ui.coms.Input = Default;
 
     Gx.ui.createInput = function () {

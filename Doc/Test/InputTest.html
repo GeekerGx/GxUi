@@ -38,6 +38,12 @@
                 return false;
             }
             return true;
+        },
+        change:function(){
+            alert(this.value);
+        },
+        onblur:function(){
+            alert("失去焦点:"+this.value);
         }
     });
     var inputForTypeByPassword = Gx.ui.createInput("inputForTypeByPassword", {

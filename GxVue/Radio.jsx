@@ -16,7 +16,7 @@
                 </ul>
             );
         },
-        //��������
+        //计算属性
         computed: {
             value: {
                 cache: false,
@@ -43,12 +43,12 @@
                 }
             }
         },
-        //��������
+        //侦听属性
         watch: {
         },
-        //����
+        //方法
         methods: {
-            //���ѡ��
+            //重置
             reset: function () {
                 var list = this.$el.getElementsByTagName("input");
                 for (i = 0; i < list.length; i++) {

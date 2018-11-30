@@ -10,22 +10,22 @@
                 <button
                     type="button"
                     disabled={!this.enabled}
-                    onClick={this.baseClick}
+                    onClick={this._baseClick}
                 >
                     {this.value}
                 </button>
             );
         },
-        //��������
+        //计算属性
         computed: {
         },
-        //��������
+        //侦听属性
         watch: {
         },
-        //����
+        //方法
         methods: {
-            baseClick: function () {
-                //�Զ���click����
+            _baseClick: function () {
+                //自定义click事件
                 this.click();
             }
         },

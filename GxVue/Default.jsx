@@ -10,13 +10,13 @@
                 <div>{this.value}</div>
             );
         },
-        //��������
+        //计算属性
         computed: {
         },
-        //��������
+        //侦听属性
         watch: {
         },
-        //����
+        //方法
         methods: {
         },
         data: function () {
