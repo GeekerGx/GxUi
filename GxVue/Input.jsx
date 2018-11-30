@@ -42,11 +42,8 @@
         //方法
         methods: {
             _baseChange: function () {
-                //验证
-                if (this.validation(this.value)) {
-                    //自定义change方法
-                    this.change();
-                }
+                //自定义change方法
+                this.change();
             },
             _baseOnblur: function () {
                 //验证
