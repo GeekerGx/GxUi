@@ -69,9 +69,7 @@
 
     //合并参数
     base.mergeParam = function (setting, newSetting) {
-        var objOne = cloneObj(setting);
-        var objTow = cloneObj(newSetting);
-        return Object.assign(objOne, objTow);
+        return jQuery.extend(true, cloneObj(setting), cloneObj(newSetting))
     };
     base.arrPush = function (arr, obj) {
         if (!Gx.base.isArray(arr)) {

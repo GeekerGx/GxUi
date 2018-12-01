@@ -2,147 +2,121 @@
 /// <reference path="../Script/Gx.Base.js" />
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
 (function (win) {
-    var Default = Vue.extend({
-        render: function (h) {
-            var that = this;
-            var options = [];
-            var valueF = Gx.base.isFunction(this.valueField);
-            var textF = Gx.base.isFunction(this.textField);
+    var optionObj = {};
+    optionObj.render = function (h) {
+        var that = this;
+        var options = [];
+        var valueF = Gx.base.isFunction(this.valueField);
+        var textF = Gx.base.isFunction(this.textField);
 
-            var conversion = function (item, index) {
-                var value = item[that.valueField];
-                if (valueF) {
-                    value = that.valueField(item);
-                }
-                var text = item[that.textField];
-                if (textF) {
-                    text = that.textField(item);
-                }
-                options.push(
-                    <option value={value}>{text}</option>
-                );
-            };
-            this.fixedItems.map(conversion);
-            this.data.map(conversion);
-            return (
-                <div class={this.checked ? "" : "has-error"}>
-                    <select
-                        class="form-control"
-                        style={{
-                            "width": this.width
-                        }}
-                        disabled={this.disabled ? "disabled" : null}
-                        onChange={this._baseChange}
-                    >
-                        {options}
-                    </select>
-                </div>
+        var conversion = function (item, index) {
+            var value = item[that.valueField];
+            if (valueF) {
+                value = that.valueField(item);
+            }
+            var text = item[that.textField];
+            if (textF) {
+                text = that.textField(item);
+            }
+            options.push(
+                <option value={value}>{text}</option>
             );
-        },
-        //计算属性
-        computed: {
-            text: {
-                cache: false,
-                get: function () {
-                    var obj = this.$el;
-                    return obj.options[obj.selectedIndex].text;
-                }
-            },
-            value: {
-                cache: false,
-                get: function () {
-                    var obj = this.$el;
-                    return obj.value;
-                },
-                set: function (val) {
-                    var obj = this.$el;
-                    obj.value = val;
-                }
+        };
+        this.fixedItems.map(conversion);
+        this.data.map(conversion);
+        return (
+            <div
+                class={[
+                    this.checked ? null : "has-error"
+                ]}
+            >
+                <select
+                    class={[
+                        "form-control"
+                    ]}
+                    style={{
+                        "width": this.width
+                    }}
+                    disabled={this.disabled ? "disabled" : null}
+                    onChange={this._baseChange}
+                >
+                    {options}
+                </select>
+            </div>
+        );
+    };
+    optionObj.computed = {
+        text: {
+            cache: false,
+            get: function () {
+                var select = this.$el.getElementsByTagName("select")[0];
+                return select.options[select.selectedIndex].text;
             }
         },
-        //侦听属性
-        watch: {
-        },
-        //方法
-        methods: {
-            _baseChange: function () {
-                //自定义change方法
-                this.change();
+        value: {
+            cache: false,
+            get: function () {
+                var select = this.$el.getElementsByTagName("select")[0];
+                return select.value;
             },
-            appendChildTo: function (id) {
-                document.getElementById(id).appendChild(this.$el);
-            },
-            getSelectedData: function () {
-                var index = this.$el.selectedIndex;
-                var options = Gx.base.arrPush(this.fixedItems, this.data);
-                return options[index];
+            set: function (val) {
+                var select = this.$el.getElementsByTagName("select")[0];
+                select.value = val;
             }
-        },
-        data: function () {
-            return {
-            };
-        },
-        props: {
-            //下拉框数据
-            data: {
-                "default": function () {
-                    return [{ ID: "-1", NAME: "请选择" }];
-                }
-            },
-            //val属性
-            valueField: {
-                "default": "ID"
-            },
-            //text值
-            textField: {
-                "default": "NAME"
-            },
-            //固定项：该选项一直存在
-            fixedItems: {
-                "default": function () {
-                    return [];
-                }
-            },
-            //change事件
-            change: {
-                "default": function () {
-                    return function () { };
-                }
-            },
-            width: {
-                "default": "200px"
-            },
-            disabled: {
-                "default": false
-            },
-            //验证方法
-            validation: {
-                "default": function () {
-                    return function (value) {
-                        return true;
-                    };
-                }
-            },
-            checked: {
-                "default": true
-            },
         }
-    });
+    };
+    optionObj.methods = {
+        _baseChange: function () {
+            //自定义change方法
+            this.change();
+        },
+        getSelectedData: function () {
+            var select = this.$el.getElementsByTagName("select")[0];
+            var index = select.selectedIndex;
+            var options = Gx.base.arrPush(this.fixedItems, this.data);
+            return options[index];
+        },
+    };
+    optionObj.props = {
+        //下拉框数据
+        data: {
+            "default": function () {
+                return [{ ID: "-1", NAME: "请选择" }];
+            }
+        },
+        //val属性
+        valueField: {
+            "default": "ID"
+        },
+        //text值
+        textField: {
+            "default": "NAME"
+        },
+        //固定项：该选项一直存在
+        fixedItems: {
+            "default": function () {
+                return [];
+            }
+        },
+        //change事件
+        change: {
+            "default": function () {
+                return function () { };
+            }
+        },
+        disabled: {
+            "default": false
+        },
+        checked: {
+            "default": true
+        }
+    };
+
+    var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
 
     Gx.ui.coms.Select = Default;
 
     Gx.ui.createSelect = function () {
-
-        var paramObj = Gx.param.getSerializeParam(arguments);
-
-        var option = new Default({ propsData: paramObj.obj[0] });
-
-        if (paramObj.str[0]) {
-            option = option.$mount("#" + paramObj.str[0]);
-        }
-        else {
-            option = option.$mount();
-        }
-        return option;
+        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };
 })(window);
