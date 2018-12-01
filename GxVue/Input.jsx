@@ -10,6 +10,7 @@
                 onChange={this._baseChange}
                 onBlur={this._baseOnBlur}
                 onFocus={this._baseOnFocus}
+                value={this._isFocus ? this.value : this.text}
             />;
             switch (this.type) {
                 case "textarea":
@@ -17,7 +18,6 @@
                     break;
                 case "number":
                     input.data.attrs.type = "text";
-                    console.log(input);
                     break;
                 default:
                     break;
@@ -26,16 +26,18 @@
         },
         //计算属性
         computed: {
-            value: {
+            text: {
                 cache: false,
                 get: function () {
-                    var obj = this.$el;
-                    return obj.value;
-                },
-                set: function (val) {
-                    var obj = this.$el;
-                    obj.value = val;
-                    this._baseChange();
+                    var num = this.value;
+                    switch (this.type) {
+                        case "number":
+                            num = Gx.convert.toNumber(num, true);
+                            break;
+                        default:
+                            break;
+                    }
+                    return num;
                 }
             }
         },
@@ -45,32 +47,22 @@
         //方法
         methods: {
             _baseChange: function () {
+                this.value = this.$el.value;
                 this.change();
             },
+            //失焦焦点
             _baseOnBlur: function () {
-                switch (this.type) {
-                    case "number":
-                        this.value = Gx.convert.toNumber(this.value, true);
-                        break;
-                    default:
-                        break;
-                }
+                this._isFocus = false;
+                this.onBlur();
                 //验证
                 if (this.validation(this.value)) {
-                    this.onBlur();
+
                 }
             },
+            //获得焦点
             _baseOnFocus: function () {
-                switch (this.type) {
-                    case "number":
-                        var num = this.value.toString().replace(/,/g, '');
-                        if (num) {
-                            this.value = Gx.convert.toNumber(num);
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                this._isFocus = true;
+
                 this.onFocus();
             }
         },
@@ -112,7 +104,9 @@
                     return function () {
                     };
                 }
-            }
+            },
+            value: "",
+            _isFocus: false
         }
     });
 

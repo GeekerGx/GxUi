@@ -42,9 +42,10 @@
         change:function(){
             console.log(this.value);
         },
-        onblur:function(){
+        onBlur:function(){
             console.log("失去焦点:"+this.value);
-        }
+        },
+        value:999999
     });
     var inputForTypeByPassword = Gx.ui.createInput("inputForTypeByPassword", {
         type: "password",
