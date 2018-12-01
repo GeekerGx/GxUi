@@ -39,6 +39,7 @@
                     }}
                     disabled={this.disabled ? "disabled" : null}
                     onChange={this._baseChange}
+                    ref="select"
                 >
                     {options}
                 </select>
@@ -49,18 +50,18 @@
         text: {
             cache: false,
             get: function () {
-                var select = this.$el.getElementsByTagName("select")[0];
+                var select = this.$refs.select;
                 return select.options[select.selectedIndex].text;
             }
         },
         value: {
             cache: false,
             get: function () {
-                var select = this.$el.getElementsByTagName("select")[0];
+                var select = this.$refs.select;
                 return select.value;
             },
             set: function (val) {
-                var select = this.$el.getElementsByTagName("select")[0];
+                var select = this.$refs.select;
                 select.value = val;
             }
         }
@@ -71,7 +72,7 @@
             this.change();
         },
         getSelectedData: function () {
-            var select = this.$el.getElementsByTagName("select")[0];
+            var select = this.$refs.select;
             var index = select.selectedIndex;
             var options = Gx.base.arrPush(this.fixedItems, this.data);
             return options[index];
