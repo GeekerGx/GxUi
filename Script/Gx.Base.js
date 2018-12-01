@@ -69,10 +69,12 @@
 
     //合并参数
     base.mergeParam = function (setting, newSetting) {
-        return Object.assign(setting, newSetting);
+        var objOne = cloneObj(setting);
+        var objTow = cloneObj(newSetting);
+        return Object.assign(objOne, objTow);
     };
-    base.arrPush=function(arr,obj){
-        if(!Gx.base.isArray(arr)){
+    base.arrPush = function (arr, obj) {
+        if (!Gx.base.isArray(arr)) {
             console.error("对象不是数组！");
             return;
         }
@@ -135,46 +137,36 @@
 })(window, jQuery);
 
 //转换帮助类
-(function(win){
-    var convert={
-        objToJson:function(obj){
+(function (win) {
+    var convert = {
+        objToJson: function (obj) {
             return JSON.stringify(obj);
         },
-        jsonToObj:function(json){
+        jsonToObj: function (json) {
             return JSON.parse(json);
         },
-        toNumber:function(num,isMicrometer,precision){
+        toNumber: function (num, isMicrometer, precision) {
             //去杂质
-            num=parseFloat(num).toString();
+            num = parseFloat(num).toString();
 
             //精确度转换
-            if(precision){
+            if (precision) {
 
             }
 
             //千分位转换
-            if(isMicrometer){
-                num=formatMicrometer(num);
+            if (isMicrometer) {
+                num = formatMicrometer(num);
             }
             return num
         }
     };
-    var formatMicrometer=function(num) {
+    var formatMicrometer = function (num) {
         num += '';
         if (!num.includes('.')) num += '.';
-        return num.replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
-          return $1 + ',';
+        return num.replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
+            return $1 + ',';
         }).replace(/\.$/, '');
     };
-    Gx.convert=convert;
+    Gx.convert = convert;
 }(window));
-
-//UI控件帮助类
-(function (win) {
-    var ui = {
-        //组件库
-        coms: {}
-    };
-    win.Gx.ui = ui;
-
-})(window);

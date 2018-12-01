@@ -24,11 +24,19 @@
             };
             this.fixedItems.map(conversion);
             this.data.map(conversion);
-
             return (
-                <select onChange={this._baseChange}>
-                    {options}
-                </select>
+                <div class={this.checked ? "" : "has-error"}>
+                    <select
+                        class="form-control"
+                        style={{
+                            "width": this.width
+                        }}
+                        disabled={this.disabled ? "disabled" : null}
+                        onChange={this._baseChange}
+                    >
+                        {options}
+                    </select>
+                </div>
             );
         },
         //计算属性
@@ -100,7 +108,24 @@
                 "default": function () {
                     return function () { };
                 }
-            }
+            },
+            width: {
+                "default": "200px"
+            },
+            disabled: {
+                "default": false
+            },
+            //验证方法
+            validation: {
+                "default": function () {
+                    return function (value) {
+                        return true;
+                    };
+                }
+            },
+            checked: {
+                "default": true
+            },
         }
     });
 

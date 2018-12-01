@@ -75,7 +75,9 @@
                 "default": "text"
             },
             //提示
-            placeholder: "",
+            placeholder: {
+                "default": ""
+            },
             //验证方法
             validation: {
                 "default": function () {
@@ -105,8 +107,12 @@
                     };
                 }
             },
-            value: "",
-            _isFocus: false
+            value: {
+                "default": ""
+            },
+            _isFocus: {
+                "default": true
+            }
         }
     });
 
