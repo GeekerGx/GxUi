@@ -23,7 +23,7 @@
     (function (win, $) {
         var layerObj = Gx.base.createObject(_setting);
 
-        Gx.base.mergeParam(layerObj, {
+        layerObj = Gx.base.mergeParam(layerObj, {
             type: 2,
             success: function success(layero, index) {
                 _layer.iframeAuto(index);
@@ -36,7 +36,7 @@
                 title: title || false,
                 area: width ? (height ? [width, height] : width) : 'auto'
             };
-            Gx.base.mergeParam(layerObj, setting);
+            layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);
         };
     })(window);
