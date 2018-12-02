@@ -46,7 +46,7 @@
         win.alert = function (msg) {
             //如果是对象则转成json
             if (Gx.base.isObject(msg)) {
-                msg = Gx.convert.ObjToJson(msg);
+                msg = Gx.convert.objToJson(msg);
             }
             _layer.msg(msg);
         };
