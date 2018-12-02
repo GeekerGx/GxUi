@@ -8,6 +8,7 @@
         render: function (h) {
             return (
                 <button
+                    class={["btn", "navbar-btn", "btn-default"]}
                     type="button"
                     disabled={!this.enabled}
                     onClick={this._baseClick}
