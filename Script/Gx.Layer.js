@@ -16,7 +16,8 @@
         resize: false, //是否允许拉伸
         maxWidth: 850,//最大宽度
         maxHeight: 500,//最大高度
-        success: function success(layero, index) { } //层弹出后的成功回调方法
+        success: function (layero, index) { }, //层弹出后的成功回调方法
+        end: function () { },
     };
 
     //弹出窗
@@ -30,11 +31,12 @@
             }
         });
 
-        layer.openIframe = function (url, title, width, height) {
+        layer.openIframe = function (url, title, endFun, width, height) {
             var setting = {
                 content: url,
                 title: title || false,
-                area: width ? (height ? [width, height] : width) : 'auto'
+                area: width ? (height ? [width, height] : width) : 'auto',
+                end: Gx.base.isFunction(endFun) ? endFun : null
             };
             layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);
