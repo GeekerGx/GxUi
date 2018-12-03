@@ -39,13 +39,14 @@
             }
             return true;
         },
-        change:function(){
+        change: function () {
             console.log(this.value);
         },
-        onBlur:function(){
-            console.log("失去焦点:"+this.value);
+        onBlur: function () {
+            console.log("失去焦点:" + this.value);
         },
-        value:999999
+        value: 999999,
+        micrometer: true
     });
     var inputForTypeByPassword = Gx.ui.createInput("inputForTypeByPassword", {
         type: "password",

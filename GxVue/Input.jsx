@@ -39,7 +39,7 @@
                 switch (this.type) {
                     case "number":
                         if (num) {
-                            num = Gx.convert.toNumber(num, true);
+                            num = Gx.convert.toNumber(num, this.micrometer);
                         }
                         break;
                     default:
@@ -115,7 +115,9 @@
         value: {
             "default": ""
         },
-
+        micrometer: {
+            "default": false
+        }
     };
     var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
 
