@@ -4,66 +4,43 @@
 
 (function (win) {
 
-    var Default = Vue.extend({
-        render: function (h) {
-            return (
-                <button
-                    class={["btn", "navbar-btn", "btn-default"]}
-                    type="button"
-                    disabled={!this.enabled}
-                    onClick={this._baseClick}
-                >
-                    {this.value}
-                </button>
-            );
-        },
-        //计算属性
-        computed: {
-        },
-        //侦听属性
-        watch: {
-        },
-        //方法
-        methods: {
-            _baseClick: function () {
-                //自定义click事件
-                this.click();
-            }
-        },
-        data: function () {
-            return {
-            };
-        },
-        props: {
-            value: {
-                "default": "Button"
-            },
-            click: {
-                "default": function () {
-                    return function () { };
-                }
-            },
-            enabled: {
-                "default": true
-            }
+    var optionObj = {};
+    optionObj.render = function (h) {
+        return (
+            <button
+                class={["btn", "navbar-btn", "btn-default"]}
+                type="button"
+                disabled={!this.enabled}
+                onClick={this._baseClick}
+            >
+                {this.value}
+            </button>
+        );
+    };
+    optionObj.methods = {
+        _baseClick: function () {
+            //自定义click事件
+            this.click();
         }
-    });
-
+    };
+    optionObj.props = {
+        value: {
+            "default": "Button"
+        },
+        click: {
+            "default": function () {
+                return function () { };
+            }
+        },
+        enabled: {
+            "default": true
+        }
+    };
+    var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
     Gx.ui.coms.Button = Default;
 
     Gx.ui.createButton = function () {
-
-        var paramObj = Gx.param.getSerializeParam(arguments);
-
-        var option = new Default({ propsData: paramObj.obj[0] });
-        if (paramObj.str[0]) {
-            option = option.$mount("#" + paramObj.str[0]);
-        }
-        else {
-            option = option.$mount();
-        }
-
-        return option;
+        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };
 
 })(window)
