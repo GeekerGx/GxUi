@@ -54,5 +54,12 @@
         };
     })(window);
 
+    //重写Confirm
+    (function (win) {
+        win.confirm = function (msg) {
+            _layer.confirm(msg);
+        };
+    })(window);
+
     Gx.layer = layer;
 })(window);
