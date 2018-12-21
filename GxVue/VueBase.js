@@ -39,6 +39,7 @@
                 //挂载后
                 mounted: function () {
                 },
+                updated:function(){},
                 //传入数据
                 props: {
                     width: {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../../Lib/Layer/layer.js"></script>
+    <script src="../../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../../Gx.All.Style.js"></script>
+    <script src="../../Gx.All.Script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link href="../../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="../../Lib/Bootstrap/Table/bootstrap-table.css" rel="stylesheet" />
+    <script src="../../Lib/Bootstrap/Table/bootstrap-table.js"></script>
+</head>
+
+<body>
+    <div id="table"></div>
+</body>
+<script>
+
+    var table = Gx.ui.createTable("table", {
+        columns: [{
+            field: 'name',
+            title: '姓名'
+        }, {
+            field: 'age',
+            title: '年龄'
+        }, {
+            field: 'price',
+            title: '价格',
+            formatter: function (value, row, index) {
+                return value + "￥";
+            },
+        }],
+        data: [{
+            name: 'Gx',
+            age: 4,
+            price: 26.7
+        }],
+        test:"gx"
+    });
+    table.data.push({
+        name: 'Gx3',
+        age: 42,
+        price: 226.7
+    });
+</script>
+
+</html>
