@@ -10,6 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
     <link href="../../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="../../Lib/Bootstrap/bootstrap.js"></script>
     <link href="../../Lib/Bootstrap/Table/bootstrap-table.css" rel="stylesheet" />
     <script src="../../Lib/Bootstrap/Table/bootstrap-table.js"></script>
 </head>
@@ -20,7 +21,17 @@
 <script>
 
     var table = Gx.ui.createTable("table", {
+        uniqueId: "id",
         columns: [{
+            field: 'check',
+            checkbox: true
+        },
+        {
+            field: 'id',
+            title: '编号',
+            visible:false
+        },
+        {
             field: 'name',
             title: '姓名'
         }, {
@@ -34,17 +45,13 @@
             },
         }],
         data: [{
+            id: 1,
             name: 'Gx',
             age: 4,
             price: 26.7
-        }],
-        test:"gx"
+        }]
     });
-    table.data.push({
-        name: 'Gx3',
-        age: 42,
-        price: 226.7
-    });
+    table.data.push({id:2});
 </script>
 
 </html>
