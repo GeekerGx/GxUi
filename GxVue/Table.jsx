@@ -43,6 +43,9 @@
         );
     };
     optionObj.methods = {
+        loadData:function(data){
+            this.baseCall("load",data);
+        },
         baseCall: function (method, parameter) {
             return $(this.$refs.table).bootstrapTable(method, parameter);
         },
