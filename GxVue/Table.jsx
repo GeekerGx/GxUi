@@ -17,7 +17,13 @@
             formatter: function (value, row, index) { return value; },
         };
     };
-
+    var checkUniqueId = function () {
+        if (!this.uniqueId) {
+            console.warn("请先设置uniqueId属性");
+            return false;
+        }
+        return true;
+    }
     var optionObj = {};
     optionObj.data = function () {
         return {
@@ -31,11 +37,21 @@
         this.baseCall("load", this.data);
     };
     optionObj.render = function (h) {
+        var that = this;
         var tableSetting = Gx.base.createObject(this._props);
 
         tableSetting.columns = [];
         this.columns.map(function (item) {
-            tableSetting.columns.push(Gx.base.mergeParam(getColumnSetting(), item));
+            var newColSetting = Gx.base.mergeParam(getColumnSetting(), item);
+            newColSetting.formatter = function (value, row, index) {
+                if (!value) { value = that.undefinedText; }
+                if (!item.formatter) {
+                    return value;
+                } else {
+                    return item.formatter(value, row, index);
+                }
+            };
+            tableSetting.columns.push(newColSetting);
         });
         this._setting = tableSetting;
         return (
@@ -43,8 +59,12 @@
         );
     };
     optionObj.methods = {
-        loadData:function(data){
-            this.baseCall("load",data);
+        loadData: function (data) {
+            if (!Gx.base.isArray(data)) {
+                console.warn("绑定数据不是数组！");
+                return;
+            }
+            this.data = data;
         },
         baseCall: function (method, parameter) {
             return $(this.$refs.table).bootstrapTable(method, parameter);
@@ -67,17 +87,11 @@
             });
         },
         removeByUniqueId: function (id) {
-            if (!this.uniqueId) {
-                console.warn("请先设置uniqueId属性");
-                return;
-            }
+            if (!checkUniqueId.call(this)) { return; }
             this.baseCall("removeByUniqueId", id);
         },
         getRowByUniqueId: function (id) {
-            if (!this.uniqueId) {
-                console.warn("请先设置uniqueId属性");
-                return;
-            }
+            if (!checkUniqueId.call(this)) { return; }
             return this.baseCall("getRowByUniqueId", id);
         },
         selectPage: function (page) {
