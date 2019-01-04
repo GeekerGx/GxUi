@@ -23,7 +23,7 @@
             return false;
         }
         return true;
-    }
+    };
     var optionObj = {};
     optionObj.data = function () {
         return {
@@ -43,14 +43,16 @@
         tableSetting.columns = [];
         this.columns.map(function (item) {
             var newColSetting = Gx.base.mergeParam(getColumnSetting(), item);
-            newColSetting.formatter = function (value, row, index) {
-                if (!value) { value = that.undefinedText; }
-                if (!item.formatter) {
-                    return value;
-                } else {
-                    return item.formatter(value, row, index);
-                }
-            };
+            if (!item.checkbox) {
+                newColSetting.formatter = function (value, row, index) {
+                    if (!value) { value = that.undefinedText; }
+                    if (!item.formatter) {
+                        return value;
+                    } else {
+                        return item.formatter(value, row, index);
+                    }
+                };
+            }
             tableSetting.columns.push(newColSetting);
         });
         this._setting = tableSetting;
