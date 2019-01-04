@@ -31,6 +31,7 @@
         };
     };
     optionObj.mounted = function () {
+
         $(this.$refs.table).bootstrapTable(this._setting);
     };
     optionObj.updated = function () {
@@ -39,7 +40,6 @@
     optionObj.render = function (h) {
         var that = this;
         var tableSetting = Gx.base.createObject(this._props);
-
         tableSetting.columns = [];
         this.columns.map(function (item) {
             var newColSetting = Gx.base.mergeParam(getColumnSetting(), item);
@@ -57,7 +57,10 @@
         });
         this._setting = tableSetting;
         return (
-            <table ref="table"></table>
+            <div>
+                <div ret="toolbar"></div>
+                <table ref="table"></table>
+            </div>
         );
     };
     optionObj.methods = {
