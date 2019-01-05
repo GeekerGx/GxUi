@@ -32,14 +32,6 @@ module.exports = {
             {
                 from: path.join(__dirname, '../Lib'),
                 to: path.join(__dirname, '../docs/Lib')
-            },
-            {
-                from: path.join(__dirname, '../Gx.All.Script.js'),
-                to: path.join(__dirname, '../docs/')
-            },
-            {
-                from: path.join(__dirname, '../Gx.All.Style.js'),
-                to: path.join(__dirname, '../docs/')
             }
         ])
     ]
