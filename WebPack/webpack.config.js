@@ -3,12 +3,14 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        Script: path.join(__dirname, 'Gx.Script.js'),
-        Style: path.join(__dirname, 'Gx.Style.js')
+        "Gx.All.Script.js": path.join(__dirname, 'Gx.Script.js'),
+        "Gx.All.Style.js": path.join(__dirname, 'Gx.Style.js'),
+        "docs/Gx.All.Script.js": path.join(__dirname, 'Gx.Script.js'),
+        "docs/Gx.All.Style.js": path.join(__dirname, 'Gx.Style.js')
     },
     output: {
         path: path.join(__dirname, '..'),
-        filename: 'Gx.All.[name].js',
+        filename: '[name]',
     },
     module: {
         rules: [
