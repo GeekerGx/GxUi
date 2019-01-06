@@ -46,10 +46,10 @@
             if (!item.checkbox) {
                 newColSetting.formatter = function (value, row, index) {
                     if (!value) { value = that.undefinedText; }
-                    if (!item.formatter) {
-                        return value;
-                    } else {
+                    if (item.formatter) {
                         return item.formatter(value, row, index);
+                    } else {
+                        return value;
                     }
                 };
             }

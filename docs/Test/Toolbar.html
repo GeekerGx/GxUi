@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../Lib/Layer/layer.js"></script>
+    <script src="../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../Gx.All.Style.js"></script>
+    <script src="../Gx.All.Script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link href="../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="toolbar"></div>
+</body>
+<script>
+    var toolbar = Gx.ui.createToolbar("toolbar", {
+        data: [
+            {
+                id: "add",
+                value: "添加",
+                onClick: function () {
+                    alert("点击了添加！");
+                }
+            },
+            {
+                value: "此按钮不可用",
+                enabled: false,
+            },
+            {
+                value: "点击后不可用",
+                onClick: function () {
+                    console.log(this);
+                    this.enabled = false;
+                }
+            }
+        ]
+    });
+</script>
+
+</html>
