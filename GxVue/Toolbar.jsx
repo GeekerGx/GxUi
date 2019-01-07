@@ -16,30 +16,30 @@
     optionObj.render = function (h) {
         var that = this;
 
-        var buttonSettings = [];
+        var buttons = [];
         for (var i = 0; i < that.data.length; i++) {
-            var item=that.data[i];
-            item = Gx.base.mergeParam(getButtonSetting(), item);
-            item.onClick = function () {
-                if (item.onClick) {
-                    item.onClick.call(that.$refs[item.id]);
-                }
-            };
-            buttonSettings.push(
+            that.data[i] = Gx.base.mergeParam(getButtonSetting(), that.data[i]);
+            var item = that.data[i];
+            buttons.push(
                 <button
                     ref={item.id}
                     class={["btn", "navbar-btn", "btn-default"]}
                     type="button"
                     disabled={!item.enabled}
-                    onClick={item.onClick}
+                    onClick={function () {
+                        console.log(item);
+                        item.onClick();
+                        that.$forceUpdate();
+                    }}
                 >
                     {item.value}
                 </button>
             );
         }
+
         return (
             <div>
-                {buttonSettings}
+                {buttons}
             </div>
         );
     };
