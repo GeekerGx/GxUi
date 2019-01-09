@@ -119,7 +119,7 @@
             "default": false
         }
     };
-    var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj( optionObj));
 
     Gx.ui.coms.Input = Default;
 

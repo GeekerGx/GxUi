@@ -19,12 +19,30 @@
     <div id="table"></div>
 </body>
 <script>
-    
+
 
     var table = Gx.ui.createTable("table", {
         uniqueId: "id",
-        //toolbar:$("#toolbar"),
-        //singleSelect:true,
+        toolbar: [
+            {
+                id: "add",
+                value: "添加",
+                click: function () {
+                    alert("点击了添加！");
+                }
+            },
+            {
+                value: "此按钮不可用",
+                enabled: false,
+            },
+            {
+                value: "点击后不可用",
+                click: function () {
+                    this.enabled = false;
+                }
+            }
+        ],
+        singleSelect: true,
         columns: [{
             field: 'check',
             checkbox: true
@@ -32,7 +50,7 @@
         {
             field: 'id',
             title: '编号',
-            visible:true
+            visible: true
         },
         {
             field: 'name',
@@ -54,7 +72,7 @@
             price: 26.7
         }]
     });
-    table.data.push({id:2});
+    table.data.push({ id: 2 });
 </script>
 
 </html>

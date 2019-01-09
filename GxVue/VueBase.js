@@ -3,8 +3,16 @@
     var ui = {
         //组件库
         coms: {},
-        getDefaultObj: function () {
-            return {
+        getResultObj: function (optionObj) {
+            /*var render = optionObj.render;
+            console.log(render);
+            optionObj.render = function (h) {
+                if (!this.display) {
+                    return;
+                }
+                return render.call(this);
+            };*/
+            return Gx.base.mergeParam({
                 //生成元素
                 render: function (h) {
                     return (null);
@@ -18,8 +26,15 @@
                 //方法
                 methods: {
                     //添加到元素后面
-                    appendChildTo: function (id) {
-                        document.getElementById(id).appendChild(this.$el);
+                    appendChildTo: function (obj) {
+                        switch (Gx.base.getObjType(obj)) {
+                            case "[object String]":
+                                document.getElementById(id).appendChild(this.$el);
+                                break;
+                            case "[object HTMLDivElement]":
+                                obj.appendChild(this.$el);
+                                break;
+                        }
                     },
                 },
                 //内置数据
@@ -39,16 +54,21 @@
                 //挂载后
                 mounted: function () {
                 },
-                updated:function(){},
+                updated: function () { },
                 //传入数据
                 props: {
                     width: {
                         "default": "200px"
                     },
+                    display: {
+                        "default": true
+                    }
                 }
-            };
+            }, optionObj);
+
         },
         createInstance: function (fun, paramObj) {
+
             var option = new fun({ propsData: paramObj.obj[0] });
             if (paramObj.str[0] && document.getElementById(paramObj.str[0])) {
                 option = option.$mount("#" + paramObj.str[0]);

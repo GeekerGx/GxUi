@@ -6,6 +6,9 @@
 
     var optionObj = {};
     optionObj.render = function (h) {
+        if (!this.display) {
+            return;
+        }
         return (
             <button
                 class={["btn", "navbar-btn", "btn-default"]}
@@ -36,7 +39,7 @@
             "default": true
         }
     };
-    var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Button = Default;
 
     Gx.ui.createButton = function () {

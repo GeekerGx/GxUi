@@ -31,7 +31,7 @@
         };
     };
     optionObj.mounted = function () {
-
+        this.toolbar.appendChildTo(this.$refs.toolbar);
         $(this.$refs.table).bootstrapTable(this._setting);
     };
     optionObj.updated = function () {
@@ -56,9 +56,14 @@
             tableSetting.columns.push(newColSetting);
         });
         this._setting = tableSetting;
+        this.toolbar = Gx.ui.createToolbar({ data: tableSetting.toolbar });
+        this._setting.toolbar = "#toobar_" + Gx.base.getGuid(8, 16);
         return (
             <div>
-                <div ret="toolbar"></div>
+                <div
+                    id={this._setting.toolbar}
+                    ref="toolbar"
+                ></div>
                 <table ref="table"></table>
             </div>
         );
@@ -198,7 +203,9 @@
         },
         //toolbar位置，jq选择器
         toolbar: {
-            "default": undefined
+            "default": function () {
+                return [];
+            }
         },
         //buttonsToolbar位置，jq选择器
         buttonsToolbar: {
@@ -211,7 +218,7 @@
     };
 
 
-    var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Table = Default;
     Gx.ui.createTable = function () {
         return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));

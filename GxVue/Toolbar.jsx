@@ -4,42 +4,19 @@
 
 (function (win) {
 
-    var getButtonSetting = function () {
-        return {
-            id: Gx.base.getGuid(8, 16),
-            value: "button",
-            enabled: true,
-            onClick: function () { },
-        };
-    };
     var optionObj = {};
     optionObj.render = function (h) {
         var that = this;
 
-        var buttons = [];
-        for (var i = 0; i < that.data.length; i++) {
-            that.data[i] = Gx.base.mergeParam(getButtonSetting(), that.data[i]);
-            var item = that.data[i];
-            buttons.push(
-                <button
-                    ref={item.id}
-                    class={["btn", "navbar-btn", "btn-default"]}
-                    type="button"
-                    disabled={!item.enabled}
-                    onClick={function () {
-                        console.log(item);
-                        item.onClick();
-                        that.$forceUpdate();
-                    }}
-                >
-                    {item.value}
-                </button>
-            );
-        }
+        that.data.map(function (item) {
+            item.id = item.id || Gx.base.getGuid(8, 16);
+            that[item.id] = Gx.ui.createButton(item);
+        });
 
         return (
-            <div>
-                {buttons}
+            <div
+                ref="toolbar"
+            >
             </div>
         );
     };
@@ -51,7 +28,14 @@
             }
         },
     };
-    var Default = Vue.extend(Gx.base.mergeParam(Gx.ui.getDefaultObj(), optionObj));
+    optionObj.mounted = function () {
+        var that = this;
+        that.data.map(function (item) {
+            that[item.id].appendChildTo(that.$refs.toolbar);
+        });
+
+    };
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
 
     Gx.ui.coms.Toolbar = Default;
 

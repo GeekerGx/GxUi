@@ -38,24 +38,29 @@
         }
         throw new Error("Unable to copy obj! Its type isn't supported.");
     };
-    var prototype = Object.prototype.toString;
+    base.getObjType = function (obj) {
+        return Object.prototype.toString.call(obj);
+    };
     base.isArray = function (obj) {
-        return prototype.call(obj) == "[object Array]";
+        return base.getObjType(obj) == "[object Array]";
     };
     base.isObject = function (obj) {
-        return prototype.call(obj) == "[object Object]";
+        return base.getObjType(obj) == "[object Object]";
     };
     base.isFunction = function (obj) {
-        return prototype.call(obj) == "[object Function]";
+        return base.getObjType(obj) == "[object Function]";
     };
     base.isBoolean = function (obj) {
-        return prototype.call(obj) == "[object Boolean]";
+        return base.getObjType(obj) == "[object Boolean]";
     };
     base.isString = function (obj) {
-        return prototype.call(obj) == "[object String]";
+        return base.getObjType(obj) == "[object String]";
     };
     base.isNumber = function (obj) {
-        return prototype.call(obj) == "[object Number]";
+        return base.getObjType(obj) == "[object Number]";
+    };
+    base.isHtml = function (obj) {
+        return base.getObjType(obj) == "[object HTMLDivElement]";
     };
 
     //创建对象
