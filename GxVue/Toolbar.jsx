@@ -6,13 +6,9 @@
 
     var optionObj = {};
     optionObj.render = function (h) {
-        var that = this;
-
-        that.data.map(function (item) {
-            item.id = item.id || Gx.base.getGuid(8, 16);
-            that[item.id] = Gx.ui.createButton(item);
-        });
-
+        if (!this.display) {
+            return;
+        }
         return (
             <div
                 ref="toolbar"
@@ -30,7 +26,15 @@
     };
     optionObj.mounted = function () {
         var that = this;
+
+        var that = this;
+
         that.data.map(function (item) {
+            if (Gx.ui.checkSysKeepKey(item.id)) {
+                item.id = item.id + "" + Gx.base.getGuid(8, 16);
+            }
+            item.id = item.id || Gx.base.getGuid(8, 16);
+            that[item.id] = Gx.ui.createButton(item);
             that[item.id].appendChildTo(that.$refs.toolbar);
         });
 

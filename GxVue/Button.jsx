@@ -7,7 +7,7 @@
     var optionObj = {};
     optionObj.render = function (h) {
         if (!this.display) {
-            return;
+            return ;
         }
         return (
             <button

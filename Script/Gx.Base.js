@@ -10,7 +10,8 @@
     var base = {};
 
     //深度复制
-    var cloneObj = function (obj) {
+    var cloneObj = function (obj, base) {
+        base = base || obj;
         var copy;
         // Handle the 3 simple types, and null or undefined
         if (null == obj || "object" != typeof obj) return obj;
@@ -24,7 +25,7 @@
         if (obj instanceof Array) {
             copy = [];
             for (var i = 0, len = obj.length; i < len; i++) {
-                copy[i] = cloneObj(obj[i]);
+                copy[i] = cloneObj(obj[i], base);
             }
             return copy;
         }
@@ -32,10 +33,14 @@
         if (obj instanceof Object) {
             copy = {};
             for (var attr in obj) {
-                if (obj.hasOwnProperty(attr)) copy[attr] = cloneObj(obj[attr]);
+                if (obj.hasOwnProperty(attr)) copy[attr] = cloneObj(obj[attr], base);
             }
             return copy;
         }
+        if(obj instanceof HTMLDivElement){
+            return obj;
+        }
+        console.log(obj, base);
         throw new Error("Unable to copy obj! Its type isn't supported.");
     };
     base.getObjType = function (obj) {
@@ -74,7 +79,7 @@
 
     //合并参数
     base.mergeParam = function (setting, newSetting) {
-        return jQuery.extend(true, cloneObj(setting), cloneObj(newSetting))
+        return jQuery.extend(true, {}, cloneObj(setting), cloneObj(newSetting))
     };
     base.arrPush = function (arr, obj) {
         if (!Gx.base.isArray(arr)) {

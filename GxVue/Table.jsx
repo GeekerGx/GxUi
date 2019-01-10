@@ -4,19 +4,6 @@
 /// <reference path="../Lib/Bootstrap/Table/bootstrap-table.js" />
 
 (function (win) {
-    var getColumnSetting = function () {
-        return {
-            checkbox: false,//复选框
-            field: "",
-            title: "",
-            titleTooltip: "",
-            halign: "center",
-            align: "center",
-            width: 200,
-            visible: true,
-            formatter: function (value, row, index) { return value; },
-        };
-    };
     var checkUniqueId = function () {
         if (!this.uniqueId) {
             console.warn("请先设置uniqueId属性");
@@ -27,12 +14,13 @@
     var optionObj = {};
     optionObj.data = function () {
         return {
-            _setting: {}
+            _tableSetting: {}
         };
     };
     optionObj.mounted = function () {
+        this.toolbar = Gx.ui.createToolbar({ data: this.toolbars });
         this.toolbar.appendChildTo(this.$refs.toolbar);
-        $(this.$refs.table).bootstrapTable(this._setting);
+        $(this.$refs.table).bootstrapTable(this._tableSetting);
     };
     optionObj.updated = function () {
         this.baseCall("load", this.data);
@@ -42,7 +30,17 @@
         var tableSetting = Gx.base.createObject(this._props);
         tableSetting.columns = [];
         this.columns.map(function (item) {
-            var newColSetting = Gx.base.mergeParam(getColumnSetting(), item);
+            var newColSetting = Gx.base.mergeParam({
+                checkbox: false,//复选框
+                field: "",
+                title: "",
+                titleTooltip: "",
+                halign: "center",
+                align: "center",
+                width: 200,
+                visible: true,
+                formatter: function (value, row, index) { return value; },
+            }, item);
             if (!item.checkbox) {
                 newColSetting.formatter = function (value, row, index) {
                     if (!value) { value = that.undefinedText; }
@@ -55,13 +53,12 @@
             }
             tableSetting.columns.push(newColSetting);
         });
-        this._setting = tableSetting;
-        this.toolbar = Gx.ui.createToolbar({ data: tableSetting.toolbar });
-        this._setting.toolbar = "#toobar_" + Gx.base.getGuid(8, 16);
+        this._tableSetting = tableSetting;
+        this._tableSetting.toolbar = "#toobar_" + Gx.base.getGuid(8, 16);
         return (
             <div>
                 <div
-                    id={this._setting.toolbar}
+                    id={this._tableSetting.toolbar}
                     ref="toolbar"
                 ></div>
                 <table ref="table"></table>
@@ -201,8 +198,8 @@
         singleSelect: {
             "default": false
         },
-        //toolbar位置，jq选择器
-        toolbar: {
+        //封装的toolbar
+        toolbars: {
             "default": function () {
                 return [];
             }
