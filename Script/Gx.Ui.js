@@ -7,5 +7,3 @@ import '../GxVue/Radio.jsx';
 import '../GxVue/Table.jsx';
 import '../GxVue/Toolbar.jsx';
 
-
-import '../GxVue/Components.jsx';
