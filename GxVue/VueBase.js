@@ -66,7 +66,7 @@
                 components: {
                     'gx-button': Gx.ui.coms.Button,
                     'gx-input': Gx.ui.coms.Input,
-                    'gx-pane': Gx.ui.coms.Pane,
+                    'gx-panel': Gx.ui.coms.Panel,
                     'gx-radio': Gx.ui.coms.Radio,
                     'gx-select': Gx.ui.coms.Select,
                     'gx-table': Gx.ui.coms.Table,

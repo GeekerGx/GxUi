@@ -22,8 +22,8 @@
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
-    Gx.ui.coms.Pane = Default;
-    Gx.ui.createPane = function () {
+    Gx.ui.coms.Panel = Default;
+    Gx.ui.createPanel = function () {
         return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };
 })(window);

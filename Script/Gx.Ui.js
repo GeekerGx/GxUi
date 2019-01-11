@@ -11,7 +11,7 @@ import '../GxVue/Toolbar.jsx';
 import '../GxVue/Table.jsx';
 
 //布局组件
-import '../GxVue/Pane.jsx';
+import '../GxVue/Panel.jsx';
 import '../GxVue/Tabs.jsx';
 
 import '../GxVue/Default.jsx';
