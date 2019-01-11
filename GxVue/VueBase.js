@@ -45,14 +45,14 @@
                     return {};
                 },
                 //创建前
-                beforeCreate: function () {},
+                beforeCreate: function () { },
                 //创建后
-                created: function () {},
+                created: function () { },
                 //挂载前
-                beforeMount: function () {},
+                beforeMount: function () { },
                 //挂载后
-                mounted: function () {},
-                updated: function () {},
+                mounted: function () { },
+                updated: function () { },
                 //传入数据
                 props: {
                     width: {
@@ -79,5 +79,4 @@
         }
     };
     win.Gx.ui = ui;
-
 })(window);

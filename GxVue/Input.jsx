@@ -2,8 +2,8 @@
 /// <reference path="../Script/Gx.Base.js" />
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
 (function (win) {
-
     var optionObj = {};
+
     optionObj.render = function (h) {
         var input = <input
             class={[
@@ -119,10 +119,9 @@
             "default": false
         }
     };
-    var Default = Vue.extend(Gx.ui.getResultObj( optionObj));
 
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Input = Default;
-
     Gx.ui.createInput = function () {
         return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };

@@ -3,11 +3,11 @@
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
 
 (function (win) {
-
     var optionObj = {};
+
     optionObj.render = function (h) {
         if (!this.display) {
-            return ;
+            return;
         }
         return (
             <button
@@ -39,11 +39,10 @@
             "default": true
         }
     };
+
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Button = Default;
-
     Gx.ui.createButton = function () {
         return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };
-
 })(window)

@@ -3,6 +3,7 @@
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
 (function (win) {
     var optionObj = {};
+
     optionObj.render = function (h) {
         var that = this;
         var list = [];
@@ -51,7 +52,6 @@
         }
     };
     optionObj.methods = {
-        //重置
         reset: function () {
             var list = this.$el.getElementsByTagName("input");
             for (i = 0; i < list.length; i++) {
@@ -73,10 +73,9 @@
             "default": false
         }
     };
+
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
-
     Gx.ui.coms.Radio = Default;
-
     Gx.ui.createRadio = function () {
         return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };

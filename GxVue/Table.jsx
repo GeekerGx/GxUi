@@ -4,6 +4,8 @@
 /// <reference path="../Lib/Bootstrap/Table/bootstrap-table.js" />
 
 (function (win) {
+    var optionObj = {};
+
     var checkUniqueId = function () {
         if (!this.uniqueId) {
             console.warn("请先设置uniqueId属性");
@@ -11,7 +13,6 @@
         }
         return true;
     };
-    var optionObj = {};
     optionObj.data = function () {
         return {
             _tableSetting: {}
@@ -216,7 +217,6 @@
         //双击行
         onDblClickRow: function (row, $el) { },
     };
-
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Table = Default;
