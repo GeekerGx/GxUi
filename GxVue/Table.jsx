@@ -28,7 +28,7 @@
     optionObj.render = function (h) {
         var that = this;
         //toobar的id
-        var toolbarId = "toobar_" + Gx.base.getGuid(8, 16);
+        var toolbarId = "toolbar_" + Gx.base.getGuid(8, 16);
 
         var tableSetting = Gx.base.createObject(this._props);
         tableSetting.columns = [];
