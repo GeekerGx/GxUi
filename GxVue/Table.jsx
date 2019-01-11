@@ -27,6 +27,9 @@
     };
     optionObj.render = function (h) {
         var that = this;
+        //toobar的id
+        var toolbarId = "toobar_" + Gx.base.getGuid(8, 16);
+
         var tableSetting = Gx.base.createObject(this._props);
         tableSetting.columns = [];
         this.columns.map(function (item) {
@@ -53,12 +56,12 @@
             }
             tableSetting.columns.push(newColSetting);
         });
+        tableSetting.toolbar = "#" + toolbarId;
         this._tableSetting = tableSetting;
-        this._tableSetting.toolbar = "#toobar_" + Gx.base.getGuid(8, 16);
         return (
             <div>
                 <div
-                    id={this._tableSetting.toolbar}
+                    id={toolbarId}
                     ref="toolbar"
                 ></div>
                 <table ref="table"></table>
