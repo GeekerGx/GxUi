@@ -61,7 +61,11 @@
         tableSetting.toolbar = "#" + toolbarId;
         this._tableSetting = tableSetting;
         return (
-            <div>
+            <div
+                style={{
+                    display: this.display ? "" : "none"
+                }}
+            >
                 <div
                     id={toolbarId}
                     ref="toolbar"

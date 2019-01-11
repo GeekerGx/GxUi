@@ -7,14 +7,14 @@
     var optionObj = {};
 
     optionObj.render = function (h) {
-        if (!this.display) {
-            return;
-        }
         return (
             <div
+                style={{
+                    display: this.display ? "" : "none"
+                }}
                 ref="toolbar"
             >
-            </div>
+            </div >
         );
     };
     optionObj.props = {
