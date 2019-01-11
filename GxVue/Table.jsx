@@ -2,6 +2,7 @@
 /// <reference path="../Script/Gx.Base.js" />
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
 /// <reference path="../Lib/Bootstrap/Table/bootstrap-table.js" />
+/// <reference path="VueBase.js" />
 
 (function (win) {
     var optionObj = {};

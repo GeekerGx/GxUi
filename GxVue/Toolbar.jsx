@@ -1,6 +1,7 @@
 /// <reference path="../Lib/Jquery/jquery-3.0.0.min.js" />
 /// <reference path="../Script/Gx.Base.js" />
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
+/// <reference path="VueBase.js" />
 
 (function (win) {
     var optionObj = {};
@@ -25,10 +26,7 @@
     };
     optionObj.mounted = function () {
         var that = this;
-
-        var that = this;
-
-        that.data.map(function (item) {
+        this.data.map(function (item) {
             if (Gx.ui.checkSysKeepKey(item.id)) {
                 item.id = item.id + "" + Gx.base.getGuid(8, 16);
             }

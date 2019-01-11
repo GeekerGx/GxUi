@@ -11,8 +11,8 @@
             return;
         }
         var props = {
-            value: "按钮"
-        }
+            value: "123"
+        };
         return (
             <div>
                 这里是pane
@@ -22,8 +22,8 @@
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
-    Gx.ui.coms.Default = Default;
-    Gx.ui.createDefault = function () {
+    Gx.ui.coms.Pane = Default;
+    Gx.ui.createPane = function () {
         return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
     };
 })(window);

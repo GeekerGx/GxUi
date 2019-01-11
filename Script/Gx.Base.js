@@ -37,7 +37,7 @@
             }
             return copy;
         }
-        if(obj instanceof HTMLDivElement){
+        if (obj instanceof HTMLDivElement) {
             return obj;
         }
         console.log(obj, base);

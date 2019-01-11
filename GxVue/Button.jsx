@@ -1,6 +1,7 @@
 /// <reference path="../Lib/Jquery/jquery-3.0.0.min.js" />
 /// <reference path="../Script/Gx.Base.js" />
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
+/// <reference path="VueBase.js" />
 
 (function (win) {
     var optionObj = {};
@@ -27,6 +28,9 @@
         }
     };
     optionObj.props = {
+        id: {
+            "default": ""
+        },
         value: {
             "default": "Button"
         },

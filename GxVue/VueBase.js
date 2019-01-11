@@ -2,7 +2,8 @@
 (function (win) {
     var ui = {
         //组件库
-        coms: {},
+        coms: {
+        },
         checkSysKeepKey: function (key) {
             if (!key) {
                 return false;
@@ -61,6 +62,15 @@
                     display: {
                         "default": true
                     }
+                },
+                components: {
+                    'gx-button': Gx.ui.coms.Button,
+                    'gx-input': Gx.ui.coms.Input,
+                    'gx-pane': Gx.ui.coms.Pane,
+                    'gx-radio': Gx.ui.coms.Radio,
+                    'gx-select': Gx.ui.coms.Select,
+                    'gx-table': Gx.ui.coms.Table,
+                    'gx-toolbar': Gx.ui.coms.Toolbar
                 }
             }, optionObj);
             return obj;
