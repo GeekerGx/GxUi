@@ -7,16 +7,19 @@
     var optionObj = {};
 
     optionObj.render = function (h) {
-        if (!this.display) {
-            return;
-        }
         var props = {
             value: "123"
         };
         return (
-            <div>
+            <div
+                style={{
+                    display: this.display ? "" : "none"
+                }}
+            >
                 这里是pane
-                <gx-button {...{ props }} />
+                <gx-button {...{ props }} >
+                    <text>这里是slot</text>
+                </gx-button>
             </div>
         );
     };
