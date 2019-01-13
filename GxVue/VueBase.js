@@ -76,9 +76,10 @@
             return obj;
         },
         createInstance: function (fun, paramObj) {
-
+            var optionObj = paramObj.obj[0];
             var option = new fun({
-                propsData: paramObj.obj[0]
+                //el: "#" + paramObj.str[0],
+                propsData: optionObj
             });
             if (paramObj.str[0] && document.getElementById(paramObj.str[0])) {
                 option = option.$mount("#" + paramObj.str[0]);

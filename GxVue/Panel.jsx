@@ -7,21 +7,17 @@
     var optionObj = {};
 
     optionObj.render = function (h) {
-        var props = {
-            value: "123"
-        };
         return (
             <div
                 style={{
                     display: this.display ? "" : "none"
                 }}
             >
-                这里是pane
-                <gx-button {...{ props }} >
-                    <text>这里是slot</text>
-                </gx-button>
             </div>
         );
+    };
+    optionObj.beforeMount = function () {
+        console.log(this, arguments);
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));

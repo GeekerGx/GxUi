@@ -3,18 +3,24 @@
 /// <reference path="../Lib/Vue/vue2.5.16.js" />
 /// <reference path="VueBase.js" />
 
+/**
+ * 
+ *  目前只能一次性创建按钮，无法动态添加。
+ * 
+*/
+
 (function (win) {
     var optionObj = {};
 
     optionObj.render = function (h) {
         return (
-            <div
-                style={{
-                    display: this.display ? "" : "none"
-                }}
-                ref="toolbar"
-            >
-            </div >
+                <div
+                    style={{
+                        display: this.display ? "" : "none"
+                    }}
+                    ref="toolbar"
+                >
+                </div >
         );
     };
     optionObj.props = {

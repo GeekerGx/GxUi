@@ -18,7 +18,6 @@
                 onClick={this._baseClick}
             >
                 {this.value}
-                <slot name="text"></slot>
             </button>
         );
     };
