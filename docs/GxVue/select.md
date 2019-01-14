@@ -2,7 +2,7 @@
 
 ## 使用
 
-html部分
+>html部分
 
 ```html
 <div id="select"></div>

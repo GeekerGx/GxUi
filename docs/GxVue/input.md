@@ -1,14 +1,12 @@
 # Select 下拉框
 
 ## 使用
-
-html部分
-
+>html部分
 ```html
 <div id="input"></div>
 ```
 
-js部分
+>js部分
 ```js
 var input = Gx.ui.createInput("input", {
     type: "number",
