@@ -13,14 +13,29 @@
     var optionObj = {};
 
     optionObj.render = function (h) {
+        var that = this;
+        var buttons = [];
+        this.data.map(function (item) {
+            if (Gx.ui.checkSysKeepKey(item.id)) {
+                item.id = item.id + "" + Gx.base.getGuid(8, 16);
+            }
+            item.id = item.id || Gx.base.getGuid(8, 16);
+
+            var props = Gx.base.createObject(item);
+            buttons.push(<gx-button {...{ props }}
+                on-changeById={that.changeById}
+                ref={props.id}
+            />);
+        });
+
         return (
-                <div
-                    style={{
-                        display: this.display ? "" : "none"
-                    }}
-                    ref="toolbar"
-                >
-                </div >
+            <div
+                style={{
+                    display: this.display ? "" : "none"
+                }}
+            >
+                {buttons}
+            </div >
         );
     };
     optionObj.props = {
@@ -30,19 +45,15 @@
             }
         },
     };
-    optionObj.mounted = function () {
-        var that = this;
-        this.data.map(function (item) {
-            if (Gx.ui.checkSysKeepKey(item.id)) {
-                item.id = item.id + "" + Gx.base.getGuid(8, 16);
+    optionObj.methods = {
+        changeById: function (id, item) {
+            for (var i = 0; i < this.data.length; i++) {
+                if (this.data[i].id == id) {
+                    this.data[i] = item;
+                }
             }
-            item.id = item.id || Gx.base.getGuid(8, 16);
-            that[item.id] = Gx.ui.createButton(item);
-            that[item.id].appendChildTo(that.$refs.toolbar);
-        });
-
+        },
     };
-
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Toolbar = Default;
     Gx.ui.createToolbar = function () {

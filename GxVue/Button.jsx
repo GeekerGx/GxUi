@@ -25,7 +25,16 @@
         _baseClick: function () {
             //自定义click事件
             this.click();
+
         }
+    };
+    optionObj.watch = {
+        _props: {
+            handler: function () {
+                this.$emit("changeById", this.id, this._props);
+            },
+            deep: true
+        },
     };
     optionObj.props = {
         id: {
