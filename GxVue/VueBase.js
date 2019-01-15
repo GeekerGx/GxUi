@@ -1,9 +1,21 @@
 //UI控件帮助类
 (function (win) {
+    var devHelper = {
+        flag: false,
+        callFun: function (type) {
+            if (!devHelper.flag) {
+                return;
+            }
+
+            devHelper.logThis.call(this, type);
+        },
+        logThis: function (msg) {
+            console.log(msg, this);
+        }
+    };
     var ui = {
         //组件库
-        coms: {
-        },
+        coms: {},
         checkSysKeepKey: function (key) {
             if (!key) {
                 return false;
@@ -46,14 +58,24 @@
                     return {};
                 },
                 //创建前
-                beforeCreate: function () { },
+                beforeCreate: function () {
+                    devHelper.callFun.call(this, "beforeCreate");
+                },
                 //创建后
-                created: function () { },
+                created: function () {
+                    devHelper.callFun.call(this, "created");
+                },
                 //挂载前
-                beforeMount: function () { },
+                beforeMount: function () {
+                    devHelper.callFun.call(this, "beforeMount");
+                },
                 //挂载后
-                mounted: function () { },
-                updated: function () { },
+                mounted: function () {
+                    devHelper.callFun.call(this, "mounted");
+                },
+                updated: function () {
+                    devHelper.callFun.call(this, "updated");
+                },
                 //传入数据
                 props: {
                     width: {
