@@ -6,10 +6,29 @@
 (function (win) {
     var optionObj = {};
 
-    optionObj.render = function (h) {
-        if (!this.display) {
-            return;
+    optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
+        return {
+            id: Gx.base.getDefault(data.id, ""),
+            value: Gx.base.getDefault(data.value, "Button"),
+            click: Gx.base.getDefault(data.click, function () { }),
+            enabled: Gx.base.getDefault(data.enabled, true)
         }
+    };
+    optionObj.watch = {
+        _data: {
+            handler: function () {
+                this.$emit("changeById", this.id, this._data);
+            },
+            deep: true
+        },
+    };
+    optionObj.render = function (h) {
+        if (!this.display) return;
+        //#region
+
+        //#endregion
+
         return (
             <button
                 class={["btn", "navbar-btn", "btn-default"]}
@@ -22,26 +41,10 @@
         );
     };
     optionObj.methods = {
+
         _baseClick: function () {
             //自定义click事件
             this.click();
-        }
-    };
-    optionObj.watch = {
-        _data: {
-            handler: function () {
-                this.$emit("changeById", this.id, this._data);
-            },
-            deep: true
-        },
-    };
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            id: Gx.base.getDefault(data.id, ""),
-            value: Gx.base.getDefault(data.value, "Button"),
-            click: Gx.base.getDefault(data.click, function () { }),
-            enabled: Gx.base.getDefault(data.enabled, true)
         }
     };
 

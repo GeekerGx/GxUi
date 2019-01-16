@@ -14,111 +14,6 @@
         }
         return true;
     };
-    optionObj.mounted = function () {
-        this.toolbar = Gx.ui.createToolbar({ data: this.toolbars });
-        this.toolbar.appendChildTo(this.$refs.toolbar);
-        $(this.$refs.table).bootstrapTable(this._tableSetting);
-    };
-    optionObj.watch = {
-        data: {
-            handler: function (newVal, oldVal) {
-                this.baseCall("load", newVal);
-            },
-            immediate: true
-        }
-    };
-    optionObj.render = function (h) {
-        var that = this;
-        //toobar的id
-        var toolbarId = "toolbar_" + Gx.base.getGuid(8, 16);
-        var tableSetting = Gx.base.createObject(this._props);
-        tableSetting.columns = [];
-        this.columns.map(function (item) {
-            var newColSetting = Gx.base.mergeParam({
-                checkbox: false,//复选框
-                field: "",
-                title: "",
-                titleTooltip: "",
-                halign: "center",
-                align: "center",
-                width: 200,
-                visible: true,
-                formatter: function (value, row, index) { return value; },
-            }, item);
-            if (!item.checkbox) {
-                newColSetting.formatter = function (value, row, index) {
-                    if (!value) { value = that.undefinedText; }
-                    if (item.formatter) {
-                        return item.formatter(value, row, index);
-                    } else {
-                        return value;
-                    }
-                };
-            }
-            tableSetting.columns.push(newColSetting);
-        });
-        tableSetting.toolbar = "#" + toolbarId;
-        this._tableSetting = tableSetting;
-        return (
-            <div
-                style={{
-                    display: this.display ? "" : "none"
-                }}
-            >
-                <div
-                    id={toolbarId}
-                    ref="toolbar"
-                ></div>
-                <table ref="table"></table>
-            </div>
-        );
-    };
-    optionObj.methods = {
-        loadData: function (data) {
-            if (!Gx.base.isArray(data)) {
-                console.warn("绑定数据不是数组！");
-                return;
-            }
-            this.data = data;
-        },
-        baseCall: function (method, parameter) {
-            return $(this.$refs.table).bootstrapTable(method, parameter);
-        },
-        getOptions: function () {
-            return this.baseCall("getOptions");
-        },
-        getSelections: function () {
-            return this.baseCall("getSelections");
-        },
-        getData: function (useCurrentPage) {
-            return this.baseCall("getData", useCurrentPage);
-        },
-        remove: function (field, values) {
-            this.baseCall("remove", {
-                //字段
-                field: field,
-                //单个值或数组
-                values: values
-            });
-        },
-        removeByUniqueId: function (id) {
-            if (!checkUniqueId.call(this)) { return; }
-            this.baseCall("removeByUniqueId", id);
-        },
-        getRowByUniqueId: function (id) {
-            if (!checkUniqueId.call(this)) { return; }
-            return this.baseCall("getRowByUniqueId", id);
-        },
-        selectPage: function (page) {
-            this.baseCall("selectPage", page);
-        },
-        prevPage: function () {
-            this.baseCall("prevPage");
-        },
-        nextPage: function () {
-            this.baseCall("nextPage");
-        },
-    };
     optionObj.data = function () {
         var data = Gx.base.createObject(this.options);
         return {
@@ -172,6 +67,115 @@
             //双击行
             onDblClickRow: Gx.base.getDefault(data.onDblClickRow, function (row, $el) { }),
         };
+    };
+    optionObj.watch = {
+        data: {
+            handler: function (newVal, oldVal) {
+                this.baseCall("load", newVal);
+            },
+            immediate: true
+        }
+    };
+    optionObj.render = function (h) {
+        var that = this;
+        //toobar的id
+        var toolbarId = "toolbar_" + Gx.base.getGuid(8, 16);
+        var tableSetting = Gx.base.createObject(this._props);
+        tableSetting.columns = [];
+        this.columns.map(function (item) {
+            var newColSetting = Gx.base.mergeParam({
+                checkbox: false,//复选框
+                field: "",
+                title: "",
+                titleTooltip: "",
+                halign: "center",
+                align: "center",
+                width: 200,
+                visible: true,
+                formatter: function (value, row, index) { return value; },
+            }, item);
+            if (!item.checkbox) {
+                newColSetting.formatter = function (value, row, index) {
+                    if (!value) { value = that.undefinedText; }
+                    if (item.formatter) {
+                        return item.formatter(value, row, index);
+                    } else {
+                        return value;
+                    }
+                };
+            }
+            tableSetting.columns.push(newColSetting);
+        });
+        tableSetting.toolbar = "#" + toolbarId;
+        this._tableSetting = tableSetting;
+        var props = {
+            options: {
+                data: this.toolbars
+            }
+        };
+        return (
+            <div
+                style={{
+                    display: this.display ? "" : "none"
+                }}
+            >
+                <gx-toolbar
+                    id={toolbarId}
+                    //ref="toolbar"
+                    {...{ props }}
+                ></gx-toolbar>
+                <table ref="table"></table>
+            </div>
+        );
+    };
+    optionObj.mounted = function () {
+        $(this.$refs.table).bootstrapTable(this._tableSetting);
+    };
+    optionObj.methods = {
+        loadData: function (data) {
+            if (!Gx.base.isArray(data)) {
+                console.warn("绑定数据不是数组！");
+                return;
+            }
+            this.data = data;
+        },
+        baseCall: function (method, parameter) {
+            return $(this.$refs.table).bootstrapTable(method, parameter);
+        },
+        getOptions: function () {
+            return this.baseCall("getOptions");
+        },
+        getSelections: function () {
+            return this.baseCall("getSelections");
+        },
+        getData: function (useCurrentPage) {
+            return this.baseCall("getData", useCurrentPage);
+        },
+        remove: function (field, values) {
+            this.baseCall("remove", {
+                //字段
+                field: field,
+                //单个值或数组
+                values: values
+            });
+        },
+        removeByUniqueId: function (id) {
+            if (!checkUniqueId.call(this)) { return; }
+            this.baseCall("removeByUniqueId", id);
+        },
+        getRowByUniqueId: function (id) {
+            if (!checkUniqueId.call(this)) { return; }
+            return this.baseCall("getRowByUniqueId", id);
+        },
+        selectPage: function (page) {
+            this.baseCall("selectPage", page);
+        },
+        prevPage: function () {
+            this.baseCall("prevPage");
+        },
+        nextPage: function () {
+            this.baseCall("nextPage");
+        },
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));

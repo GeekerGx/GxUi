@@ -14,6 +14,7 @@
 
     optionObj.render = function (h) {
         if (!this.display) return;
+
         var that = this;
         var buttons = [];
         this.data.map(function (item) {
@@ -43,6 +44,14 @@
         return {
             data: Gx.base.getDefault(data.data, [])
         };
+    };
+    optionObj.watch = {
+        "options.data": {
+            handler: function () {
+                this.data = this.options.data;
+            },
+            deep: true
+        },
     };
     optionObj.methods = {
         changeById: function (id, item) {
