@@ -20,21 +20,31 @@
     <div id="selectForfixedItems"></div>
 </body>
 <script>
-    var data = [
-        { ID: "0", NAME: "0", test: "123" },
-        { ID: "1", NAME: "1", test: "123" },
+    var data = [{
+            ID: "0",
+            NAME: "0",
+            test: "123"
+        },
+        {
+            ID: "1",
+            NAME: "1",
+            test: "123"
+        },
     ];
-    var selectForData = Gx.ui.createSelect("selectForData", {
+    var selectForData = Gx.ui.createSelect({
+        el: "selectForData",
         data: data
     });
-    var selectForChange = Gx.ui.createSelect("selectForChange", {
+    var selectForChange = Gx.ui.createSelect({
+        el: "selectForChange",
         data: data,
         change: function () {
             var that = this;
             alert("value:" + that.value + ";text:" + that.text + ";");
         }
     });
-    var selectForField = Gx.ui.createSelect("selectForField", {
+    var selectForField = Gx.ui.createSelect({
+        el: "selectForField",
         data: data,
         valueField: "ID",
         textField: function (data) {
@@ -49,10 +59,12 @@
         }
     });
     selectForNoMount.appendChildTo("selectForNoMount");
-    var selectForfixedItems = Gx.ui.createSelect('selectForfixedItems', {
-        fixedItems: [
-            { ID: "-1", NAME: "请选择" }
-        ],
+    var selectForfixedItems = Gx.ui.createSelect({
+        el: 'selectForfixedItems',
+        fixedItems: [{
+            ID: "-1",
+            NAME:"请选择"
+        }],
         data: data,
         valueField: "ID",
         textField: function (data) {

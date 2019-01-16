@@ -21,16 +21,19 @@
     <div id="inputForTypeByTextarea"></div>
 </body>
 <script>
-    var inputForPlaceholder = Gx.ui.createInput("inputForPlaceholder", {
+    var inputForPlaceholder = Gx.ui.createInput({
+        el: "inputForPlaceholder",
         placeholder: "777"
     });
 
-    var inputForChange = Gx.ui.createInput("inputForChange", {
+    var inputForChange = Gx.ui.createInput({
+        el: "inputForChange",
         change: function () {
             alert(this.value);
         }
     });
-    var inputForTypeByNumber = Gx.ui.createInput("inputForTypeByNumber", {
+    var inputForTypeByNumber = Gx.ui.createInput({
+        el: "inputForTypeByNumber",
         type: "number",
         validation: function (value) {
             if (value > 3) {
@@ -48,7 +51,8 @@
         value: 999999,
         micrometer: true
     });
-    var inputForTypeByPassword = Gx.ui.createInput("inputForTypeByPassword", {
+    var inputForTypeByPassword = Gx.ui.createInput({
+        el: "inputForTypeByPassword",
         type: "password",
         validation: function (value) {
             var exp = (/^[0-9]+$/).test(value);
@@ -57,10 +61,12 @@
             }
         }
     });
-    var inputForTypeByDate = Gx.ui.createInput("inputForTypeByDate", {
+    var inputForTypeByDate = Gx.ui.createInput({
+        el: "inputForTypeByDate",
         type: "date"
     });
-    var inputForTypeByTextarea = Gx.ui.createInput("inputForTypeByTextarea", {
+    var inputForTypeByTextarea = Gx.ui.createInput({
+        el: "inputForTypeByTextarea",
         type: "textarea"
     });
 </script>

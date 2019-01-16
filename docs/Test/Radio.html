@@ -16,12 +16,18 @@
     <div id="radioForData"></div>
 </body>
 <script>
-    var radioForData = Gx.ui.createRadio("radioForData", {
+    var radioForData = Gx.ui.createRadio({
+        el: "radioForData",
         name: "radioForData",
         multiple: true,
-        data: [
-            { value: "man", text: "男" },
-            { value: "women", text: "女" },
+        data: [{
+                value: "man",
+                text: "男"
+            },
+            {
+                value: "women",
+                text: "女"
+            },
         ]
     });
 </script>

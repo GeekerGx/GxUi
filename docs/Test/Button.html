@@ -18,15 +18,18 @@
     <div id="buttonForEnabled"></div>
 </body>
 <script>
-    var buttonForValue = Gx.ui.createButton("buttonForValue", {
+    var buttonForValue = Gx.ui.createButton({
+        el: "buttonForValue",
         value: "显示值"
     });
-    var buttonForClick = Gx.ui.createButton("buttonForClick", {
+    var buttonForClick = Gx.ui.createButton({
+        el: "buttonForClick",
         click: function () {
             alert("点击了此按钮");
         }
     });
-    var buttonForEnabled = Gx.ui.createButton("buttonForEnabled", {
+    var buttonForEnabled = Gx.ui.createButton({
+        el: "buttonForEnabled",
         click: function () {
             alert("禁用");
             this.enabled = !this.enabled;

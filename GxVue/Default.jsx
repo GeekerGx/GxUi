@@ -23,7 +23,7 @@
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Default = Default;
-    Gx.ui.createDefault = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createDefault = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window);

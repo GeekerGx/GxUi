@@ -81,44 +81,27 @@
             return options[index];
         },
     };
-    optionObj.props = {
-        //下拉框数据
-        data: {
-            "default": function () {
-                return [{ ID: "-1", NAME: "请选择" }];
-            }
-        },
-        //val属性
-        valueField: {
-            "default": "ID"
-        },
-        //text值
-        textField: {
-            "default": "NAME"
-        },
-        //固定项：该选项一直存在
-        fixedItems: {
-            "default": function () {
-                return [];
-            }
-        },
-        //change事件
-        change: {
-            "default": function () {
-                return function () { };
-            }
-        },
-        disabled: {
-            "default": false
-        },
-        checked: {
-            "default": true
-        }
+    optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
+        return {
+            //下拉框数据
+            data: data.data || [{ ID: "-1", NAME: "请选择" }],
+            //val属性
+            valueField: data.valueField || "ID",
+            //text值
+            textField: data.textField || "NAME",
+            //固定项：该选项一直存在
+            fixedItems: data.fixedItems || [],
+            //change事件
+            change: data.change || function () { },
+            disabled: data.disabled || false,
+            checked: data.checked || true
+        };
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Select = Default;
-    Gx.ui.createSelect = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createSelect = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window);

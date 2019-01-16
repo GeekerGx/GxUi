@@ -25,7 +25,6 @@
         _baseClick: function () {
             //自定义click事件
             this.click();
-
         }
     };
     optionObj.watch = {
@@ -36,26 +35,19 @@
             deep: true
         },
     };
-    optionObj.props = {
-        id: {
-            "default": ""
-        },
-        value: {
-            "default": "Button"
-        },
-        click: {
-            "default": function () {
-                return function () { };
-            }
-        },
-        enabled: {
-            "default": true
+    optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
+        return {
+            id: data.id || "",
+            value: data.value || "Button",
+            click: data.click || function () { },
+            enabled: data.enabled || true
         }
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Button = Default;
-    Gx.ui.createButton = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createButton = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window)

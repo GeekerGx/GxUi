@@ -62,23 +62,18 @@
             }
         }
     };
-    optionObj.props = {
-        name: null,
-        data: {
-            "default": function () {
-                return function (value) {
-                    return [];
-                };
-            }
-        },
-        multiple: {
-            "default": false
-        }
+    optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
+        return {
+            name: data.name || null,
+            data: data.data || [],
+            multiple: data.multiple || false
+        };
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Radio = Default;
-    Gx.ui.createRadio = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createRadio = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window);

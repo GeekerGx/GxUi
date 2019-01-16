@@ -14,24 +14,23 @@
         }
         return true;
     };
-    optionObj.data = function () {
-        return {
-            _tableSetting: {}
-        };
-    };
     optionObj.mounted = function () {
         this.toolbar = Gx.ui.createToolbar({ data: this.toolbars });
         this.toolbar.appendChildTo(this.$refs.toolbar);
         $(this.$refs.table).bootstrapTable(this._tableSetting);
     };
-    optionObj.updated = function () {
-        this.baseCall("load", this.data);
+    optionObj.watch = {
+        data: {
+            handler: function (newVal, oldVal) {
+                this.baseCall("load", newVal);
+            },
+            immediate: true
+        }
     };
     optionObj.render = function (h) {
         var that = this;
         //toobar的id
         var toolbarId = "toolbar_" + Gx.base.getGuid(8, 16);
-
         var tableSetting = Gx.base.createObject(this._props);
         tableSetting.columns = [];
         this.columns.map(function (item) {
@@ -120,112 +119,64 @@
             this.baseCall("nextPage");
         },
     };
-    optionObj.props = {
-        //主键列，用于定位和删除
-        uniqueId: {
-            "default": undefined
-        },
-        //定义表格的高度
-        height: {
-            "default": undefined
-        },
-        //数据为undefined时显示字符串
-        undefinedText: {
-            "default": "-"
-        },
-        //隔行变色效果
-        striped: {
-            "default": true
-        },
-        //列设置
-        columns: {
-            "default": function () {
-                return [];
-            }
-        },
-        //数据
-        data: {
-            "default": function () {
-                return [];
-            }
-        },
-        //分页
-        pagination: {
-            "default": true
-        },
-        //循环分页
-        paginationLoop: {
-            "default": false
-        },
-        //只显示总数据数，而不显示分页按钮
-        onlyInfoPagination: {
-            "default": false
-        },
-        //可选值为 'client' 或者 'server'
-        sidePagination: {
-            "default": "client"
-        },
-        //页码
-        pageNumber: {
-            "default": 1
-        },
-        //每页数据条数
-        pageSize: {
-            "default": 10
-        },
-        //每页数据条数下拉
-        pageList: {
-            "default": function () {
-                return [10, 50, 100];
-            }
-        },
-        //判断显示分页信息和 card 视图
-        smartDisplay: {
-            "default": false
-        },
-        //搜索框
-        search: {
-            "default": false
-        },
-        //内容列下拉框
-        showColumns: {
-            "default": false
-        },
-        //显示分页按钮
-        showPaginationSwitch: {
-            "default": false
-        },
-        //最小隐藏列的数量
-        minimumCountColumns: {
-            "default": 2
-        },
-        //点击行时，自动选择 rediobox 和 checkbox
-        clickToSelect: {
-            "default": true
-        },
-        //单选
-        singleSelect: {
-            "default": false
-        },
-        //封装的toolbar
-        toolbars: {
-            "default": function () {
-                return [];
-            }
-        },
-        //buttonsToolbar位置，jq选择器
-        buttonsToolbar: {
-            "default": undefined
-        },
-        //单击行
-        onClickRow: function (row, $el) { },
-        //双击行
-        onDblClickRow: function (row, $el) { },
+    optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
+        return {
+            _tableSetting: {},
+            //主键列，用于定位和删除
+            uniqueId: data.uniqueId || undefined,
+            //定义表格的高度
+            height: data.height || undefined,
+            //数据为undefined时显示字符串
+            undefinedText: data.undefinedText || "-",
+            //隔行变色效果
+            striped: data.striped || true,
+            //列设置
+            columns: data.columns || [],
+            //数据
+            data: data.data || [],
+            //分页
+            pagination: data.pagination || true,
+            //循环分页
+            paginationLoop: data.paginationLoop || false,
+            //只显示总数据数，而不显示分页按钮
+            onlyInfoPagination: data.onlyInfoPagination || false,
+            //可选值为 'client' 或者 'server'
+            sidePagination: data.sidePagination || "client",
+            //页码
+            pageNumber: data.pageNumber || 1,
+            //每页数据条数
+            pageSize: data.pageSize || 10,
+            //每页数据条数下拉
+            pageList: data.pageList || [10, 50, 100],
+            //判断显示分页信息和 card 视图
+            smartDisplay: data.smartDisplay || false,
+            //搜索框
+            search: data.search || false,
+            //内容列下拉框
+            showColumns: data.showColumns || false,
+            //显示分页按钮
+            showPaginationSwitch: data.showPaginationSwitch || false,
+            //最小隐藏列的数量
+            minimumCountColumns: data.minimumCountColumns || 2,
+            //点击行时，自动选择 rediobox 和 checkbox
+            clickToSelect: data.clickToSelect || true,
+            //单选
+            singleSelect: data.singleSelect || false,
+            //封装的toolbar
+            toolbars: data.toolbars || [],
+            //buttonsToolbar位置，jq选择器
+            buttonsToolbar: data.buttonsToolbar || undefined,
+            //单击行
+            onClickRow: data.onClickRow || function (row, $el) { },
+            //双击行
+            onDblClickRow: data.onDblClickRow || function (row, $el) { },
+        };
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Table = Default;
-    Gx.ui.createTable = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createTable = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window)

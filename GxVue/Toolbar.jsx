@@ -13,6 +13,7 @@
     var optionObj = {};
 
     optionObj.render = function (h) {
+        if (!this.display) return;
         var that = this;
         var buttons = [];
         this.data.map(function (item) {
@@ -21,7 +22,7 @@
             }
             item.id = item.id || Gx.base.getGuid(8, 16);
 
-            var props = Gx.base.createObject(item);
+            var props = { options: Gx.base.createObject(item) };
             buttons.push(<gx-button {...{ props }}
                 on-changeById={that.changeById}
                 ref={props.id}
@@ -31,19 +32,17 @@
         return (
             <div
                 style={{
-                    display: this.display ? "" : "none"
                 }}
             >
                 {buttons}
             </div >
         );
     };
-    optionObj.props = {
-        data: {
-            "default": function () {
-                return [];
-            }
-        },
+    optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
+        return {
+            data: data.data || []
+        };
     };
     optionObj.methods = {
         changeById: function (id, item) {
@@ -56,7 +55,7 @@
     };
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Toolbar = Default;
-    Gx.ui.createToolbar = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createToolbar = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window);

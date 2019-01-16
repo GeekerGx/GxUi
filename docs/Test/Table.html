@@ -19,57 +19,58 @@
     <div id="table"></div>
 </body>
 <script>
-    var table = Gx.ui.createTable("table", {
+    var table = Gx.ui.createTable({
+        el: "table",
         uniqueId: "id",
         toolbars: [{
-            id: "add",
-            value: "添加",
-            click: function () {
-                alert("点击了添加");
+                id: "add",
+                value: "添加",
+                click: function () {
+                    alert("点击了添加");
+                },
+                display: true
             },
-            display: true
-        },
-        {
-            value: "此按钮不可用",
-            enabled: false,
-        },
-        {
-            value: "点击后不可用",
-            click: function () {
-                this.enabled = false;
+            {
+                value: "此按钮不可用",
+                enabled: false,
+            },
+            {
+                value: "点击后不可用",
+                click: function () {
+                    this.enabled = false;
+                }
+            },
+            {
+                id: "display",
+                value: "点击后隐藏",
+                click: function () {
+                    this.display = false;
+                }
             }
-        },
-        {
-            id: "display",
-            value: "点击后隐藏",
-            click: function () {
-                this.display = false;
-            }
-        }
         ],
         singleSelect: true,
         columns: [{
-            field: 'check',
-            checkbox: true
-        },
-        {
-            field: 'id',
-            title: '编号',
-            visible: true
-        },
-        {
-            field: 'name',
-            title: '姓名'
-        }, {
-            field: 'age',
-            title: '年龄'
-        }, {
-            field: 'price',
-            title: '价格',
-            formatter: function (value, row, index) {
-                return value + "￥";
+                field: 'check',
+                checkbox: true
             },
-        }
+            {
+                field: 'id',
+                title: '编号',
+                visible: true
+            },
+            {
+                field: 'name',
+                title: '姓名'
+            }, {
+                field: 'age',
+                title: '年龄'
+            }, {
+                field: 'price',
+                title: '价格',
+                formatter: function (value, row, index) {
+                    return value + "￥";
+                },
+            }
         ],
         data: [{
             id: 1,

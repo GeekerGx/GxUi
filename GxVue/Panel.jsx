@@ -16,13 +16,10 @@
             </div>
         );
     };
-    optionObj.beforeMount = function () {
-        console.log(this, arguments);
-    };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Panel = Default;
-    Gx.ui.createPanel = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createPanel = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window);

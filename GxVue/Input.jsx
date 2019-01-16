@@ -73,58 +73,28 @@
         }
     };
     optionObj.data = function () {
+        var data = Gx.base.createObject(this.options);
         return {
-            _isFocus: false
+            _isFocus: false,
+            type: data.type || "text",
+            //提示
+            placeholder: data.placeholder || "",
+            //验证方法
+            validation: data.validation || function (value) { return true; },
+            //change事件
+            change: data.change || function () { },
+            //失焦焦点
+            onBlur: data.onBlur || function () { },
+            //获得焦点
+            onFocus: data.onFocus || function () { },
+            value: data.value || "",
+            micrometer: data.micrometer || false
         };
-    };
-    optionObj.props = {
-        type: {
-            "default": "text"
-        },
-        //提示
-        placeholder: {
-            "default": ""
-        },
-        //验证方法
-        validation: {
-            "default": function () {
-                return function (value) {
-                    return true;
-                };
-            }
-        },
-        //change事件
-        change: {
-            "default": function () {
-                return function () {
-                };
-            }
-        },
-        //失焦焦点
-        onBlur: {
-            "default": function () {
-                return function () {
-                };
-            }
-        },
-        //获得焦点
-        onFocus: {
-            "default": function () {
-                return function () {
-                };
-            }
-        },
-        value: {
-            "default": ""
-        },
-        micrometer: {
-            "default": false
-        }
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
     Gx.ui.coms.Input = Default;
-    Gx.ui.createInput = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createInput = function (options) {
+        return Gx.ui.createInstance(Default, options);
     };
 })(window);

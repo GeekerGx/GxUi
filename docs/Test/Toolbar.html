@@ -16,9 +16,9 @@
     <div id="toolbar"></div>
 </body>
 <script>
-    var toolbar = Gx.ui.createToolbar("toolbar", {
-        data: [
-            {
+    var toolbar = Gx.ui.createToolbar({
+        el: "toolbar",
+        data: [{
                 id: "add",
                 value: "添加",
                 click: function () {
@@ -30,7 +30,7 @@
                 enabled: false,
             },
             {
-                id:"changeEnabled",
+                id: "changeEnabled",
                 value: "点击后不可用",
                 click: function () {
                     this.enabled = false;
