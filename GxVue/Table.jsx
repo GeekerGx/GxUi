@@ -124,53 +124,53 @@
         return {
             _tableSetting: {},
             //主键列，用于定位和删除
-            uniqueId: data.uniqueId || undefined,
+            uniqueId: Gx.base.getDefault(data.uniqueId, undefined),
             //定义表格的高度
-            height: data.height || undefined,
+            height: Gx.base.getDefault(data.height, undefined),
             //数据为undefined时显示字符串
-            undefinedText: data.undefinedText || "-",
+            undefinedText: Gx.base.getDefault(data.undefinedText, "-"),
             //隔行变色效果
-            striped: data.striped || true,
+            striped: Gx.base.getDefault(data.striped, true),
             //列设置
-            columns: data.columns || [],
+            columns: Gx.base.getDefault(data.columns, []),
             //数据
-            data: data.data || [],
+            data: Gx.base.getDefault(data.data, []),
             //分页
-            pagination: data.pagination || true,
+            pagination: Gx.base.getDefault(data.pagination, true),
             //循环分页
-            paginationLoop: data.paginationLoop || false,
+            paginationLoop: Gx.base.getDefault(data.paginationLoop, false),
             //只显示总数据数，而不显示分页按钮
-            onlyInfoPagination: data.onlyInfoPagination || false,
+            onlyInfoPagination: Gx.base.getDefault(data.onlyInfoPagination, false),
             //可选值为 'client' 或者 'server'
-            sidePagination: data.sidePagination || "client",
+            sidePagination: Gx.base.getDefault(data.sidePagination, "client"),
             //页码
-            pageNumber: data.pageNumber || 1,
+            pageNumber: Gx.base.getDefault(data.pageNumber, 1),
             //每页数据条数
-            pageSize: data.pageSize || 10,
+            pageSize: Gx.base.getDefault(data.pageSize, 10),
             //每页数据条数下拉
-            pageList: data.pageList || [10, 50, 100],
+            pageList: Gx.base.getDefault(data.pageList, [10, 50, 100]),
             //判断显示分页信息和 card 视图
-            smartDisplay: data.smartDisplay || false,
+            smartDisplay: Gx.base.getDefault(data.smartDisplay, false),
             //搜索框
-            search: data.search || false,
+            search: Gx.base.getDefault(data.search, false),
             //内容列下拉框
-            showColumns: data.showColumns || false,
+            showColumns: Gx.base.getDefault(data.showColumns, false),
             //显示分页按钮
-            showPaginationSwitch: data.showPaginationSwitch || false,
+            showPaginationSwitch: Gx.base.getDefault(data.showPaginationSwitch, false),
             //最小隐藏列的数量
-            minimumCountColumns: data.minimumCountColumns || 2,
+            minimumCountColumns: Gx.base.getDefault(data.minimumCountColumns, 2),
             //点击行时，自动选择 rediobox 和 checkbox
-            clickToSelect: data.clickToSelect || true,
+            clickToSelect: Gx.base.getDefault(data.clickToSelect, true),
             //单选
-            singleSelect: data.singleSelect || false,
+            singleSelect: Gx.base.getDefault(data.singleSelect, false),
             //封装的toolbar
-            toolbars: data.toolbars || [],
+            toolbars: Gx.base.getDefault(data.toolbars, []),
             //buttonsToolbar位置，jq选择器
-            buttonsToolbar: data.buttonsToolbar || undefined,
+            buttonsToolbar: Gx.base.getDefault(data.buttonsToolbar, undefined),
             //单击行
-            onClickRow: data.onClickRow || function (row, $el) { },
+            onClickRow: Gx.base.getDefault(data.onClickRow, function (row, $el) { }),
             //双击行
-            onDblClickRow: data.onDblClickRow || function (row, $el) { },
+            onDblClickRow: Gx.base.getDefault(data.onDblClickRow, function (row, $el) { }),
         };
     };
 

@@ -65,9 +65,9 @@
     optionObj.data = function () {
         var data = Gx.base.createObject(this.options);
         return {
-            name: data.name || null,
-            data: data.data || [],
-            multiple: data.multiple || false
+            name: Gx.base.getDefault(data.name, null),
+            data: Gx.base.getDefault(data.data, []),
+            multiple: Gx.base.getDefault(data.multiple, false)
         };
     };
 

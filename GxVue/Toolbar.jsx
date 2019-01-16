@@ -41,7 +41,7 @@
     optionObj.data = function () {
         var data = Gx.base.createObject(this.options);
         return {
-            data: data.data || []
+            data: Gx.base.getDefault(data.data, [])
         };
     };
     optionObj.methods = {

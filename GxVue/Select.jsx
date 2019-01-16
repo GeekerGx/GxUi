@@ -85,17 +85,17 @@
         var data = Gx.base.createObject(this.options);
         return {
             //下拉框数据
-            data: data.data || [{ ID: "-1", NAME: "请选择" }],
+            data: Gx.base.getDefault(data.data, [{ ID: "-1", NAME: "请选择" }]),
             //val属性
-            valueField: data.valueField || "ID",
+            valueField: Gx.base.getDefault(data.valueField, "ID"),
             //text值
-            textField: data.textField || "NAME",
+            textField: Gx.base.getDefault(data.textField, "NAME"),
             //固定项：该选项一直存在
-            fixedItems: data.fixedItems || [],
+            fixedItems: Gx.base.getDefault(data.fixedItems, []),
             //change事件
-            change: data.change || function () { },
-            disabled: data.disabled || false,
-            checked: data.checked || true
+            change: Gx.base.getDefault(data.change, function () { }),
+            disabled: Gx.base.getDefault(data.disabled, false),
+            checked: Gx.base.getDefault(data.checked, true)
         };
     };
 

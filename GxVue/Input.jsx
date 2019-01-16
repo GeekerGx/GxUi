@@ -76,19 +76,19 @@
         var data = Gx.base.createObject(this.options);
         return {
             _isFocus: false,
-            type: data.type || "text",
+            type: Gx.base.getDefault(data.type, "text"),
             //提示
-            placeholder: data.placeholder || "",
+            placeholder: Gx.base.getDefault(data.placeholder, ""),
             //验证方法
-            validation: data.validation || function (value) { return true; },
+            validation: Gx.base.getDefault(data.validation, function (value) { return true; }),
             //change事件
-            change: data.change || function () { },
+            change: Gx.base.getDefault(data.change, function () { }),
             //失焦焦点
-            onBlur: data.onBlur || function () { },
+            onBlur: Gx.base.getDefault(data.onBlur, function () { }),
             //获得焦点
-            onFocus: data.onFocus || function () { },
-            value: data.value || "",
-            micrometer: data.micrometer || false
+            onFocus: Gx.base.getDefault(data.onFocus, function () { }),
+            value: Gx.base.getDefault(data.value, ""),
+            micrometer: Gx.base.getDefault(data.micrometer, false)
         };
     };
 

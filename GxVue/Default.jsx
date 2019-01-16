@@ -11,8 +11,10 @@
             return;
         }
         var props = {
-            value: "按钮"
-        }
+            options: {
+                value: "按钮"
+            }
+        };
         return (
             <div>
                 这里是pane

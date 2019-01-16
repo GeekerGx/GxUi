@@ -45,9 +45,10 @@
             },
             //内置数据
             data: function () {
+                var data = Gx.base.createObject(this.options);
                 return {
-                    width: "200px",
-                    display: true
+                    width: Gx.base.getDefault(data.width, "200px"),
+                    display: Gx.base.getDefault(data.display, true)
                 };
             },
             //创建前

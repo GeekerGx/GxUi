@@ -111,6 +111,9 @@
         }
         return arr.join("");
     };
+    base.getDefault = function (value, def) {
+        return value != undefined || value != null ? value : def;
+    };
 
     Gx.base = base;
 })(window);

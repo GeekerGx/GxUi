@@ -28,9 +28,9 @@
         }
     };
     optionObj.watch = {
-        _props: {
+        _data: {
             handler: function () {
-                this.$emit("changeById", this.id, this._props);
+                this.$emit("changeById", this.id, this._data);
             },
             deep: true
         },
@@ -38,10 +38,10 @@
     optionObj.data = function () {
         var data = Gx.base.createObject(this.options);
         return {
-            id: data.id || "",
-            value: data.value || "Button",
-            click: data.click || function () { },
-            enabled: data.enabled || true
+            id: Gx.base.getDefault(data.id, ""),
+            value: Gx.base.getDefault(data.value, "Button"),
+            click: Gx.base.getDefault(data.click, function () { }),
+            enabled: Gx.base.getDefault(data.enabled, true)
         }
     };
 
