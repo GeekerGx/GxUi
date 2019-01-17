@@ -121,7 +121,7 @@
             >
                 <gx-toolbar
                     id={toolbarId}
-                    //ref="toolbar"
+                    ref="toolbar"
                     {...{ props }}
                 ></gx-toolbar>
                 <table ref="table"></table>

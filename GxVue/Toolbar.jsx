@@ -13,29 +13,27 @@
     var optionObj = {};
 
     optionObj.render = function (h) {
-        if (!this.display) return;
-
         var that = this;
-        var buttons = [];
-        this.data.map(function (item) {
-            if (Gx.ui.checkSysKeepKey(item.id)) {
-                item.id = item.id + "" + Gx.base.getGuid(8, 16);
-            }
-            item.id = item.id || Gx.base.getGuid(8, 16);
-
-            var props = { options: Gx.base.createObject(item) };
-            buttons.push(<gx-button {...{ props }}
-                on-changeById={that.changeById}
-                ref={props.id}
-            />);
-        });
 
         return (
             <div
                 style={{
+                    display: !this.display ? "none" : ""
                 }}
             >
-                {buttons}
+                {this.data.map(function (item) {
+                    if (Gx.ui.checkSysKeepKey(item.id)) {
+                        item.id = item.id + "" + Gx.base.getGuid(8, 16);
+                    }
+                    item.id = item.id || Gx.base.getGuid(8, 16);
+
+                    var props = { options: Gx.base.createObject(item) };
+                    
+                    return (<gx-button {...{ props }}
+                        on-changeById={that.changeById}
+                        ref={item.id}
+                    />);
+                })}
             </div >
         );
     };
@@ -44,14 +42,6 @@
         return {
             data: Gx.base.getDefault(data.data, [])
         };
-    };
-    optionObj.watch = {
-        "options.data": {
-            handler: function () {
-                this.data = this.options.data;
-            },
-            deep: true
-        },
     };
     optionObj.methods = {
         changeById: function (id, item) {

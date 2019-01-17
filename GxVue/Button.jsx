@@ -20,7 +20,8 @@
             handler: function () {
                 this.$emit("changeById", this.id, this._data);
             },
-            deep: true
+            deep: true,
+            immediate: true
         },
     };
     optionObj.render = function (h) {
