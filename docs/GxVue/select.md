@@ -8,7 +8,7 @@
 <div id="select"></div>
 ```
 
-js部分
+>js部分
 ```js
 var select = Gx.ui.createSelect("select", {
     fixedItems: [{ ID: "-1", NAME: "请选择" }],

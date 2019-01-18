@@ -7,12 +7,12 @@
     <script src="Lib/Vue/vue2.5.16.js"></script>
     <script src="Gx.All.Style.js"></script>
     <script src="Gx.All.Script.js"></script>
-    <script src="Lib/Marked/marked.min.js"></script>
+    <script src="Lib/Marked/marked.js"></script>
     <script src="Lib/Prism/prism.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="Lib/Marked/github-markdown.css" rel="stylesheet" >
+    <link href="Lib/Marked/github-markdown.css" rel="stylesheet">
     <link href="Lib/Prism/prism.css" rel="stylesheet" />
 </head>
 
@@ -20,11 +20,23 @@
 </body>
 <script>
     Gx.ajax(Gx.url.getParam("src") + ".md", {}, function (data) {
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: true,
+            smartypants: false
+        });
         document.getElementById("marked").innerHTML = marked(data);
     }, null, false, {
-            type: "get",
-            dataType: "text"
-        });
+        type: "get",
+        dataType: "text"
+    });
+
+    //添加行号
     var codeList = document.getElementsByTagName("code");
     for (var i = 0; i < codeList.length; i++) {
         var item = codeList[i];
