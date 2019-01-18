@@ -1,5 +1,4 @@
-/// <reference path="../Lib/Jquery/jquery-3.0.0.min.js" />
-/// <reference path="Gx.Base.js" />
+
 //ajax帮助类
 (function (win, $) {
 

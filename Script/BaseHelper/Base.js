@@ -1,5 +1,3 @@
-/// <reference path="../../Lib/Jquery/jquery-3.0.0.min.js" />
-/// <reference path="../Gx.Base.js" />
 
 
 //基础帮助类

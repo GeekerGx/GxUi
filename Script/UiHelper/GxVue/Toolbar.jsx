@@ -1,7 +1,3 @@
-/// <reference path="../Lib/Jquery/jquery-3.0.0.min.js" />
-/// <reference path="../Script/Gx.Base.js" />
-/// <reference path="../Lib/Vue/vue2.5.16.js" />
-/// <reference path="VueBase.js" />
 
 /**
  * 
@@ -28,7 +24,7 @@
                     item.id = item.id || Gx.base.getGuid(8, 16);
 
                     var props = { options: Gx.base.createObject(item) };
-                    
+
                     return (<gx-button {...{ props }}
                         on-changeById={that.changeById}
                         ref={item.id}
@@ -36,6 +32,19 @@
                 })}
             </div >
         );
+    };
+    optionObj.watch = {
+        /*"$refs": {
+            handler: function (val,oldVal) {
+                console.log(val);
+                var that = this;
+                val.map(function (item) {
+                    that[item.id] = item;
+                });
+            },
+            deep: true,
+            immediate: true
+        }*/
     };
     optionObj.data = function () {
         var data = Gx.base.createObject(this.options);

@@ -1,5 +1,4 @@
-/// <reference path="Gx.Base.js" />
-/// <reference path="../Lib/Layer/layer.js" />
+
 //封装Layer
 (function (win) {
     var _layer = Gx.base.createObject(win.layer);
