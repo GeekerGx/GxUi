@@ -5,8 +5,7 @@
 
     var checkUniqueId = function () {
         if (!this.uniqueId) {
-            console.warn("请先设置uniqueId属性");
-            return false;
+            throw new Error("请先设置uniqueId属性");
         }
         return true;
     };
