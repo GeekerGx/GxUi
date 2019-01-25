@@ -137,14 +137,14 @@
         },
         vmProxy: function (target, keys) {
             keys = Gx.base.arrPush(keys, [
-                {field: "appendChildTo"},
-                {field: "show"},
-                {field: "hide"},
-                {field: "width"},
-                {field: "display"},
+                { field: "appendChildTo" },
+                { field: "show" },
+                { field: "hide" },
+                { field: "width" },
+                { field: "display" },
             ]);
             keys.map(function (item) {
-                Gx.base.objProxy(target, target.root, item.field);
+                Gx.base.objProxy(target, item.field, target.root, item.field);
             });
             return target;
         }
