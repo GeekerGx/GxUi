@@ -1,10 +1,3 @@
-
-/**
- * 
- *  目前只能一次性创建按钮，无法动态添加。
- * 
-*/
-
 (function (win) {
     var optionObj = {};
     var setting = [
@@ -35,19 +28,6 @@
                 })}
             </div >
         );
-    };
-    optionObj.watch = {
-        /*"$refs": {
-            handler: function (val,oldVal) {
-                console.log(val);
-                var that = this;
-                val.map(function (item) {
-                    that[item.id] = item;
-                });
-            },
-            deep: true,
-            immediate: true
-        }*/
     };
     optionObj.methods = {
         changeById: function (id, item) {
