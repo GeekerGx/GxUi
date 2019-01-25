@@ -2,6 +2,7 @@
 
 (function (win) {
     var optionObj = {};
+    var setting = [];
 
     optionObj.render = function (h) {
         if (!this.display) {
@@ -15,9 +16,9 @@
         );
     };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Tabs = Default;
-    Gx.ui.createTabs = function () {
-        return Gx.ui.createInstance(Default, Gx.param.getSerializeParam(arguments));
+    Gx.ui.createTabs = function (options) {
+        return Gx.ui.createInstance(Default, options, setting);
     };
 })(window);

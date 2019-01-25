@@ -90,9 +90,20 @@
             var sysKeepKeys = ["display"];
             return sysKeepKeys.indexOf(key.toLowerCase()) > -1;
         },
-        getResultObj: function (optionObj) {
+        getResultObj: function (optionObj, dataSetting) {
+            if (dataSetting) {
+                optionObj.data = function () {
+                    var options = Gx.base.createObject(this.options);
+                    var data = {};
+                    dataSetting.map(function (item) {
+                        data[item.field] = Gx.base.getDefault(options[item.field], item.value);
+                    });
+                    return data;
+                };
+            }
+
             var obj = Gx.base.mergeParam({
-                mixins: [mixins.base],
+                mixins: [],
                 components: {
                     'gx-button': Gx.ui.coms.Button,
                     'gx-input': Gx.ui.coms.Input,
@@ -103,9 +114,11 @@
                     'gx-toolbar': Gx.ui.coms.Toolbar
                 }
             }, optionObj);
+            //添加基础混入
+            obj.mixins = Gx.base.arrPush(obj.mixins, [mixins.base]);
             return obj;
         },
-        createInstance: function (fun, options) {
+        createInstance: function (fun, options, setting) {
             var option = new fun({
                 propsData: {
                     options: options
@@ -116,7 +129,24 @@
             } else {
                 option = option.$mount();
             }
-            return option;
+            return this.vmProxy({
+                get root() {
+                    return option;
+                },
+            }, setting);
+        },
+        vmProxy: function (target, keys) {
+            keys = Gx.base.arrPush(keys, [
+                {field: "appendChildTo"},
+                {field: "show"},
+                {field: "hide"},
+                {field: "width"},
+                {field: "display"},
+            ]);
+            keys.map(function (item) {
+                Gx.base.objProxy(target, target.root, item.field);
+            });
+            return target;
         }
     };
     win.Gx.ui = ui;

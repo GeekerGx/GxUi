@@ -1,6 +1,17 @@
 
 (function (win) {
     var optionObj = {};
+    var setting = [
+        { field: "isFocus", value: false },
+        { field: "type", value: "text" },
+        { field: "placeholder", value: "" },
+        { field: "validation", value: function (value) { return true; } },
+        { field: "change", value: function () { } },
+        { field: "onBlur", value: function () { } },
+        { field: "onFocus", value: function () { } },
+        { field: "value", value: "" },
+        { field: "micrometer", value: false },
+    ];
 
     optionObj.render = function (h) {
         var input = <input
@@ -15,7 +26,7 @@
             onChange={this._baseChange}
             onBlur={this._baseOnBlur}
             onFocus={this._baseOnFocus}
-            value={this.$data._isFocus ? this.value : this.text}
+            value={this.$data.isFocus ? this.value : this.text}
         />;
         switch (this.type) {
             case "textarea":
@@ -54,7 +65,7 @@
         },
         //失焦焦点
         _baseOnBlur: function () {
-            this.$data._isFocus = false;
+            this.$data.isFocus = false;
             this.onBlur();
             //验证
             if (this.validation(this.value)) {
@@ -63,34 +74,15 @@
         },
         //获得焦点
         _baseOnFocus: function () {
-            this.$data._isFocus = true;
+            this.$data.isFocus = true;
 
             this.onFocus();
         }
     };
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            _isFocus: false,
-            type: Gx.base.getDefault(data.type, "text"),
-            //提示
-            placeholder: Gx.base.getDefault(data.placeholder, ""),
-            //验证方法
-            validation: Gx.base.getDefault(data.validation, function (value) { return true; }),
-            //change事件
-            change: Gx.base.getDefault(data.change, function () { }),
-            //失焦焦点
-            onBlur: Gx.base.getDefault(data.onBlur, function () { }),
-            //获得焦点
-            onFocus: Gx.base.getDefault(data.onFocus, function () { }),
-            value: Gx.base.getDefault(data.value, ""),
-            micrometer: Gx.base.getDefault(data.micrometer, false)
-        };
-    };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj,setting));
     Gx.ui.coms.Input = Default;
     Gx.ui.createInput = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options,setting);
     };
 })(window);

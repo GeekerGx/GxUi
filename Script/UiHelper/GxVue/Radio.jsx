@@ -1,7 +1,10 @@
-
-
 (function (win) {
     var optionObj = {};
+    var setting = [
+        { field: "name", value: null },
+        { field: "data", value: [] },
+        { field: "multiple", value: false },
+    ];
 
     optionObj.render = function (h) {
         var that = this;
@@ -59,18 +62,10 @@
             }
         }
     };
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            name: Gx.base.getDefault(data.name, null),
-            data: Gx.base.getDefault(data.data, []),
-            multiple: Gx.base.getDefault(data.multiple, false)
-        };
-    };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Radio = Default;
     Gx.ui.createRadio = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options, setting);
     };
 })(window);

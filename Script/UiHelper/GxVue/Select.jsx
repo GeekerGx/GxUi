@@ -2,6 +2,20 @@
 
 (function (win) {
     var optionObj = {};
+    var setting = [
+        //下拉框数据
+        { field: "data", value: [{ ID: "-1", NAME: "请选择" }] },
+        //val属性
+        { field: "valueField", value: "ID" },
+        //text值
+        { field: "textField", value: "NAME" },
+        //固定项：该选项一直存在
+        { field: "fixedItems", value: [] },
+        //change事件
+        { field: "change", value: function () { } },
+        { field: "disabled", value: false },
+        { field: "checked", value: true },
+    ];
 
     optionObj.render = function (h) {
         var that = this;
@@ -78,27 +92,10 @@
             return options[index];
         },
     };
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            //下拉框数据
-            data: Gx.base.getDefault(data.data, [{ ID: "-1", NAME: "请选择" }]),
-            //val属性
-            valueField: Gx.base.getDefault(data.valueField, "ID"),
-            //text值
-            textField: Gx.base.getDefault(data.textField, "NAME"),
-            //固定项：该选项一直存在
-            fixedItems: Gx.base.getDefault(data.fixedItems, []),
-            //change事件
-            change: Gx.base.getDefault(data.change, function () { }),
-            disabled: Gx.base.getDefault(data.disabled, false),
-            checked: Gx.base.getDefault(data.checked, true)
-        };
-    };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Select = Default;
     Gx.ui.createSelect = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options, setting);
     };
 })(window);

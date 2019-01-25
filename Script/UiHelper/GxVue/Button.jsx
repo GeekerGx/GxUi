@@ -1,16 +1,15 @@
-
 (function (win) {
     var optionObj = {};
-
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            id: Gx.base.getDefault(data.id, ""),
-            value: Gx.base.getDefault(data.value, "Button"),
-            click: Gx.base.getDefault(data.click, function () { }),
-            enabled: Gx.base.getDefault(data.enabled, true)
-        }
-    };
+    var setting = [
+        //控件id用来当做父组件的属性
+        { field: "id", value: "" },
+        //按钮显示值
+        { field: "value", value: "Button" },
+        //点击事件
+        { field: "click", value: function () { } },
+        //启用
+        { field: "enabled", value: true },
+    ];
     optionObj.watch = {
         _data: {
             handler: function () {
@@ -45,9 +44,9 @@
         }
     };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Button = Default;
     Gx.ui.createButton = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options, setting);
     };
 })(window)

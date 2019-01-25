@@ -2,66 +2,64 @@
 
 (function (win) {
     var optionObj = {};
-
+    var setting = [
+        { field: "_tableSetting", value: {} },
+        //主键列，用于定位和删除
+        { field: "uniqueId", value: undefined },
+        //定义表格的高度
+        { field: "height", value: undefined },
+        //数据为undefined时显示字符串
+        { field: "undefinedText", value: "-" },
+        //隔行变色效果
+        { field: "striped", value: true },
+        //列设置
+        { field: "columns", value: [] },
+        //数据
+        { field: "data", value: [] },
+        //分页
+        { field: "pagination", value: true },
+        //循环分页
+        { field: "paginationLoop", value: false },
+        //只显示总数据数，而不显示分页按钮
+        { field: "onlyInfoPagination", value: false },
+        //可选值为 'client' 或者 'server'
+        { field: "sidePagination", value: "client" },
+        //页码
+        { field: "pageNumber", value: 1 },
+        //每页数据条数
+        { field: "pageSize", value: 10 },
+        //每页数据条数下拉
+        { field: "pageList", value: [10, 50, 100] },
+        //判断显示分页信息和 card 视图
+        { field: "smartDisplay", value: false },
+        //搜索框
+        { field: "search", value: false },
+        //内容列下拉框
+        { field: "showColumns", value: false },
+        //显示分页按钮
+        { field: "showPaginationSwitch", value: false },
+        //最小隐藏列的数量
+        { field: "minimumCountColumns", value: 2 },
+        //点击行时，自动选择 rediobox 和 checkbox
+        { field: "clickToSelect", value: true },
+        //单选
+        { field: "singleSelect", value: false },
+        //封装的toolbar
+        { field: "toolbars", value: [] },
+        //buttonsToolbar位置，jq选择器
+        { field: "buttonsToolbar", value: undefined },
+        //单击行
+        { field: "onClickRow", value: function (row, $el) { } },
+        //双击行
+        { field: "onDblClickRow", value: function (row, $el) { } },
+        { field: "height", value: undefined },
+        { field: "height", value: undefined },
+    ];
     var checkUniqueId = function () {
         if (!this.uniqueId) {
             throw new Error("请先设置uniqueId属性");
         }
         return true;
-    };
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            _tableSetting: {},
-            //主键列，用于定位和删除
-            uniqueId: Gx.base.getDefault(data.uniqueId, undefined),
-            //定义表格的高度
-            height: Gx.base.getDefault(data.height, undefined),
-            //数据为undefined时显示字符串
-            undefinedText: Gx.base.getDefault(data.undefinedText, "-"),
-            //隔行变色效果
-            striped: Gx.base.getDefault(data.striped, true),
-            //列设置
-            columns: Gx.base.getDefault(data.columns, []),
-            //数据
-            data: Gx.base.getDefault(data.data, []),
-            //分页
-            pagination: Gx.base.getDefault(data.pagination, true),
-            //循环分页
-            paginationLoop: Gx.base.getDefault(data.paginationLoop, false),
-            //只显示总数据数，而不显示分页按钮
-            onlyInfoPagination: Gx.base.getDefault(data.onlyInfoPagination, false),
-            //可选值为 'client' 或者 'server'
-            sidePagination: Gx.base.getDefault(data.sidePagination, "client"),
-            //页码
-            pageNumber: Gx.base.getDefault(data.pageNumber, 1),
-            //每页数据条数
-            pageSize: Gx.base.getDefault(data.pageSize, 10),
-            //每页数据条数下拉
-            pageList: Gx.base.getDefault(data.pageList, [10, 50, 100]),
-            //判断显示分页信息和 card 视图
-            smartDisplay: Gx.base.getDefault(data.smartDisplay, false),
-            //搜索框
-            search: Gx.base.getDefault(data.search, false),
-            //内容列下拉框
-            showColumns: Gx.base.getDefault(data.showColumns, false),
-            //显示分页按钮
-            showPaginationSwitch: Gx.base.getDefault(data.showPaginationSwitch, false),
-            //最小隐藏列的数量
-            minimumCountColumns: Gx.base.getDefault(data.minimumCountColumns, 2),
-            //点击行时，自动选择 rediobox 和 checkbox
-            clickToSelect: Gx.base.getDefault(data.clickToSelect, true),
-            //单选
-            singleSelect: Gx.base.getDefault(data.singleSelect, false),
-            //封装的toolbar
-            toolbars: Gx.base.getDefault(data.toolbars, []),
-            //buttonsToolbar位置，jq选择器
-            buttonsToolbar: Gx.base.getDefault(data.buttonsToolbar, undefined),
-            //单击行
-            onClickRow: Gx.base.getDefault(data.onClickRow, function (row, $el) { }),
-            //双击行
-            onDblClickRow: Gx.base.getDefault(data.onDblClickRow, function (row, $el) { }),
-        };
     };
     optionObj.watch = {
         data: {
@@ -173,9 +171,9 @@
         },
     };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Table = Default;
     Gx.ui.createTable = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options, setting);
     };
 })(window)

@@ -7,6 +7,9 @@
 
 (function (win) {
     var optionObj = {};
+    var setting = [
+        { field: "data", value: [] },
+    ];
 
     optionObj.render = function (h) {
         var that = this;
@@ -46,12 +49,6 @@
             immediate: true
         }*/
     };
-    optionObj.data = function () {
-        var data = Gx.base.createObject(this.options);
-        return {
-            data: Gx.base.getDefault(data.data, [])
-        };
-    };
     optionObj.methods = {
         changeById: function (id, item) {
             for (var i = 0; i < this.data.length; i++) {
@@ -61,9 +58,9 @@
             }
         },
     };
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Toolbar = Default;
     Gx.ui.createToolbar = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options, setting);
     };
 })(window);

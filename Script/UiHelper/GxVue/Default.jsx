@@ -1,6 +1,7 @@
 
 (function (win) {
     var optionObj = {};
+    var setting = [];
 
     optionObj.render = function (h) {
         if (!this.display) {
@@ -19,9 +20,9 @@
         );
     };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj,setting));
     Gx.ui.coms.Default = Default;
     Gx.ui.createDefault = function (options) {
-        return Gx.ui.createInstance(Default, options);
+        return Gx.ui.createInstance(Default, options,setting);
     };
 })(window);

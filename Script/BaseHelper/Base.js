@@ -1,5 +1,3 @@
-
-
 //基础帮助类
 (function (win) {
     var base = {};
@@ -117,6 +115,21 @@
     //如果不存在则取默认值
     base.getDefault = function (value, def) {
         return value != undefined || value != null ? value : def;
+    };
+
+    //对象代理
+    base.objProxy = function (target, source, key) {
+        var sharedPropertyDefinition = {
+            enumerable: true,
+            configurable: true
+        };
+        sharedPropertyDefinition.get = function proxyGetter() {
+            return source[key]
+        };
+        sharedPropertyDefinition.set = function proxySetter(val) {
+            source[key] = val;
+        };
+        Object.defineProperty(target, key, sharedPropertyDefinition);
     };
 
     Gx.base = base;
