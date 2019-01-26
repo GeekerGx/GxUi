@@ -114,7 +114,7 @@
 
     //如果不存在则取默认值
     base.getDefault = function (value, def) {
-        return value != undefined || value != null ? value : def;
+        return value != undefined && value != null ? value : def;
     };
 
     //对象代理
