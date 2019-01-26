@@ -19,6 +19,6 @@
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Tabs = Default;
     Gx.ui.createTabs = function (options) {
-        return Gx.ui.createInstance(Default, options, setting);
+        return this.createInstance(Default, options, setting);
     };
 })(window);

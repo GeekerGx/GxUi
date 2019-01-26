@@ -8,25 +8,25 @@
         return Object.prototype.toString.call(obj);
     };
     base.isArray = function (obj) {
-        return base.getObjType(obj) == "[object Array]";
+        return this.getObjType(obj) == "[object Array]";
     };
     base.isObject = function (obj) {
-        return base.getObjType(obj) == "[object Object]";
+        return this.getObjType(obj) == "[object Object]";
     };
     base.isFunction = function (obj) {
-        return base.getObjType(obj) == "[object Function]";
+        return this.getObjType(obj) == "[object Function]";
     };
     base.isBoolean = function (obj) {
-        return base.getObjType(obj) == "[object Boolean]";
+        return this.getObjType(obj) == "[object Boolean]";
     };
     base.isString = function (obj) {
-        return base.getObjType(obj) == "[object String]";
+        return this.getObjType(obj) == "[object String]";
     };
     base.isNumber = function (obj) {
-        return base.getObjType(obj) == "[object Number]";
+        return this.getObjType(obj) == "[object Number]";
     };
     base.isHtml = function (obj) {
-        return base.getObjType(obj) == "[object HTMLDivElement]";
+        return this.getObjType(obj) == "[object HTMLDivElement]";
     };
 
     //#endregion
@@ -73,7 +73,7 @@
 
     //创建对象
     base.createObject = function (obj) {
-        if (Gx.base.isArray(obj)) {
+        if (this.isArray(obj)) {
             return this.mergeParam([], obj);
         } else {
             return this.mergeParam({}, obj);
@@ -82,7 +82,7 @@
 
     //
     base.arrPush = function (arr, obj) {
-        if (!Gx.base.isArray(arr)) {
+        if (!this.isArray(arr)) {
             console.error("对象不是数组！");
             return;
         }

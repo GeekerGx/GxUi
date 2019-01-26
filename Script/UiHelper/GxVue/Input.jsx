@@ -83,6 +83,6 @@
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj,setting));
     Gx.ui.coms.Input = Default;
     Gx.ui.createInput = function (options) {
-        return Gx.ui.createInstance(Default, options,setting);
+        return this.createInstance(Default, options,setting);
     };
 })(window);

@@ -105,13 +105,13 @@
             var obj = Gx.base.mergeParam({
                 mixins: [],
                 components: {
-                    'gx-button': Gx.ui.coms.Button,
-                    'gx-input': Gx.ui.coms.Input,
-                    'gx-panel': Gx.ui.coms.Panel,
-                    'gx-radio': Gx.ui.coms.Radio,
-                    'gx-select': Gx.ui.coms.Select,
-                    'gx-table': Gx.ui.coms.Table,
-                    'gx-toolbar': Gx.ui.coms.Toolbar
+                    'gx-button': this.coms.Button,
+                    'gx-input': this.coms.Input,
+                    'gx-panel': this.coms.Panel,
+                    'gx-radio': this.coms.Radio,
+                    'gx-select': this.coms.Select,
+                    'gx-table': this.coms.Table,
+                    'gx-toolbar': this.coms.Toolbar
                 }
             }, optionObj);
             //添加基础混入
