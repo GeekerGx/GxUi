@@ -65,7 +65,16 @@
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Radio = Default;
+    
     Gx.ui.createRadio = function (options) {
-        return this.createInstance(Default, options, setting);
+        var vueCom = this.createInstance(Default, options);
+        return this.convertRadio(vueCom);
+    };
+    Gx.ui.convertRadio = function (vueCom) {
+        return this.vmProxy({
+            get root() {
+                return vueCom;
+            },
+        }, setting);
     };
 })(window);

@@ -15,9 +15,18 @@
         );
     };
 
-    var Default = Vue.extend(Gx.ui.getResultObj(optionObj,setting));
+    var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Panel = Default;
+
     Gx.ui.createPanel = function (options) {
-        return this.createInstance(Default, options,setting);
+        var vueCom = this.createInstance(Default, options);
+        return this.convertPanel(vueCom);
+    };
+    Gx.ui.convertPanel = function (vueCom) {
+        return this.vmProxy({
+            get root() {
+                return vueCom;
+            },
+        }, setting);
     };
 })(window);

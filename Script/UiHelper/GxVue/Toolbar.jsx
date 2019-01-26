@@ -41,6 +41,24 @@
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Toolbar = Default;
     Gx.ui.createToolbar = function (options) {
-        return this.createInstance(Default, options, setting);
+        var that = this;
+        var vueCom = this.createInstance(Default, options);
+        return this.convertToolbar(vueCom);
+    };
+    Gx.ui.convertToolbar = function (vueCom) {
+        var obj = this.vmProxy({
+            get root() {
+                return vueCom;
+            },
+        }, setting);
+
+        Gx.base.addGetSetFun(obj, "children", function () {
+            var buttons = [];
+            obj.root.$children.map(function (item) {
+                buttons.push(Gx.ui.convertButton(item));
+            });
+            return buttons;
+        }, null);
+        return obj;
     };
 })(window);

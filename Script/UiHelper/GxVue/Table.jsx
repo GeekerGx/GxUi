@@ -174,6 +174,14 @@
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Table = Default;
     Gx.ui.createTable = function (options) {
-        return this.createInstance(Default, options, setting);
+        var vueCom = this.createInstance(Default, options);
+        return this.convertTable(vueCom);
+    };
+    Gx.ui.convertTable = function (vueCom) {
+        return this.vmProxy({
+            get root() {
+                return vueCom;
+            },
+        }, setting);
     };
 })(window)

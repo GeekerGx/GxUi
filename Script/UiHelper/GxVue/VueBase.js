@@ -118,7 +118,7 @@
             obj.mixins = Gx.base.arrPush(obj.mixins, [mixins.base]);
             return obj;
         },
-        createInstance: function (fun, options, setting) {
+        createInstance: function (fun, options) {
             var option = new fun({
                 propsData: {
                     options: options
@@ -129,11 +129,7 @@
             } else {
                 option = option.$mount();
             }
-            return this.vmProxy({
-                get root() {
-                    return option;
-                },
-            }, setting);
+            return option;
         },
         vmProxy: function (target, keys) {
             keys = Gx.base.arrPush(keys, [

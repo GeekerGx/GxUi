@@ -96,6 +96,14 @@
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Select = Default;
     Gx.ui.createSelect = function (options) {
-        return this.createInstance(Default, options, setting);
+        var vueCom = this.createInstance(Default, options);
+        return this.convertSelect(vueCom);
+    };
+    Gx.ui.convertSelect = function (vueCom) {
+        return this.vmProxy({
+            get root() {
+                return vueCom;
+            },
+        }, setting);
     };
 })(window);

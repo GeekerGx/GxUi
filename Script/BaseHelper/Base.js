@@ -119,17 +119,26 @@
 
     //对象代理
     base.objProxy = function (targetObj, targetKey, sourceObj, sourceKey) {
-        var sharedPropertyDefinition = {
+        Object.defineProperty(targetObj, targetKey, {
             enumerable: true,
-            configurable: true
-        };
-        sharedPropertyDefinition.get = function proxyGetter() {
-            return sourceObj[sourceKey]
-        };
-        sharedPropertyDefinition.set = function proxySetter(val) {
-            sourceObj[sourceKey] = val;
-        };
-        Object.defineProperty(targetObj, targetKey, sharedPropertyDefinition);
+            configurable: true,
+            get: function () {
+                return sourceObj[sourceKey]
+            },
+            set: function (val) {
+                sourceObj[sourceKey] = val;
+            }
+        });
+    };
+    base.addGetSetFun = function (obj, key, getFun, setFun) {
+        getFun = getFun || function () { return null; };
+        setFun = setFun || function (val) { };
+        Object.defineProperty(obj, key, {
+            enumerable: true,
+            configurable: true,
+            get: getFun,
+            set: setFun
+        });
     };
 
     Gx.base = base;
