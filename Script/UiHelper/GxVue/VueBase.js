@@ -9,8 +9,10 @@
 
             devHelper.logThis.call(this, type);
         },
-        logThis: function (msg) {
-            console.log(msg, this);
+        logThis: function (type) {
+            if (type == "created") {
+                console.log(type, this);
+            }
         }
     };
     var mixins = {
@@ -20,7 +22,8 @@
                 return (null);
             },
             //计算属性
-            computed: {},
+            computed: {
+            },
             //侦听属性
             watch: {},
             //方法

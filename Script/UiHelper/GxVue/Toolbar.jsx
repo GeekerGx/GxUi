@@ -38,6 +38,12 @@
             }
         },
     };
+    optionObj.computed = {
+        root: function () {
+            return Gx.ui.convertToolbar(this);
+        }
+    };
+
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Toolbar = Default;
     Gx.ui.createToolbar = function (options) {
@@ -55,7 +61,7 @@
         Gx.base.addGetSetFun(obj, "buttons", function () {
             var buttons = {};
             obj.root.$children.map(function (item) {
-                var button = Gx.ui.convertButton(item);
+                var button = item.root;
                 buttons[button.id] = button;
             });
             return buttons;

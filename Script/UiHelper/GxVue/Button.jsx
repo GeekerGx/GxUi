@@ -43,6 +43,11 @@
             this.click();
         }
     };
+    optionObj.computed = {
+        root: function () {
+            return Gx.ui.convertButton(this);
+        }
+    };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Button = Default;

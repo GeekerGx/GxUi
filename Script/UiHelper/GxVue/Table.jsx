@@ -178,10 +178,17 @@
         return this.convertTable(vueCom);
     };
     Gx.ui.convertTable = function (vueCom) {
-        return this.vmProxy({
+
+        var obj = this.vmProxy({
             get root() {
                 return vueCom;
             },
         }, setting);
+
+        Gx.base.addGetSetFun(obj, "toolbar", function () {
+            return obj.root.$refs.toolbar.root;
+        }, null);
+        return obj;
     };
+
 })(window)
