@@ -52,10 +52,11 @@
             },
         }, setting);
 
-        Gx.base.addGetSetFun(obj, "children", function () {
-            var buttons = [];
+        Gx.base.addGetSetFun(obj, "buttons", function () {
+            var buttons = {};
             obj.root.$children.map(function (item) {
-                buttons.push(Gx.ui.convertButton(item));
+                var button = Gx.ui.convertButton(item);
+                buttons[button.id] = button;
             });
             return buttons;
         }, null);
