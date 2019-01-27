@@ -2,15 +2,24 @@
 (function (win) {
     var optionObj = {};
     var setting = [
-        { field: "isFocus", value: false },
+        //输入框类型
         { field: "type", value: "text" },
-        { field: "placeholder", value: "" },
-        { field: "validation", value: function (value) { return true; } },
-        { field: "change", value: function () { } },
-        { field: "onBlur", value: function () { } },
-        { field: "onFocus", value: function () { } },
+        //输入框内容
         { field: "value", value: "" },
-        { field: "micrometer", value: false },
+        //是否获得焦点
+        { field: "isFocus", value: false },
+        //占位符
+        { field: "placeholder", value: "" },
+        //是否千分符
+        { field: "isMicrometer", value: false },
+        //验证事件
+        { field: "validation", value: function (value) { return true; } },
+        //改变事件
+        { field: "change", value: function () { } },
+        //失焦焦点事件
+        { field: "onBlur", value: function () { } },
+        //获得焦点事件
+        { field: "onFocus", value: function () { } },
     ];
 
     optionObj.render = function (h) {
@@ -48,7 +57,7 @@
                 switch (this.type) {
                     case "number":
                         if (num) {
-                            num = Gx.convert.toNumber(num, this.micrometer);
+                            num = Gx.convert.toNumber(num, this.isMicrometer);
                         }
                         break;
                     default:

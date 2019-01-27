@@ -12,10 +12,7 @@
     ];
     optionObj.render = function (h) {
         if (!this.display) return;
-        //#region
-
-        //#endregion
-
+        
         return (
             <button
                 class={["btn", "navbar-btn", "btn-default"]}
@@ -28,7 +25,6 @@
         );
     };
     optionObj.methods = {
-
         _baseClick: function () {
             //自定义click事件
             this.click();
