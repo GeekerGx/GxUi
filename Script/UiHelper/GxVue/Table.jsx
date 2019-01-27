@@ -53,7 +53,6 @@
         //双击行
         { field: "onDblClickRow", value: function (row, $el) { } },
         { field: "height", value: undefined },
-        { field: "height", value: undefined },
     ];
     var checkUniqueId = function () {
         if (!this.uniqueId) {
@@ -140,7 +139,10 @@
             return $(this.$refs.table).bootstrapTable(method, parameter);
         },
         refreshOptions: function () {
-            return this.baseCall("refreshOptions", this._tableSetting);
+            var setting=Gx.base.createObject(this._tableSetting);
+            delete setting.data;
+            //delete setting.toolbar;
+            return this.baseCall("refreshOptions", setting);
         },
         getOptions: function () {
             return this.baseCall("getOptions");
