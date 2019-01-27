@@ -45,9 +45,9 @@
         //单选
         { field: "singleSelect", value: false },
         //封装的toolbar
-        { field: "toolbars", value: [] },
+        { field: "toolbar", value: [] },
         //buttonsToolbar位置，jq选择器
-        { field: "buttonsToolbar", value: undefined },
+        //{ field: "buttonsToolbar", value: undefined },
         //单击行
         { field: "onClickRow", value: function (row, $el) { } },
         //双击行
@@ -73,7 +73,7 @@
         var that = this;
         //toobar的id
         var toolbarId = "toolbar_" + Gx.base.getGuid(8, 16);
-        var tableSetting = Gx.base.createObject(this._props);
+        var tableSetting = Gx.base.createObject(this._data);
         tableSetting.columns = [];
         this.columns.map(function (item) {
             var newColSetting = Gx.base.mergeParam({
@@ -103,7 +103,7 @@
         this._tableSetting = tableSetting;
         var props = {
             options: {
-                data: this.toolbars
+                data: this.toolbar
             }
         };
         return (

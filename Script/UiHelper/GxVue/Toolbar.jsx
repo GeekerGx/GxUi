@@ -22,21 +22,11 @@
                     var props = { options: Gx.base.createObject(item) };
 
                     return (<gx-button {...{ props }}
-                        on-changeById={that.changeById}
                         ref={item.id}
                     />);
                 })}
             </div >
         );
-    };
-    optionObj.methods = {
-        changeById: function (id, item) {
-            for (var i = 0; i < this.data.length; i++) {
-                if (this.data[i].id == id) {
-                    this.data[i] = item;
-                }
-            }
-        },
     };
     optionObj.computed = {
         root: function () {

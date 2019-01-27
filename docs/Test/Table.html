@@ -22,7 +22,7 @@
     var table = Gx.ui.createTable({
         el: "table",
         uniqueId: "id",
-        toolbars: [{
+        toolbar: [{
                 id: "add",
                 value: "添加",
                 click: function () {
@@ -48,7 +48,7 @@
                 }
             }
         ],
-        singleSelect: true,
+        singleSelect: false,
         columns: [{
                 field: 'check',
                 checkbox: true
