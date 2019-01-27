@@ -139,9 +139,11 @@
             return $(this.$refs.table).bootstrapTable(method, parameter);
         },
         refreshOptions: function () {
-            var setting=Gx.base.createObject(this._tableSetting);
-            delete setting.data;
-            //delete setting.toolbar;
+            var setting = Gx.base.createObject(this._tableSetting);
+            var delList = ["data", "pageSize"];
+            delList.map(function (item) {
+                delete setting[item];
+            });
             return this.baseCall("refreshOptions", setting);
         },
         getOptions: function () {
