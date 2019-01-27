@@ -121,6 +121,9 @@
             </div>
         );
     };
+    optionObj.updated = function () {
+        this.refreshOptions();
+    };
     optionObj.mounted = function () {
         $(this.$refs.table).bootstrapTable(this._tableSetting);
     };
@@ -133,7 +136,11 @@
             this.data = data;
         },
         baseCall: function (method, parameter) {
+            if (!this.$refs.table) return;
             return $(this.$refs.table).bootstrapTable(method, parameter);
+        },
+        refreshOptions: function () {
+            return this.baseCall("refreshOptions", this._tableSetting);
         },
         getOptions: function () {
             return this.baseCall("getOptions");
