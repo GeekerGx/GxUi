@@ -1,8 +1,11 @@
 (function (win) {
     var optionObj = {};
     var setting = [
+        //组
         { field: "name", value: null },
+        //数据
         { field: "data", value: [] },
+        //多选
         { field: "multiple", value: false },
     ];
 

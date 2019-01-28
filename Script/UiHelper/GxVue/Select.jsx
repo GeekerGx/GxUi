@@ -13,7 +13,9 @@
         { field: "fixedItems", value: [] },
         //change事件
         { field: "change", value: function () { } },
+        //禁用
         { field: "disabled", value: false },
+        //验证状态
         { field: "checked", value: true },
     ];
 

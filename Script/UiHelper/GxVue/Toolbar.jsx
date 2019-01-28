@@ -1,6 +1,7 @@
 (function (win) {
     var optionObj = {};
     var setting = [
+        //按钮数据
         { field: "data", value: [] },
     ];
 

@@ -52,6 +52,7 @@
         { field: "onClickRow", value: function (row, $el) { } },
         //双击行
         { field: "onDblClickRow", value: function (row, $el) { } },
+        //高度
         { field: "height", value: undefined },
     ];
     var checkUniqueId = function () {
