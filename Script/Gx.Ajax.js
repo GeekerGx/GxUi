@@ -11,11 +11,11 @@
         cache: false, //从浏览器缓存中加载请求信息
         data: {}, //参数
         dataType: "json", //预期服务器返回的数据类型
-        beforeSend: function beforeSend() {}, //发送请求前
-        complete: function complete() {}, //请求完成后调用的回调函数（请求成功或失败时均调用）
-        success: function success(data) {}, //请求成功后调用的回调函数
+        beforeSend: function beforeSend() { }, //发送请求前
+        complete: function complete() { }, //请求完成后调用的回调函数（请求成功或失败时均调用）
+        success: function success(data) { }, //请求成功后调用的回调函数
+        //请求失败后调用的回调函数
         error: function error(data) {
-            //请求失败后调用的回调函数
             //系统直接报错没有捕捉
             if (data.status == 500) {
                 alert("服务报错：" + data.responseText);
