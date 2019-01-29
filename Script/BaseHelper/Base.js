@@ -126,10 +126,8 @@
                 return sourceObj[sourceKey]
             },
             set: function (val) {
-                if (setCheckFun) {
-                    if (!setCheckFun(val)) {
-                        throw new Error("set时检查不通过！");
-                    }
+                if (setCheckFun && !setCheckFun(val)) {
+                    throw new Error("set时检查不通过！");
                 }
                 sourceObj[sourceKey] = val;
             }
