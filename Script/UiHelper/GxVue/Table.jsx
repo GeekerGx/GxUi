@@ -43,7 +43,7 @@
         //搜索框
         { field: "search", value: false },
         //内容列下拉框
-        { field: "showColumns", value: false },
+        //{ field: "showColumns", value: false },
         //显示分页按钮
         { field: "showPaginationSwitch", value: false },
         //最小隐藏列的数量
@@ -192,6 +192,22 @@
         nextPage: function () {
             this.baseCall("nextPage");
         },
+        hideColumn: function (field) {
+            //this.baseCall("hideColumn", field);
+            this.columns.map(function (item) {
+                if (item.field == field) {
+                    item.visible = false;
+                }
+            });
+        },
+        showColumn: function (field) {
+            //this.baseCall("hideColumn", field);
+            this.columns.map(function (item) {
+                if (item.field == field) {
+                    item.visible = true;
+                }
+            });
+        },
         baseOnPageChange: function (number, size) {
             //修改数据传入数据
             this.pageSize = size;
@@ -228,6 +244,8 @@
             { field: "selectPage" },
             { field: "prevPage" },
             { field: "nextPage" },
+            { field: "hideColumn" },
+            { field: "showColumn" }
         ]);
 
         Gx.base.addGetSetFun(obj, "toolbar", function () {
