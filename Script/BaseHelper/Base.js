@@ -118,7 +118,7 @@
     };
 
     //对象代理
-    base.objProxy = function (targetObj, targetKey, sourceObj, sourceKey) {
+    base.objProxy = function (targetObj, targetKey, sourceObj, sourceKey, setCheckFun) {
         Object.defineProperty(targetObj, targetKey, {
             enumerable: true,
             configurable: true,
@@ -126,13 +126,20 @@
                 return sourceObj[sourceKey]
             },
             set: function (val) {
+                if (setCheckFun) {
+                    if (!setCheckFun(val)) {
+                        throw new Error("set时检查不通过！");
+                    }
+                }
                 sourceObj[sourceKey] = val;
             }
         });
     };
     base.addGetSetFun = function (obj, key, getFun, setFun) {
-        getFun = getFun || function () { return null; };
-        setFun = setFun || function (val) { };
+        getFun = getFun || function () {
+            return null;
+        };
+        setFun = setFun || function (val) {};
         Object.defineProperty(obj, key, {
             enumerable: true,
             configurable: true,

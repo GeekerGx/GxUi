@@ -22,8 +22,7 @@
                 return (null);
             },
             //计算属性
-            computed: {
-            },
+            computed: {},
             //侦听属性
             watch: {},
             //方法
@@ -135,15 +134,24 @@
             return option;
         },
         vmProxy: function (target, keys) {
-            keys = Gx.base.arrPush(keys, [
-                { field: "appendChildTo" },
-                { field: "show" },
-                { field: "hide" },
-                { field: "width" },
-                { field: "display" },
+            keys = Gx.base.arrPush(keys, [{
+                    field: "appendChildTo"
+                },
+                {
+                    field: "show"
+                },
+                {
+                    field: "hide"
+                },
+                {
+                    field: "width"
+                },
+                {
+                    field: "display"
+                },
             ]);
             keys.map(function (item) {
-                Gx.base.objProxy(target, item.field, target.root, item.field);
+                Gx.base.objProxy(target, item.field, target.root, item.field, item.setCheckFun);
             });
             return target;
         }

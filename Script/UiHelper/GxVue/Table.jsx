@@ -29,7 +29,15 @@
         //每页数据条数
         { field: "pageSize", value: 10 },
         //每页数据条数下拉
-        { field: "pageList", value: [10, 50, 100] },
+        {
+            field: "pageList", value: [10, 50, 100],
+            setCheckFun: function (val) {
+                if (!Gx.base.isArray(val)) {
+                    throw new Error("pageList必须为数组！");
+                }
+                return true;
+            }
+        },
         //判断显示分页信息和 card 视图
         { field: "smartDisplay", value: false },
         //搜索框
@@ -54,6 +62,8 @@
         { field: "onDblClickRow", value: function (row, $el) { } },
         //高度
         { field: "height", value: undefined },
+        //页面改变事件
+        { field: "onPageChange", value: function (number, size) { } }
     ];
     var checkUniqueId = function () {
         if (!this.uniqueId) {
@@ -100,6 +110,7 @@
             tableSetting.columns.push(newColSetting);
         });
         tableSetting.toolbar = "#" + toolbarId;
+        tableSetting.onPageChange = this.baseOnPageChange;
         this._tableSetting = tableSetting;
         var props = {
             options: {
@@ -141,7 +152,7 @@
         },
         refreshOptions: function () {
             var setting = Gx.base.createObject(this._tableSetting);
-            var delList = ["data", "pageSize"];
+            var delList = ["data"];
             delList.map(function (item) {
                 delete setting[item];
             });
@@ -181,6 +192,12 @@
         nextPage: function () {
             this.baseCall("nextPage");
         },
+        baseOnPageChange: function (number, size) {
+            //修改数据传入数据
+            this.pageSize = size;
+
+            this.onPageChange(number, size);
+        }
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
