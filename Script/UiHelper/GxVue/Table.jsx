@@ -197,6 +197,22 @@
             },
         }, setting);
 
+        //公开方法
+        obj = this.vmProxy(obj, [
+            { field: "loadData" },
+            { field: "baseCall" },
+            { field: "refreshOptions" },
+            { field: "getOptions" },
+            { field: "getSelections" },
+            { field: "getData" },
+            { field: "remove" },
+            { field: "removeByUniqueId" },
+            { field: "getRowByUniqueId" },
+            { field: "selectPage" },
+            { field: "prevPage" },
+            { field: "nextPage" },
+        ]);
+
         Gx.base.addGetSetFun(obj, "toolbar", function () {
             return obj.root.$refs.toolbar.root;
         }, null);

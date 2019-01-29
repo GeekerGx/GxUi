@@ -68,16 +68,22 @@
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Radio = Default;
-    
+
     Gx.ui.createRadio = function (options) {
         var vueCom = this.createInstance(Default, options);
         return this.convertRadio(vueCom);
     };
     Gx.ui.convertRadio = function (vueCom) {
-        return this.vmProxy({
+        var obj = this.vmProxy({
             get root() {
                 return vueCom;
             },
         }, setting);
+
+        //公开方法
+        obj = this.vmProxy(obj, [
+            { field: "reset" }
+        ]);
+        return obj
     };
 })(window);
