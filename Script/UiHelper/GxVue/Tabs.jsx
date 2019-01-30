@@ -38,33 +38,27 @@
                     })}
                 </ul>
                 <div
+                    ref="content"
                     class="tab-content"
                 >
-                    {this.data.map(function (item, index) {
-                        var props = {
-                            options: {
-                                id: item.id,
-                                active: index == that.selectIndex
-                            }
-                        };
-                        return (
-                            <gx-panel
-                                {...{ props }}
-                                domPropsInnerHTML={item.el}
-                            >
-                            </gx-panel>
-                        );
-                    })}
                 </div>
             </div>
         );
+    };
+    optionObj.updated = function () {
+        var that = this;
+        this.data.map(function (item) {
+            console.log(item.el);
+            that.$refs.content.append(item.el);
+        });
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
     Gx.ui.coms.Tabs = Default;
     Gx.ui.createTabs = function (options) {
         options.data.map(function (item) {
-            item["el"] = document.getElementById(item.id).innerHTML;
+            item["el"] = document.getElementById(item.id).cloneNode(true);;
+            console.log(item.el);
         });
         var vueCom = this.createInstance(Default, options);
         return this.convertTabs(vueCom);
