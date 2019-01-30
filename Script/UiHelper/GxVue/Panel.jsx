@@ -2,15 +2,23 @@
 
 (function (win) {
     var optionObj = {};
-    var setting = [];
+    var setting = [
+        { field: "id", value: "panel_" + Gx.base.getGuid(8, 16) },
+        { field: "active", value: false }
+    ];
 
     optionObj.render = function (h) {
         return (
             <div
-                style={{
-                    display: this.display ? "" : "none"
-                }}
+                id={this.id}
+                class={[
+                    "tab-pane",
+                    "fade",
+                    this.active ? "active" : "",
+                    this.active ? "in" : "",
+                ]}
             >
+                {this.$slots.default}
             </div>
         );
     };
