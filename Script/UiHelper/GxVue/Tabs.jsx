@@ -37,6 +37,7 @@
                                 <a
                                     href={"#" + item.id}
                                     data-toggle="tab"
+                                    onclick={that.click.bind(that, "123")}
                                 >
                                     {item.title}
                                 </a>
@@ -65,6 +66,13 @@
             }
             that.$refs.content.append(item.el);
         });
+    };
+    optionObj.methods = {
+        click: function (text) {
+            return function () {
+                alert(text);
+            };
+        }
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
