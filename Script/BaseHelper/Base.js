@@ -51,16 +51,16 @@
             }
             return copy;
         }
-        // Handle Object
+        if (obj instanceof HTMLDivElement) {
+            return obj;
+        }
+        // js一切皆对象
         if (obj instanceof Object) {
             copy = {};
             for (var attr in obj) {
                 if (obj.hasOwnProperty(attr)) copy[attr] = cloneObj(obj[attr], base);
             }
             return copy;
-        }
-        if (obj instanceof HTMLDivElement) {
-            return obj;
         }
         console.log(obj, base);
         throw new Error("Unable to copy obj! Its type isn't supported.");
@@ -137,7 +137,7 @@
         getFun = getFun || function () {
             return null;
         };
-        setFun = setFun || function (val) {};
+        setFun = setFun || function (val) { };
         Object.defineProperty(obj, key, {
             enumerable: true,
             configurable: true,

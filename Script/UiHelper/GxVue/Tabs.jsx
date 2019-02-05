@@ -12,6 +12,13 @@
         if (!this.display) {
             return;
         }
+        this.data.map(function (item, index) {
+            if (index == that.selectIndex) {
+                item.el.classList.add("active", "in");
+            } else {
+                item.el.classList.remove("active", "in");
+            }
+        });
 
         return (
             <div
@@ -47,8 +54,15 @@
     };
     optionObj.updated = function () {
         var that = this;
-        this.data.map(function (item) {
-            console.log(item.el);
+        if (!this.display || !that.$refs.content) {
+            return;
+        }
+        this.data.map(function (item, index) {
+            if (index == that.selectIndex) {
+                item.el.classList.add("active", "in");
+            } else {
+                item.el.classList.remove("active", "in");
+            }
             that.$refs.content.append(item.el);
         });
     };
@@ -57,8 +71,9 @@
     Gx.ui.coms.Tabs = Default;
     Gx.ui.createTabs = function (options) {
         options.data.map(function (item) {
-            item["el"] = document.getElementById(item.id).cloneNode(true);;
-            console.log(item.el);
+            item["el"] = document.getElementById(item.id);
+            item.el.classList.add("tab-pane", "fade");
+            item.el.remove();
         });
         var vueCom = this.createInstance(Default, options);
         return this.convertTabs(vueCom);
