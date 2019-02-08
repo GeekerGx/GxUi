@@ -60,18 +60,10 @@
         );
     };
     optionObj.updated = function () {
-        var that = this;
-        if (!this.display || !that.$refs.content) {
-            return;
-        }
-        this.data.map(function (item, index) {
-            if (index == that.selectIndex) {
-                item.el.classList.add("active", "in");
-            } else {
-                item.el.classList.remove("active", "in");
-            }
-            that.$refs.content.append(item.el);
-        });
+        this._baseRender();
+    };
+    optionObj.mounted = function () {
+        this._baseRender();
     };
     optionObj.methods = {
         _baseClick: function (item, index) {
@@ -83,6 +75,20 @@
             if (isChange && item.click) {
                 item.click();
             }
+        },
+        _baseRender: function () {
+            var that = this;
+            if (!this.display || !that.$refs.content) {
+                return;
+            }
+            this.data.map(function (item, index) {
+                if (index == that.selectIndex) {
+                    item.el.classList.add("active", "in");
+                } else {
+                    item.el.classList.remove("active", "in");
+                }
+                that.$refs.content.append(item.el);
+            });
         }
     };
 
