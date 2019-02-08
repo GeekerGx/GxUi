@@ -33,11 +33,14 @@
         selectIndex: 1,
         data: [{
             id: "home",
-            title: "首页"
+            title: "首页",
+            click: function () {
+                console.log('点击了home', this);
+            }
         }, {
             id: "ios",
             title: "苹果"
-        }, ]
+        },]
     });
 </script>
 

@@ -37,7 +37,9 @@
                                 <a
                                     href={"#" + item.id}
                                     data-toggle="tab"
-                                    onclick={that.click.bind(that, "123")}
+                                    onClick={function () {
+                                        that._baseClick(item, index);
+                                    }}
                                 >
                                     {item.title}
                                 </a>
@@ -68,10 +70,12 @@
         });
     };
     optionObj.methods = {
-        click: function (text) {
-            return function () {
-                alert(text);
-            };
+        _baseClick: function (item, index) {
+            var isChange = this.selectIndex != index;
+            this.selectIndex = index;
+            if (isChange && item.click) {
+                item.click();
+            }
         }
     };
 
