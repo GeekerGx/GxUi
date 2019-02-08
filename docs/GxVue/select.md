@@ -17,7 +17,7 @@ var select = Gx.ui.createSelect("select", {
     textField: function (data) {
         return data.ID + "-" + data.NAME;
     },
-    change: function () {
+    onChange: function () {
         var that = this;
         alert(that.value);
     }
@@ -44,7 +44,7 @@ var select = Gx.ui.createSelect("select", {
 ### 事件
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
-|[change](#change)|下拉框值改变事件|无|无|下拉框值改变时触发，通常用来联动或者提示。|
+|[onChange](#onChange)|下拉框值改变事件|无|无|下拉框值改变时触发，通常用来联动或者提示。|
 
 ### 方法
 |#|名称|参数类型|返回内容|说明|
@@ -122,7 +122,7 @@ select.textField=function (data) {
 };
 ```
 
-### <span id="change">change 下拉框值改变事件</span>
+### <span id="onChange">onChange 下拉框值改变事件</span>
 >参数类型：
 无
 
@@ -133,7 +133,7 @@ select.textField=function (data) {
 下拉框值改变时触发，通常用来联动或者提示。
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
-select.change=function(){
+select.onChange=function(){
     //这里的this指向的是select实例
     var that=this;
     alert(that.value);
