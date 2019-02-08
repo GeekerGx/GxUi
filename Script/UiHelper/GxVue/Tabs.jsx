@@ -12,13 +12,7 @@
         if (!this.display) {
             return;
         }
-        this.data.map(function (item, index) {
-            if (index == that.selectIndex) {
-                item.el.classList.add("active", "in");
-            } else {
-                item.el.classList.remove("active", "in");
-            }
-        });
+        this._baseRender();
 
         return (
             <div
@@ -34,6 +28,9 @@
                                     index == that.selectIndex ? "active" : null,
                                     item.disabled ? "disabled" : null
                                 ]}
+                                style={{
+                                    display: item.display === false ? "none" : null
+                                }}
                             >
                                 <a
                                     class={[
@@ -81,14 +78,24 @@
             if (!this.display || !that.$refs.content) {
                 return;
             }
-            this.data.map(function (item, index) {
-                if (index == that.selectIndex) {
-                    item.el.classList.add("active", "in");
+            for (var i = 0; i < this.data.length; i++) {
+                this.data[i] = Gx.base.mergeParam({
+                    id: "",
+                    title: "",
+                    click: function () { },
+                    disabled: false,
+                    display: true,
+                }, this.data[i]);
+
+                if (i == that.selectIndex) {
+                    this.data[i].el.classList.add("active", "in");
                 } else {
-                    item.el.classList.remove("active", "in");
+                    this.data[i].el.classList.remove("active", "in");
                 }
-                that.$refs.content.append(item.el);
-            });
+                if (that.$refs.content) {
+                    that.$refs.content.append(this.data[i].el);
+                }
+            }
         }
     };
 
