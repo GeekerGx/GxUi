@@ -31,12 +31,16 @@
                         return (
                             <li
                                 class={[
-                                    index == that.selectIndex ? "active" : ""
+                                    index == that.selectIndex ? "active" : null,
+                                    item.disabled ? "disabled" : null
                                 ]}
                             >
                                 <a
-                                    href={"#" + item.id}
-                                    data-toggle="tab"
+                                    class={[
+                                        item.disabled ? "disabled" : null
+                                    ]}
+                                    href={item.disabled ? null : "#" + item.id}
+                                    data-toggle={item.disabled ? null : "tab"}
                                     onClick={function () {
                                         that._baseClick(item, index);
                                     }}
@@ -72,6 +76,9 @@
     optionObj.methods = {
         _baseClick: function (item, index) {
             var isChange = this.selectIndex != index;
+            if (item.disabled) {
+                return;
+            }
             this.selectIndex = index;
             if (isChange && item.click) {
                 item.click();
