@@ -42,12 +42,6 @@ var select = Gx.ui.createSelect("select", {
 |[checked](#checked)|验证状态|`Boolean`|`True`|验证状态，如果为false则下拉框为红色。|
 |[disabled](#disabled)|禁用状态|`Boolean`|`False`|禁用状态，如果为true则下拉框变为禁用状态。|
 
-### 事件
-|#|名称|参数类型|返回内容|说明|
-|--|--|--|--|--|
-||
-|[onChange](#onChange)|下拉框值改变事件|无|无|下拉框值改变时触发，通常用来联动或者提示。|
-
 ### 方法
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
@@ -56,6 +50,12 @@ var select = Gx.ui.createSelect("select", {
 |[show()](#show)|显示控件|无|无|显示控件，实为将display属性设置为true。|
 ||
 |[getSelectedData()](#getSelectedData)|获取选中的data对象|无|`Object`选中的data对象|获取选中的data对象。|
+
+### 事件
+|#|名称|参数类型|返回内容|说明|
+|--|--|--|--|--|
+||
+|[onChange](#onChange)|下拉框值改变事件|无|无|下拉框值改变时触发，通常用来联动或者提示。|
 
 ### <span id="fixedItems">fixedItems 下拉固定项</span>
 >类型：
