@@ -29,30 +29,33 @@ var select = Gx.ui.createSelect("select", {
 ### 属性
 |#|名称|类型|默认值|说明|
 |--|--|--|--|--|
-|[fixedItems](#fixedItems)|下拉固定项|`Array`|`[]`|数组对象，下拉框始终会有该数组内的下拉值。|
-|[data](#data)|下拉数据|`Array`|`[{ ID: "-1", NAME: "请选择" }]`|数组对象，下拉框正常下拉值。|
-|[valueField](#valueField)|value字段|`String/Function`|`ID`|为String类型时，下拉框的value直接取data对应的属性。<br/>为Function类型时，下拉框的value可以通过方法生成。对fixedItems和data合并后的数组进行遍历。|
-|[textField](#textField)|text字段|`String/Function`|`ID`|为String类型时，下拉框的text直接取data对应的属性。<br/>为Function类型时，下拉框的text可以通过方法生成。对fixedItems和data合并后的数组进行遍历。|
-|[text](#text)|下拉框text|`String`|`Null`|实时获取下拉框的text。目前只有get属性。|
-|[value](#value)|下拉框value|`String`|`Null`|实时获取下拉框的value。并且可以直接设置下拉框选中某个选项。|
-|[checked](#checked)|验证状态|`Boolean`|`True`|验证状态，如果为false则下拉框为红色。|
-|[disabled](#disabled)|禁用状态|`Boolean`|`False`|禁用状态，如果为true则下拉框变为禁用状态。|
-|[display](#display)|显隐状态|`Boolean`|`True`|显隐状态，如果为false则下拉框隐藏。|
 |[root](#root)|vue对象|`Object`|无法形容|获取Vue实例对象，可直接操作。|
 |[width](#width)|宽度|`String`|`200px`|下拉框宽度。|
+|[display](#display)|显隐状态|`Boolean`|`True`|显隐状态，如果为false则下拉框隐藏。|
+||
+|[valueField](#valueField)|value字段|`String/Function`|`ID`|为String类型时，下拉框的value直接取data对应的属性。<br/>为Function类型时，下拉框的value可以通过方法生成。对fixedItems和data合并后的数组进行遍历。|
+|[textField](#textField)|text字段|`String/Function`|`ID`|为String类型时，下拉框的text直接取data对应的属性。<br/>为Function类型时，下拉框的text可以通过方法生成。对fixedItems和data合并后的数组进行遍历。|
+|[data](#data)|下拉数据|`Array`|`[{ ID: "-1", NAME: "请选择" }]`|数组对象，下拉框正常下拉值。|
+|[text](#text)|下拉框text|`String`|`Null`|实时获取下拉框的text。目前只有get属性。|
+|[value](#value)|下拉框value|`String`|`Null`|实时获取下拉框的value。并且可以直接设置下拉框选中某个选项。|
+|[fixedItems](#fixedItems)|下拉固定项|`Array`|`[]`|数组对象，下拉框始终会有该数组内的下拉值。|
+|[checked](#checked)|验证状态|`Boolean`|`True`|验证状态，如果为false则下拉框为红色。|
+|[disabled](#disabled)|禁用状态|`Boolean`|`False`|禁用状态，如果为true则下拉框变为禁用状态。|
 
 ### 事件
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
+||
 |[onChange](#onChange)|下拉框值改变事件|无|无|下拉框值改变时触发，通常用来联动或者提示。|
 
 ### 方法
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
 |[appendChildTo(el)](#appendChildTo)|挂载到元素结尾|`String el`元素id|无|将此实例挂载到对应元素结尾。|
-|[getSelectedData()](#getSelectedData)|获取选中的data对象|无|`Object`选中的data对象|获取选中的data对象。|
 |[hide()](#hide)|隐藏控件|无|无|隐藏控件，实为将display属性设置为false。|
 |[show()](#show)|显示控件|无|无|显示控件，实为将display属性设置为true。|
+||
+|[getSelectedData()](#getSelectedData)|获取选中的data对象|无|`Object`选中的data对象|获取选中的data对象。|
 
 ### <span id="fixedItems">fixedItems 下拉固定项</span>
 >类型：
@@ -60,8 +63,6 @@ var select = Gx.ui.createSelect("select", {
 
 >默认：
 `[]`
-
-
 
 >说明：
 数组对象，下拉框始终会有该数组内的下拉值。
@@ -201,4 +202,3 @@ select.value="-1";
 var selected=select.getSelectedData();
 alert(selected.ID);
 ```
-
