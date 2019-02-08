@@ -38,7 +38,7 @@
     var selectForChange = Gx.ui.createSelect({
         el: "selectForChange",
         data: data,
-        change: function () {
+        onChange: function () {
             var that = this;
             alert("value:" + that.value + ";text:" + that.text + ";");
         }

@@ -12,7 +12,7 @@
         //固定项：该选项一直存在
         { field: "fixedItems", value: [] },
         //change事件
-        { field: "change", value: function () { } },
+        { field: "onChange", value: function () { } },
         //禁用
         { field: "disabled", value: false },
         //验证状态
@@ -84,8 +84,8 @@
     };
     optionObj.methods = {
         _baseChange: function () {
-            //自定义change方法
-            this.change();
+            //自定义onChange方法
+            this.onChange();
         },
         getSelectedData: function () {
             var select = this.$refs.select;
