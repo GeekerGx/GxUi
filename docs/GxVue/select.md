@@ -24,8 +24,24 @@ var select = Gx.ui.createSelect("select", {
 });
 ```
 
-## 属性&事件&方法
-### fixedItems 下拉固定项
+## API
+
+### 属性
+|名称|类型|说明|默认值|
+|--|--|--|--|
+|[fixedItems](#fixedItems)|`Array`|数组对象，下拉框始终会有该数组内的下拉值。|`[]`|
+
+### 事件
+|名称|参数类型|说明|
+|--|--|--|
+|2|2|3|
+
+### 方法
+|名称|参数类型|说明|
+|--|--|--|
+|2|2|3|
+
+### <span id="fixedItems">fixedItems 下拉固定项</span>
 >类型：
 `Array`
 
