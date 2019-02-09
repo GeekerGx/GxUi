@@ -96,10 +96,18 @@
         return this.convertInput(vueCom);
     };
     Gx.ui.convertInput = function (vueCom) {
-        return this.vmProxy({
+
+        var obj = this.vmProxy({
             get root() {
                 return vueCom;
             },
         }, setting);
+        
+        //公开方法
+        obj = this.vmProxy(obj, [
+            { field: "text" }
+        ]);
+
+        return obj;
     };
 })(window);
