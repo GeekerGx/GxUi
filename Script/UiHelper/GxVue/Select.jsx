@@ -107,10 +107,12 @@
                 return vueCom;
             },
         }, setting);
-        
+
         //公开方法
         obj = this.vmProxy(obj, [
-            { field: "getSelectedData" }
+            { field: "getSelectedData" },
+            { field: "text" },
+            { field: "value" },
         ]);
         return obj;
     };
