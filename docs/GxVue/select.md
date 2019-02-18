@@ -57,34 +57,6 @@ var select = Gx.ui.createSelect("select", {
 ||
 |[onChange](#onChange)|下拉框值改变事件|无|无|下拉框值改变时触发，通常用来联动或者提示。|
 
-### <span id="fixedItems">fixedItems 下拉固定项</span>
->类型：
-`Array`
-
->默认：
-`[]`
-
->说明：
-数组对象，下拉框始终会有该数组内的下拉值。
-```js
-//除了在创建实例时赋值，还可以在创建后直接给对象赋值。
-select.fixedItems=[{ ID: "-1", NAME: "请选择" }];
-```
-
-### <span id="data">data 下拉数据</span>
->类型：
-`Array`
-
->默认：
-`[{ ID: "-1", NAME: "请选择" }]`
-
->说明：
-数组对象，下拉框正常下拉值。
-```js
-//除了在创建实例时赋值，还可以在创建后直接给对象赋值。
-select.data=[{ ID: "1", NAME: "CoderGx" }];
-```
-
 ### <span id="valueField">valueField value字段</span>
 >类型：
 `String/Function`
@@ -123,22 +95,18 @@ select.textField=function (data) {
 };
 ```
 
-### <span id="onChange">onChange 下拉框值改变事件</span>
->参数类型：
-无
+### <span id="data">data 下拉数据</span>
+>类型：
+`Array`
 
 >默认：
-`function(){}`
+`[{ ID: "-1", NAME: "请选择" }]`
 
 >说明：
-下拉框值改变时触发，通常用来联动或者提示。
+数组对象，下拉框正常下拉值。
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
-select.onChange=function(){
-    //这里的this指向的是select实例
-    var that=this;
-    alert(that.value);
-};
+select.data=[{ ID: "1", NAME: "CoderGx" }];
 ```
 
 ### <span id="text">text 下拉框text</span>
@@ -171,22 +139,46 @@ var selectedValue=select.value;
 select.value="-1";
 ```
 
-### <span id="appendChildTo">appendChildTo(el) 挂载到元素结尾</span>
->传入：
-`String el`元素id
+### <span id="fixedItems">fixedItems 下拉固定项</span>
+>类型：
+`Array`
 
->返回：
-无返回
+>默认：
+`[]`
 
 >说明：
-将此实例挂载到对应元素结尾。
+数组对象，下拉框始终会有该数组内的下拉值。
+```js
+//除了在创建实例时赋值，还可以在创建后直接给对象赋值。
+select.fixedItems=[{ ID: "-1", NAME: "请选择" }];
+```
 
-```html
-<div id="selectList"></div>
-<script>
-    selectOne.appendChildTo("selectList");
-    selectTwo.appendChildTo("selectList");
-</script>
+### <span id="checked">checked 验证状态</span>
+>类型：
+`Boolean`
+
+>默认：
+`True`
+
+>说明：
+验证状态，如果为false则下拉框为红色。
+```js
+//可直接给对象赋值。
+select.checked=false;
+```
+
+### <span id="disabled">disabled 禁用状态</span>
+>类型：
+`Boolean`
+
+>默认：
+`False`
+
+>说明：
+禁用状态，如果为true则下拉框变为禁用状态。
+```js
+//可直接给对象赋值。
+select.disabled=true;
 ```
 
 ### <span id="getSelectedData">getSelectedData() 获取选中的data对象</span>
@@ -201,4 +193,22 @@ select.value="-1";
 ```js
 var selected=select.getSelectedData();
 alert(selected.ID);
+```
+
+### <span id="onChange">onChange 下拉框值改变事件</span>
+>参数类型：
+无
+
+>默认：
+`function(){}`
+
+>说明：
+下拉框值改变时触发，通常用来联动或者提示。
+```js
+//除了在创建实例时赋值，还可以在创建后直接给对象赋值。
+select.onChange=function(){
+    //这里的this指向的是select实例
+    var that=this;
+    alert(that.value);
+};
 ```
