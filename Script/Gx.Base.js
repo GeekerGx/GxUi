@@ -8,3 +8,5 @@ import './BaseHelper/Base.js';
 import './BaseHelper/Convert.js';
 //转换帮助类
 import './BaseHelper/Url.js';
+//转换帮助类
+import './BaseHelper/DateTime.js';
