@@ -1,5 +1,3 @@
-
-
 //转换帮助类
 (function (win) {
     var convert = {
@@ -23,6 +21,10 @@
                 num = formatMicrometer(num);
             }
             return num
+        },
+        //数字 向前0补齐
+        prefixInteger: function (num, length) {
+            return (Array(length).join('0') + num).slice(-length);
         }
     };
     var formatMicrometer = function (num) {
