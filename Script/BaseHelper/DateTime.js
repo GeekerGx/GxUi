@@ -2,6 +2,8 @@
 (function (win) {
     var dateTime = {
         date: function (date) {
+            //如果date参数不为Date类型 则需要转换成该类型。
+
             return {
                 _root: date,
                 get year() {
