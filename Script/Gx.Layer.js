@@ -14,8 +14,8 @@
         resize: false, //是否允许拉伸
         maxWidth: 850, //最大宽度
         maxHeight: 500, //最大高度
-        success: function (layero, index) { }, //层弹出后的成功回调方法
-        end: function () { },
+        success: function (layero, index) {}, //层弹出后的成功回调方法
+        end: function () {},
     };
 
     //弹出窗
@@ -56,8 +56,8 @@
     (function (win) {
         win.confirm = function (msg, successFun, errorFun) {
             _layer.confirm(msg, {
-                btn: ["Yes", "No"]
-            },
+                    btn: ["Yes", "No"]
+                },
                 function (index) {
                     if (!successFun) {
                         _layer.close(index);
