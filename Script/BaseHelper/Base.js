@@ -114,7 +114,7 @@
 
     //如果不存在则取默认值
     base.getDefault = function (value, def) {
-        return value != undefined && value != null ? value : def;
+        return value === undefined || value === null ? def : value;
     };
 
     //对象代理
@@ -137,7 +137,7 @@
         getFun = getFun || function () {
             return null;
         };
-        setFun = setFun || function (val) { };
+        setFun = setFun || function (val) {};
         Object.defineProperty(obj, key, {
             enumerable: true,
             configurable: true,

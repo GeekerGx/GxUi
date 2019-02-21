@@ -1,4 +1,3 @@
-
 //ajax帮助类
 (function (win, $) {
 
@@ -11,9 +10,9 @@
         cache: false, //从浏览器缓存中加载请求信息
         data: {}, //参数
         dataType: "json", //预期服务器返回的数据类型
-        beforeSend: function beforeSend() { }, //发送请求前
-        complete: function complete() { }, //请求完成后调用的回调函数（请求成功或失败时均调用）
-        success: function success(data) { }, //请求成功后调用的回调函数
+        beforeSend: function beforeSend() {}, //发送请求前
+        complete: function complete() {}, //请求完成后调用的回调函数（请求成功或失败时均调用）
+        success: function success(data) {}, //请求成功后调用的回调函数
         //请求失败后调用的回调函数
         error: function error(data) {
             //系统直接报错没有捕捉
@@ -30,7 +29,7 @@
         }
     };
 
-    //封装主体
+    //封装ajax
     Gx.ajax = function (url, data, success, error, async, config) {
         var ajaxObj = Gx.base.mergeParam(Gx.base.createObject(_setting), config);
         ajaxObj.url = url;
@@ -57,6 +56,16 @@
         if (Gx.base.isBoolean(async)) {
             ajaxObj.async = async;
         }
-        $.ajax(ajaxObj);
+        return $.ajax(ajaxObj);
+    };
+    //同时调用多个ajax
+    Gx.ajaxWhen = function (ajaxArr, success, error) {
+        if (!Gx.base.isArray(ajaxArr) || ajaxArr.length == 0) {
+            throw new Error("ajaxArr必须为数组且不能为空！");
+        }
+        success = Gx.base.getDefault(success, function () {});
+        error = Gx.base.getDefault(error, function () {});
+
+        return $.when.apply($, ajaxArr).done(success).fail(error);
     };
 })(window, jQuery);
