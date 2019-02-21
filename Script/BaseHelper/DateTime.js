@@ -2,7 +2,10 @@
 (function (win) {
     var dateTime = {
         date: function (date) {
-            //如果date参数不为Date类型 则需要转换成该类型。
+            if (!Gx.base.isDate(date)) {
+                //如果date参数不为Date类型 则需要转换成该类型。
+                date = new Date(date);
+            }
 
             return {
                 _root: date,

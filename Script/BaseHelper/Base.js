@@ -28,6 +28,9 @@
     base.isHtml = function (obj) {
         return this.getObjType(obj) == "[object HTMLDivElement]";
     };
+    base.isDate=function(obj){
+        return this.getObjType(obj) == "[object Date]";
+    };
 
     //#endregion
 
