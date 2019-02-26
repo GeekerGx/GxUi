@@ -48,6 +48,24 @@
                 getDate: dateTime.getDate,
                 getTime: dateTime.getTime,
                 getDateTime: dateTime.getDateTime,
+                addYear: function (num) {
+                    this.year = parseInt(this.year) + num;
+                },
+                addMonth: function (num) {
+                    this.month = parseInt(this.month) + num;
+                },
+                addDay: function (num) {
+                    this.day = parseInt(this.day) + num;
+                },
+                addHours: function (num) {
+                    this.hours = parseInt(this.hours) + num;
+                },
+                addMinutes: function (num) {
+                    this.minutes = parseInt(this.minutes) + num;
+                },
+                addSeconds: function (num) {
+                    this.seconds = parseInt(this.seconds) + num;
+                },
             };
         },
         get now() {
