@@ -84,6 +84,7 @@
     dateTime.getDateTime = function () {
         return this.getDate() + " " + this.getTime();
     };
+    //dateTime.
 
     Gx.dateTime = dateTime;
 })(window);
