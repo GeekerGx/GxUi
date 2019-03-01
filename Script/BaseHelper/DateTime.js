@@ -66,6 +66,7 @@
                 addSeconds: function (num) {
                     this.seconds = parseInt(this.seconds) + num;
                 },
+                //计算时间间隔
                 interval: function (date) {
                     return {
                         timeStamp: this._root.getTime() - Gx.dateTime.date(date)._root.getTime(),
