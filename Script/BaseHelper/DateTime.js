@@ -66,6 +66,30 @@
                 addSeconds: function (num) {
                     this.seconds = parseInt(this.seconds) + num;
                 },
+                //计算时间间隔
+                interval: function (date) {
+                    return {
+                        timeStamp: this._root.getTime() - Gx.dateTime.date(date)._root.getTime(),
+                        getSeconds: function () {
+                            return this.timeStamp / 1000;
+                        },
+                        getMinutes: function () {
+                            return this.getSeconds() / 60;
+                        },
+                        getHours: function () {
+                            return this.getMinutes() / 60;
+                        },
+                        getDay: function () {
+                            return this.getHours() / 24;
+                        },
+                        getMonth: function () {
+                            return this.getDay() / 30;
+                        },
+                        getYear: function () {
+                            return this.getMonth() / 12;
+                        },
+                    };
+                },
             };
         },
         get now() {
