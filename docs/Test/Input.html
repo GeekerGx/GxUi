@@ -28,7 +28,7 @@
 
     var inputForChange = Gx.ui.createInput({
         el: "inputForChange",
-        change: function () {
+        onChange: function () {
             alert(this.value);
         }
     });
@@ -42,7 +42,7 @@
             }
             return true;
         },
-        change: function () {
+        onChange: function () {
             console.log(this.value);
         },
         onBlur: function () {

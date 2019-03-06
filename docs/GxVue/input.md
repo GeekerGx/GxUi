@@ -11,7 +11,7 @@
 var input = Gx.ui.createInput("input", {
     type: "number",
     placeholder: "777",
-    change: function () {
+    onChange: function () {
         alert(this.value);
     },
     validation: function (value) {
@@ -33,6 +33,7 @@ var input = Gx.ui.createInput("input", {
 |[width](#width)|宽度|`String`|`200px`|下拉框宽度。|
 |[display](#display)|显隐状态|`Boolean`|`True`|显隐状态，如果为false则下拉框隐藏。|
 ||
+|[isMicrometer](#isMicrometer)|是否千分符|`Boolean`|`false`|显示货币千分符。|
 
 ### 方法
 |#|名称|参数类型|返回内容|说明|
@@ -46,3 +47,17 @@ var input = Gx.ui.createInput("input", {
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
 ||
+
+### <span id="isMicrometer">isMicrometer 是否千分符</span>
+>类型：
+`Boolean`
+
+>默认：
+`false`
+
+>说明：
+显示货币千分符。
+```js
+//除了在创建实例时赋值，还可以在创建后直接给对象赋值。
+input.isMicrometer=true;
+```

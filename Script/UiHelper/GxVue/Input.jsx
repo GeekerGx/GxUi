@@ -15,7 +15,7 @@
         //验证事件
         { field: "validation", value: function (value) { return true; } },
         //改变事件
-        { field: "change", value: function () { } },
+        { field: "onChange", value: function () { } },
         //失焦焦点事件
         { field: "onBlur", value: function () { } },
         //获得焦点事件
@@ -70,7 +70,7 @@
     optionObj.methods = {
         _baseChange: function () {
             this.value = this.$el.value;
-            this.change();
+            this.onChange();
         },
         //失焦焦点
         _baseOnBlur: function () {
