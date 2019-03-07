@@ -8,15 +8,15 @@
         { field: "value", value: "" },
         //是否获得焦点
         { field: "isFocus", value: false },
-        //占位符
+        //预期值提示信息
         { field: "placeholder", value: "" },
         //是否千分符
         { field: "isMicrometer", value: false },
         //验证事件
-        { field: "validation", value: function (value) { return true; } },
+        { field: "onValidation", value: function (val) { return true; } },
         //改变事件
         { field: "onChange", value: function () { } },
-        //失焦焦点事件
+        //失焦事件
         { field: "onBlur", value: function () { } },
         //获得焦点事件
         { field: "onFocus", value: function () { } },
@@ -64,6 +64,9 @@
                         break;
                 }
                 return num;
+            },
+            set: function (val) {
+                throw new Error("请使用value属性进行赋值！");
             }
         }
     };
@@ -77,7 +80,7 @@
             this.$data.isFocus = false;
             this.onBlur();
             //验证
-            if (this.validation(this.value)) {
+            if (this.onValidation(this.value)) {
 
             }
         },
@@ -102,7 +105,7 @@
                 return vueCom;
             },
         }, setting);
-        
+
         //公开方法
         obj = this.vmProxy(obj, [
             { field: "text" }

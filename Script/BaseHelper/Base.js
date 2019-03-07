@@ -28,7 +28,7 @@
     base.isHtml = function (obj) {
         return this.getObjType(obj) == "[object HTMLDivElement]";
     };
-    base.isDate=function(obj){
+    base.isDate = function (obj) {
         return this.getObjType(obj) == "[object Date]";
     };
 
@@ -122,19 +122,18 @@
 
     //对象代理
     base.objProxy = function (targetObj, targetKey, sourceObj, sourceKey, setCheckFun) {
-        Object.defineProperty(targetObj, targetKey, {
-            enumerable: true,
-            configurable: true,
-            get: function () {
+        this.addGetSetFun(
+            targetObj,
+            targetKey,
+            function () {
                 return sourceObj[sourceKey]
             },
-            set: function (val) {
+            function (val) {
                 if (setCheckFun && !setCheckFun(val)) {
                     throw new Error("set时检查不通过！");
                 }
                 sourceObj[sourceKey] = val;
-            }
-        });
+            });
     };
     base.addGetSetFun = function (obj, key, getFun, setFun) {
         getFun = getFun || function () {

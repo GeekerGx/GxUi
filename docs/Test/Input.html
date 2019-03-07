@@ -35,7 +35,7 @@
     var inputForTypeByNumber = Gx.ui.createInput({
         el: "inputForTypeByNumber",
         type: "number",
-        validation: function (value) {
+        onValidation: function (value) {
             if (value > 3) {
                 console.log("不能大于3!");
                 return false;
@@ -54,7 +54,7 @@
     var inputForTypeByPassword = Gx.ui.createInput({
         el: "inputForTypeByPassword",
         type: "password",
-        validation: function (value) {
+        onValidation: function (value) {
             var exp = (/^[0-9]+$/).test(value);
             if (!exp) {
                 alert("只能算是数字");
