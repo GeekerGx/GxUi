@@ -10,7 +10,7 @@
 ```js
 var input = Gx.ui.createInput("input", {
     type: "number",
-    placeholder: "777",
+    prompt: "777",
     onChange: function () {
         alert(this.value);
     },
@@ -34,9 +34,9 @@ var input = Gx.ui.createInput("input", {
 |[display](#display)|显隐状态|`Boolean`|`True`|显隐状态，如果为false则下拉框隐藏。|
 ||
 |[isMicrometer](#isMicrometer)|是否千分符|`Boolean`|`false`|显示货币千分符。|
-|[placeholder](#placeholder)|预期值提示信息|`String`|`''`|可描述输入字段预期值的提示信息。|
+|[prompt](#prompt)|预期值提示信息|`String`|`''`|可描述输入字段预期值的提示信息。|
 |[text](#text)|输入框显示值|`String`|获取value属性值|可描述输入字段预期值的提示信息。此字段无法赋值！！！|
-|[type](#type)|输入框类型|`String`|`text`|输入框类型目前支持`[textarea,number,text]`|
+|[type](#type)|输入框类型|`String`|`text`|输入框类型目前支持`[textarea,number,text,password]`|
 
 ### 方法
 |#|名称|参数类型|返回内容|说明|
@@ -123,7 +123,7 @@ input.onFocus=function(){
 };
 ```
 
-### <span id="placeholder">placeholder 预期值提示信息</span>
+### <span id="prompt">prompt 预期值提示信息</span>
 >参数类型：
 `String`
 
@@ -134,7 +134,7 @@ input.onFocus=function(){
 可描述输入字段预期值的提示信息。
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
-input.placeholder='请输入数字';
+input.prompt='请输入数字';
 ```
 
 ### <span id="text">text 输入框显示值</span>
@@ -159,14 +159,14 @@ input.placeholder='请输入数字';
 `text`
 
 >说明：
-输入框类型目前支持`[textarea,number,text]`
+输入框类型目前支持`[textarea,number,text,password]`
 ```js
 //虽然可以在创建实例后进行修改但是不推荐。
 //因为修改后value值还是原来的值
 input.type='textarea';
 ```
 
-### <span id="onValidation">onValidation(val) 输入框类型</span>
+### <span id="onValidation">onValidation(val) 验证事件</span>
 >参数类型：
 `String val`
 
@@ -174,7 +174,7 @@ input.type='textarea';
 `function (val) { return true; }`
 
 >说明：
-输入框类型目前支持`[textarea,number,text]`
+失焦后继续验证如果验证通过则正常，否则提示问题。
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.onValidation=function (val) {

@@ -9,7 +9,7 @@
         //是否获得焦点
         { field: "isFocus", value: false },
         //预期值提示信息
-        { field: "placeholder", value: "" },
+        { field: "prompt", value: "" },
         //是否千分符
         { field: "isMicrometer", value: false },
         //验证事件
@@ -31,7 +31,7 @@
                 "width": this.width
             }}
             type={this.type}
-            placeholder={this.placeholder}
+            placeholder={this.prompt}
             onChange={this._baseChange}
             onBlur={this._baseOnBlur}
             onFocus={this._baseOnFocus}
