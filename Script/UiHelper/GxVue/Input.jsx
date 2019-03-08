@@ -10,8 +10,6 @@
         { field: "isFocus", value: false },
         //预期值提示信息
         { field: "prompt", value: "" },
-        //是否千分符
-        { field: "isMicrometer", value: false },
         //验证事件
         { field: "onValidation", value: function (val) { return true; } },
         //改变事件
@@ -20,6 +18,25 @@
         { field: "onBlur", value: function () { } },
         //获得焦点事件
         { field: "onFocus", value: function () { } },
+        //是否禁用
+        { field: "disabled", value: false },
+        //是否只读
+        { field: "readonly", value: false },
+
+        //#region 数字框属性
+
+        //是否千分符
+        { field: "isMicrometer", value: false },
+        //小数点精度
+        { field: "precision", value: false },//未开发
+        //精度不足是否补0
+        { field: "isPad", value: false },//未开发
+        //前缀
+        { field: "prefix", value: false },//未开发
+        //后缀
+        { field: "suffix", value: false },//未开发
+
+        //#endregion
     ];
 
     optionObj.render = function (h) {
@@ -36,6 +53,8 @@
             onBlur={this._baseOnBlur}
             onFocus={this._baseOnFocus}
             value={this.$data.isFocus ? this.value : this.text}
+            disabled={this.disabled ? "disabled" : null}
+            readonly={this.readonly ? "readonly" : null}
         />;
         switch (this.type) {
             case "textarea":
