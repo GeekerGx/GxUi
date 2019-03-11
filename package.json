@@ -30,5 +30,16 @@
     "webpack-cli": "^3.1.2"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "GxUi基于vue框架开发的前端插件",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoderGx/GxUi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CoderGx/GxUi/issues"
+  },
+  "homepage": "https://github.com/CoderGx/GxUi#readme"
 }
