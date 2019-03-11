@@ -92,7 +92,7 @@
                 } else {
                     that.mergeCells(i - count + 1, field, 1, count);
                     if (colIndex < columns.length - 1) {
-                        aa(i - count + 1, i, colIndex + 1);
+                        merge(i - count + 1, i, colIndex + 1);
                     }
                     if (i != eIndex) {
                         val = data[i + 1][field];
