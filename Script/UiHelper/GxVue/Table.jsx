@@ -72,7 +72,6 @@
         return true;
     };
     var mergeRows = function () {
-        console.log("开始合并行");
         var that = this;
         var data = this.getData(true);
         var columns = [];
