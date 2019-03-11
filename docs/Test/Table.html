@@ -5,14 +5,14 @@
     <script src="../Lib/Jquery/jquery-3.0.0.min.js"></script>
     <script src="../Lib/Layer/layer.js"></script>
     <script src="../Lib/Vue/vue2.5.16.js"></script>
-    <script src="../Gx.All.Style.js"></script>
-    <script src="../Gx.All.Script.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
     <link href="../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
     <script src="../Lib/Bootstrap/bootstrap.js"></script>
     <link href="../Lib/Bootstrap/Table/bootstrap-table.css" rel="stylesheet" />
     <script src="../Lib/Bootstrap/Table/bootstrap-table.js"></script>
+    <script src="../Gx.All.Style.js"></script>
+    <script src="../Gx.All.Script.js"></script>
 </head>
 
 <body>
@@ -51,36 +51,61 @@
         singleSelect: false,
         columns: [{
                 field: 'check',
-                checkbox: true
+                checkbox: true,
             },
             {
                 field: 'id',
                 title: '编号',
-                visible: true
+                visible: true,
             },
             {
                 field: 'name',
-                title: '姓名'
+                title: '姓名',
+                mergeRows: true,
             }, {
                 field: 'age',
-                title: '年龄'
+                title: '年龄',
+                mergeRows: true,
             }, {
                 field: 'price',
                 title: '价格',
                 formatter: function (value, row, index) {
                     return value + "￥";
                 },
-            }
+                mergeRows: true,
+            },
         ],
         data: [{
             id: 1,
             name: 'Gx',
             age: 4,
+            price: 269.7
+        }, {
+            id: 2,
+            name: 'Gx',
+            age: 4,
             price: 26.7
-        }]
-    });
-    table.data.push({
-        id: 2
+        }, {
+            id: 3,
+            name: 'G1',
+            age: 4,
+            price: 26.7
+        }, {
+            id: 4,
+            name: 'G1',
+            age: 4,
+            price: 26.7
+        }, {
+            id: 5,
+            name: 'G1',
+            age: 5,
+            price: 26.7
+        }, {
+            id: 6,
+            name: 'G1',
+            age: 5,
+            price: 26.7
+        }, ]
     });
 </script>
 

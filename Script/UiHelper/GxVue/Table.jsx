@@ -71,6 +71,44 @@
         }
         return true;
     };
+    var mergeRows = function () {
+        console.log("开始合并行");
+        var that = this;
+        var data = this.getData(true);
+        var columns = [];
+        this._tableSetting.columns.map(function (item) {
+            if (item.mergeRows) {
+                columns.push(item);
+            }
+        });
+
+        var merge = function (sIndex, eIndex, colIndex) {
+            var field = columns[colIndex].field;
+            var val = data[sIndex][field];
+            var count = 1;
+            for (var i = sIndex; i <= eIndex; i++) {
+
+                if (i < eIndex && data[i + 1][field] == val) {
+                    count++;
+                } else {
+                    that.mergeCells(i - count + 1, field, 1, count);
+                    if (colIndex < columns.length - 1) {
+                        aa(i - count + 1, i, colIndex + 1);
+                    }
+                    if (i != eIndex) {
+                        val = data[i + 1][field];
+                        count = 1;
+                    }
+                }
+            }
+
+        };
+        if (columns.length > 0 && data.length > 0) {
+            merge(0, data.length - 1, 0);
+        }
+
+    };
+
     optionObj.watch = {
         data: {
             handler: function (newVal, oldVal) {
@@ -95,6 +133,7 @@
                 align: "center",
                 width: 200,
                 visible: true,
+                mergeRows: false,
                 formatter: function (value, row, index) { return value; },
             }, item);
             if (!item.checkbox) {
@@ -134,9 +173,15 @@
     };
     optionObj.updated = function () {
         this.refreshOptions();
+
+        //合并行
+        mergeRows.call(this);
     };
     optionObj.mounted = function () {
         $(this.$refs.table).bootstrapTable(this._tableSetting);
+
+        //合并行
+        mergeRows.call(this);
     };
     optionObj.methods = {
         loadData: function (data) {
@@ -213,7 +258,18 @@
             this.pageSize = size;
 
             this.onPageChange(number, size);
-        }
+
+            //合并行
+            mergeRows.call(this);
+        },
+        mergeCells: function (index, field, colspan, rowspan) {
+            this.baseCall("mergeCells", {
+                index: index,
+                field: field,
+                colspan: colspan,
+                rowspan: rowspan,
+            });
+        },
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
@@ -245,7 +301,8 @@
             { field: "prevPage" },
             { field: "nextPage" },
             { field: "hideColumn" },
-            { field: "showColumn" }
+            { field: "showColumn" },
+            { field: "mergeCells" },
         ]);
 
         Gx.base.addGetSetFun(obj, "toolbar", function () {
