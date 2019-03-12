@@ -1,14 +1,26 @@
 {
   "name": "gxui",
   "version": "1.0.0",
-  "main": "_references.js",
+  "description": "GxUi基于vue框架开发的前端插件",
+  "main": "Gx.All.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --config WebPack/webpack.config.js --watch",
     "build": "webpack --config WebPack/webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoderGx/GxUi.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoderGx/GxUi/issues"
+  },
+  "homepage": "https://github.com/CoderGx/GxUi#readme",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -16,30 +28,16 @@
     "babel-plugin-jsx-v-model": "^2.0.3",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
-    "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^0.28.11",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "less": "^3.8.1",
+    "copy-webpack-plugin": "^5.0.1",
+    "css-loader": "^2.1.1",
+    "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.5.0",
-    "style-loader": "^0.21.0",
-    "vue": "^2.5.17",
-    "vue-loader": "^15.4.2",
-    "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
-  },
-  "devDependencies": {},
-  "description": "GxUi基于vue框架开发的前端插件",
-  "directories": {
-    "doc": "docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CoderGx/GxUi.git"
-  },
-  "bugs": {
-    "url": "https://github.com/CoderGx/GxUi/issues"
-  },
-  "homepage": "https://github.com/CoderGx/GxUi#readme"
+    "style-loader": "^0.23.1",
+    "vue": "^2.6.8",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.8",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
 }
