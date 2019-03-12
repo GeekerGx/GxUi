@@ -108,7 +108,34 @@
     dateTime.getDateTime = function () {
         return this.getDate() + " " + this.getTime();
     };
-    //dateTime.
+    dateTime.getTimeAgo = function (time, maxDay) {
+        maxDay = maxDay || 30;
+        var arr = [{
+                count: 1000 * 60 * 60 * 24,
+                msg: "天前"
+            },
+            {
+                count: 1000 * 60 * 60,
+                msg: "小时前"
+            },
+            {
+                count: 1000 * 60,
+                msg: "分钟前"
+            }
+        ];
+        var timeStamp = this.now.interval(time).timeStamp;
+        if (timeStamp >= arr[0].count * maxDay) {
+            //超过最大日期直接显示日期
+            return this.date(time).getDate();
+        } else {
+            for (var i = 0; i < arr.length; i++) {
+                if (timeStamp > arr[i].count) {
+                    return (timeStamp / arr[i].count | 0) + arr[i].msg;
+                }
+            }
+            return timeStamp >= 0 ? "刚刚" : "未来";
+        }
+    };
 
     Gx.dateTime = dateTime;
 })(window);

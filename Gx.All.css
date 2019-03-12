@@ -1,4 +1,3 @@
-/*初始化*/
 body,
 h1,
 h2,
@@ -91,7 +90,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/*基于bootstrap*/
 .table > tbody > tr > td {
   vertical-align: middle;
 }
