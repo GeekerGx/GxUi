@@ -1,4 +1,3 @@
-
 //方法参数
 (function (win, $) {
     var param = {
@@ -25,7 +24,9 @@
                 }
             }
             return paramObj;
-        }
+        },
+        //用于存放跨页面传递的参数
+        dataStore: {}
     };
     Gx.param = param;
 })(window, jQuery);

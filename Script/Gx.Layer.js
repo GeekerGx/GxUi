@@ -23,18 +23,23 @@
         var layerObj = Gx.base.createObject(_setting);
 
         layerObj = Gx.base.mergeParam(layerObj, {
-            type: 2,
-            success: function success(layero, index) {
-                _layer.iframeAuto(index);
-            }
+            type: 2
         });
 
-        layer.openIframe = function (url, title, endFun, width, height) {
+        layer.openIframe = function (url, title, param, endFun, width, height) {
             var setting = {
                 content: url,
                 title: title || false,
                 area: width ? (height ? [width, height] : width) : 'auto',
-                end: Gx.base.isFunction(endFun) ? endFun : null
+                end: Gx.base.isFunction(endFun) ? endFun : null,
+                success: function (layero, index) {
+                    _layer.iframeAuto(index);
+                    //设置参数
+                    var win = layero[0].getElementsByTagName("iframe")[0].contentWindow;
+                    if (win.Gx && win.Gx.param && win.Gx.param.dataStore) {
+                        win.Gx.param.dataStore = param;
+                    }
+                }
             };
             layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);
