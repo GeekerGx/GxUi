@@ -25,8 +25,22 @@
             }
             return paramObj;
         },
-        //用于存放跨页面传递的参数
-        dataStore: {}
+        _dataStore: null,
+        /**
+         * 弹窗获取父页面的参数
+         */
+        get dataStore() {
+            if(parent&&parent.Gx){
+                return parent.Gx.param._dataStore;
+            }
+            return null;
+        },
+        /**
+         * 存在当前页面
+         */
+        set dataStore(option) {
+            this._dataStore=option;
+        }
     };
     Gx.param = param;
 })(window, jQuery);

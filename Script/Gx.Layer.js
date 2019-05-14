@@ -14,8 +14,8 @@
         resize: false, //是否允许拉伸
         maxWidth: 850, //最大宽度
         maxHeight: 500, //最大高度
-        success: function (layero, index) {}, //层弹出后的成功回调方法
-        end: function () {},
+        success: function (layero, index) { }, //层弹出后的成功回调方法
+        end: function () { },
     };
 
     //弹出窗
@@ -33,14 +33,17 @@
                 area: width ? (height ? [width, height] : width) : 'auto',
                 end: Gx.base.isFunction(endFun) ? endFun : null,
                 success: function (layero, index) {
-                    _layer.iframeAuto(index);
-                    //设置参数
-                    var win = layero[0].getElementsByTagName("iframe")[0].contentWindow;
-                    if (win.Gx && win.Gx.param && win.Gx.param.dataStore) {
-                        win.Gx.param.dataStore = param;
+                    //如果未设置宽高则自适应
+                    if (!width && !height) {
+                        _layer.iframeAuto(index);
                     }
                 }
             };
+
+            //设置参数
+            win.Gx.param.dataStore = param;
+
+
             layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);
         };
@@ -61,8 +64,8 @@
     (function (win) {
         win.confirm = function (msg, successFun, errorFun) {
             _layer.confirm(msg, {
-                    btn: ["Yes", "No"]
-                },
+                btn: ["Yes", "No"]
+            },
                 function (index) {
                     if (!successFun) {
                         _layer.close(index);

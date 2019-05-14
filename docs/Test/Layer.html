@@ -17,18 +17,20 @@
 </head>
 
 <body>
-    <div>111</div>
+    <div id="num">100</div>
 </body>
 <script>
     setTimeout(function () {
         if (Gx.param.dataStore && Gx.param.dataStore.age) {
-            console.log(Gx.param.dataStore.age);
+            document.getElementById("num").innerHTML = Gx.param.dataStore.age;
         }
     }, 0);
+
     var open = function () {
-        Gx.layer.openIframe("Layer.html", "测试", {
-            age: 99
-        });
+        var num = document.getElementById("num").innerText + 1;
+        Gx.layer.openIframe("Layer.html?1=" + num, "测试", {
+            age: num
+        }, "500px", "600px");
     };
 </script>
 
