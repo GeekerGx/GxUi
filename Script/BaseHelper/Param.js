@@ -25,21 +25,22 @@
             }
             return paramObj;
         },
+        _parentData: null,
         _dataStore: null,
         /**
          * 弹窗获取父页面的参数
          */
         get dataStore() {
-            if(parent&&parent.Gx){
-                return parent.Gx.param._dataStore;
+            if (!this._parentData && window != top && parent.Gx) {
+                this._parentData = Gx.base.createObject(parent.Gx.param._dataStore);
             }
-            return null;
+            return this._parentData;
         },
         /**
          * 存在当前页面
          */
         set dataStore(option) {
-            this._dataStore=option;
+            this._dataStore = option;
         }
     };
     Gx.param = param;

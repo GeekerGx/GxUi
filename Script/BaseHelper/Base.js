@@ -58,7 +58,10 @@
             return obj;
         }
         // js一切皆对象
-        if (obj instanceof Object) {
+        if (Gx.base.isObject(obj)) {
+            if (obj == {}) {
+                return {};
+            }
             copy = {};
             for (var attr in obj) {
                 if (obj.hasOwnProperty(attr)) copy[attr] = cloneObj(obj[attr], base);
@@ -139,7 +142,7 @@
         getFun = getFun || function () {
             return null;
         };
-        setFun = setFun || function (val) {};
+        setFun = setFun || function (val) { };
         Object.defineProperty(obj, key, {
             enumerable: true,
             configurable: true,
