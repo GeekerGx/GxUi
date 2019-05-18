@@ -1,9 +1,8 @@
 //UI控件帮助类
 (function (win) {
     var devHelper = {
-        flag: false,
         callFun: function (type) {
-            if (!devHelper.flag) {
+            if (!Gx.config&&!Gx.config.devFlag) {
                 return;
             }
 

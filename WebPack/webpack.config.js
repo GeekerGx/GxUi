@@ -37,6 +37,11 @@ module.exports = {
             {
                 from: path.join(__dirname, '../Lib'),
                 to: path.join(__dirname, '../docs/Lib')
+            },
+            // 复制插件
+            {
+                from: path.join(__dirname, '../Gx.Config.js'),
+                to: path.join(__dirname, '../docs/Gx.Config.js')
             }]),
         new MiniCssExtractPlugin({
             filename: "[name].css",
