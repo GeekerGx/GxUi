@@ -4,9 +4,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        "Gx.All":path.join(__dirname, 'Gx.All.js'),
+        "Gx.All": path.join(__dirname, 'Gx.All.js'),
         //文档使用
-        "docs/Gx.All":path.join(__dirname, 'Gx.All.js'),
+        "docs/Gx.All": path.join(__dirname, 'Gx.All.js'),
     },
     output: {
         path: path.join(__dirname, '..'),
@@ -14,32 +14,32 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.jsx$/,
-                use: 'babel-loader'
+            test: /\.jsx$/,
+            use: 'babel-loader'
+        },
+        {
+            test: /\.less$/,
+            use: [{
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../'
+                }
             },
-            {
-                test: /\.less$/,
-                use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../'
-                        }
-                    },
-                    "css-loader",
-                    "less-loader"
-                ]
-            }
+                "css-loader",
+                "less-loader"
+            ]
+        }
         ]
     },
     plugins: [
-        // 复制插件
-        new CopyWebpackPlugin([{
-            from: path.join(__dirname, '../Lib'),
-            to: path.join(__dirname, '../docs/Lib')
-        }]),
+        new CopyWebpackPlugin([
+            // 复制插件
+            {
+                from: path.join(__dirname, '../Lib'),
+                to: path.join(__dirname, '../docs/Lib')
+            }]),
         new MiniCssExtractPlugin({
             filename: "[name].css",
-            //chunkFilename: "[id].css"
         })
     ]
 };
