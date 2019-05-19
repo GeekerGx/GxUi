@@ -40,8 +40,13 @@ module.exports = {
             },
             // 复制插件
             {
-                from: path.join(__dirname, '../Gx.Config.js'),
+                from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
                 to: path.join(__dirname, '../docs/Gx.Config.js')
+            },
+            // 复制插件
+            {
+                from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
+                to: path.join(__dirname, '../Gx.Config.js')
             }]),
         new MiniCssExtractPlugin({
             filename: "[name].css",

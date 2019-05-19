@@ -2,7 +2,7 @@
 (function (win) {
     var devHelper = {
         callFun: function (type) {
-            if (!Gx.config&&!Gx.config.devFlag) {
+            if (!Gx.config.devFlag) {
                 return;
             }
 

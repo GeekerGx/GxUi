@@ -1,5 +1,7 @@
 //置顶，所有的方法集成在Gx下
 import './BaseHelper/Top.js';
+//配置文件
+import './BaseHelper/Config.js';
 //方法参数
 import './BaseHelper/Param.js';
 //转换帮助类
