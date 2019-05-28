@@ -35,24 +35,41 @@
             cache: false,
             get: function () {
                 var list = this.$el.getElementsByTagName("input");
-                var checkedItem = {};
+                var checkedItemList = [];
                 for (i = 0; i < list.length; i++) {
                     var item = list[i];
                     if (item.checked) {
-                        checkedItem = item;
+                        checkedItemList.push(item.value);
                     }
                 }
+                if (!this.multiple) {
+                    return checkedItemList[0];
+                }
 
-                return checkedItem.value;
+                return checkedItemList;
             },
             set: function (val) {
                 var list = this.$el.getElementsByTagName("input");
-                for (i = 0; i < list.length; i++) {
-                    var item = list[i];
-                    if (item.value == val) {
-                        item.checked = true;
-                    }
+                var arr = [];
+                if (!this.multiple && Gx.base.isArray(val)) {
+                    console.log("multiple:", this.multiple);
+                    console.log("value:", val);
+                    throw new Error("单选框不能设置多个值！");
                 }
+
+                if (Gx.base.isArray(val)) {
+                    arr = val;
+                } else {
+                    arr.push(val);
+                }
+                arr.map(function (val) {
+                    for (i = 0; i < list.length; i++) {
+                        var item = list[i];
+                        if (item.value == val) {
+                            item.checked = true;
+                        }
+                    }
+                });
             }
         }
     };
@@ -82,7 +99,8 @@
 
         //公开方法
         obj = this.vmProxy(obj, [
-            { field: "reset" }
+            { field: "reset" },
+            { field: "value" },
         ]);
         return obj
     };
