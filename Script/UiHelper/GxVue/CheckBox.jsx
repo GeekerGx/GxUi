@@ -84,13 +84,13 @@
     };
 
     var Default = Vue.extend(Gx.ui.getResultObj(optionObj, setting));
-    Gx.ui.coms.Radio = Default;
+    Gx.ui.coms.CheckBox = Default;
 
-    Gx.ui.createRadio = function (options) {
+    Gx.ui.createCheckBox = function (options) {
         var vueCom = this.createInstance(Default, options);
-        return this.convertRadio(vueCom);
+        return this.convertCheckBox(vueCom);
     };
-    Gx.ui.convertRadio = function (vueCom) {
+    Gx.ui.convertCheckBox = function (vueCom) {
         var obj = this.vmProxy({
             get root() {
                 return vueCom;

@@ -4,7 +4,7 @@ import './UiHelper/GxVue/VueBase.js'
 import './UiHelper/GxVue/Select.jsx';
 import './UiHelper/GxVue/Input.jsx';
 import './UiHelper/GxVue/Button.jsx';
-import './UiHelper/GxVue/Radio.jsx';
+import './UiHelper/GxVue/CheckBox.jsx';
 
 //复合组件
 import './UiHelper/GxVue/Toolbar.jsx';
