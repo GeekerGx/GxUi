@@ -108,20 +108,24 @@
     dateTime.getDateTime = function () {
         return this.getDate() + " " + this.getTime();
     };
+    dateTime.getTimeStamp = function () {
+        var that = this.now || this;
+        return that._root.getTime();
+    };
     dateTime.getTimeAgo = function (time, maxDay) {
         maxDay = maxDay || 30;
         var arr = [{
-                count: 1000 * 60 * 60 * 24,
-                msg: "天前"
-            },
-            {
-                count: 1000 * 60 * 60,
-                msg: "小时前"
-            },
-            {
-                count: 1000 * 60,
-                msg: "分钟前"
-            }
+            count: 1000 * 60 * 60 * 24,
+            msg: "天前"
+        },
+        {
+            count: 1000 * 60 * 60,
+            msg: "小时前"
+        },
+        {
+            count: 1000 * 60,
+            msg: "分钟前"
+        }
         ];
         var timeStamp = this.now.interval(time).timeStamp;
         if (timeStamp >= arr[0].count * maxDay) {
