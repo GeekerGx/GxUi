@@ -15,7 +15,7 @@
             var r = item.split("=");
             that.searchParam[r[0]] = unescape(r[1]);
         });
-        this.hashParam._root = win.location.hash.split("?")[1];
+        this.hashParam._root = win.location.hash.split("?")[1] || "";
         this.hashParam._root.split("&").map(function (item) {
             if (!item || item.indexOf("=") == -1) {
                 return;
@@ -33,6 +33,19 @@
     url.replace = function (url) {
         win.location.replace(url);
     };
+    url.addParam = function (uri, key, value) {
+        if (!value) {
+            return uri;
+        }
+        var re = new RegExp("([?&])" + key + "=[^#]*?([?&#]|$)", "gm");
+        var separator = uri.lastIndexOf('?') > uri.lastIndexOf('#') ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
+    }
 
     Gx.url = url;
     url.init();
