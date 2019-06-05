@@ -33,6 +33,16 @@
     url.replace = function (url) {
         win.location.replace(url);
     };
+    url.addParamForObj = function (uri, obj) {
+        var that = this;
+        if (!obj) {
+            return uri;
+        }
+        for (key in obj) {
+            uri = that.addParam(uri, key, obj[key]);
+        }
+        return uri;
+    };
     url.addParam = function (uri, key, value) {
         if (!value) {
             return uri;
