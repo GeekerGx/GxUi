@@ -29,7 +29,10 @@
         return this.hashParam[name] || this.searchParam[name] || "";
     };
 
-    //重定向页面
+    /**
+     * 重定向页面
+     * @param  {string} url  url参数
+     */
     url.replace = function (url) {
         win.location.replace(url);
     };
