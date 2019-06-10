@@ -5,7 +5,7 @@
 
     url.searchParam = {};
     url.hashParam = {};
-    url.init = function () {
+    url._init = function () {
         var that = this;
         this.searchParam._root = win.location.search.substr(1);
         this.searchParam._root.split("&").map(function (item) {
@@ -61,5 +61,4 @@
     }
 
     Gx.url = url;
-    url.init();
 })(window);

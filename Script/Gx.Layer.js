@@ -46,7 +46,7 @@
                 Gx.param._dataStore = {};
             }
             //设置参数
-            Gx.param._dataStore['ts_' + timeStamp] = param;
+            Gx.param.setData(param, timeStamp);
 
             layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);

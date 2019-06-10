@@ -25,36 +25,27 @@
             }
             return paramObj;
         },
-        _parentData: null,
-        _dataStore: null,
-        /**
-         * 弹窗获取父页面的参数
-         */
-        get dataStore() {
-            if (!this._parentData && window != top && parent.Gx) {
-                var ts = Gx.url.getParam("timeStamp");
-                var ds = null;
-                if (ts) {
-                    ds = parent.Gx.param._dataStore['ts_' + ts];
-                } else {
-                    ds = parent.Gx.param._dataStore;
-                }
-                this._parentData = Gx.base.createObject(ds);
-            }
-            if (!this._parentData) {
-                this._parentData = {};
-            }
-            return this._parentData;
+        _dataStore: {
+            _root: null,
         },
-        /**
-         * 存在当前页面
-         */
-        set dataStore(option) {
-            if (!this._dataStore) {
-                this._dataStore = {};
+        setData: function (data, ts) {
+            if (ts) {
+                this._dataStore["ts_" + ts] = data;
+            } else {
+                this._dataStore._root = Gx.base.mergeParam(this._dataStore._root, data);
             }
-            this._dataStore = option;
+        },
+        _init: function () {
+            if (!this._dataStore._root && window != top && parent.Gx) {
+                var ts = Gx.url.getParam("timeStamp");
+                var ds = parent.Gx.param._dataStore['ts_' + ts];
+                this._dataStore._root = Gx.base.createObject(ds);
+            }
+        },
+        get dataStore() {
+            return this._dataStore._root;
         }
     };
+
     Gx.param = param;
 })(window, jQuery);
