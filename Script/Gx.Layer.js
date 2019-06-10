@@ -27,6 +27,9 @@
         });
 
         layer.openIframe = function (url, title, param, endFun, width, height) {
+            var timeStamp = Gx.dateTime.getTimeStamp();
+            url = Gx.url.addParam(url, 'timeStamp', timeStamp);
+
             var setting = {
                 content: url,
                 title: title || false,
@@ -39,10 +42,11 @@
                     }
                 }
             };
-
+            if (!Gx.param._dataStore) {
+                Gx.param._dataStore = {};
+            }
             //设置参数
-            win.Gx.param.dataStore = param;
-
+            Gx.param._dataStore['ts_' + timeStamp] = param;
 
             layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);

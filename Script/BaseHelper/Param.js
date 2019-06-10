@@ -32,7 +32,17 @@
          */
         get dataStore() {
             if (!this._parentData && window != top && parent.Gx) {
-                this._parentData = Gx.base.createObject(parent.Gx.param._dataStore);
+                var ts = Gx.url.getParam("timeStamp");
+                var ds = null;
+                if (ts) {
+                    ds = parent.Gx.param._dataStore['ts_' + ts];
+                } else {
+                    ds = parent.Gx.param._dataStore;
+                }
+                this._parentData = Gx.base.createObject(ds);
+            }
+            if (!this._parentData) {
+                this._parentData = {};
             }
             return this._parentData;
         },
@@ -40,6 +50,9 @@
          * 存在当前页面
          */
         set dataStore(option) {
+            if (!this._dataStore) {
+                this._dataStore = {};
+            }
             this._dataStore = option;
         }
     };
