@@ -12,6 +12,8 @@ import './BaseHelper/Convert.js';
 import './BaseHelper/Url.js';
 //转换帮助类
 import './BaseHelper/DateTime.js';
+//数学方法帮助类
+import './BaseHelper/Math.js';
 
 //#region 初始化方法
 Gx.url._init();
