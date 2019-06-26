@@ -86,15 +86,19 @@
         }
     };
 
-    //
+    /**
+     * 数组合并
+     * @param  {Array} arr  数组
+     * @param  {Array|Object} obj  数组或对象
+     * @returns {Array} 运营商名称
+     * @desc 根据目标对象获取运营商
+     */
     base.arrPush = function (arr, obj) {
         if (!this.isArray(arr)) {
-            console.error("对象不是数组！");
-            return;
+            throw new Error("对象不是数组，无法进行合并！");
         }
         return arr.concat(obj);
     };
-
     //获取guid
     base.getGuid = function (length, radix) {
         var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -138,6 +142,15 @@
                 sourceObj[sourceKey] = val;
             });
     };
+
+    /**
+     * 添加Get Set属性
+     * @param  {Object} obj  需要添加的对象
+     * @param  {String} key  需要添加的属性名称
+     * @param  {Function} getFun  Get方法
+     * @param  {Function} setFun  Set方法
+     * @desc 此方法直接对传入的对象进行操作
+     */
     base.addGetSetFun = function (obj, key, getFun, setFun) {
         getFun = getFun || function () {
             return null;
