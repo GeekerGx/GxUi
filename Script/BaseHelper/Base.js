@@ -90,8 +90,8 @@
      * 数组合并
      * @param  {Array} arr  数组
      * @param  {Array|Object} obj  数组或对象
-     * @returns {Array} 运营商名称
-     * @desc 根据目标对象获取运营商
+     * @returns {Array} 合并后的数组
+     * @desc 如果obj为对象则往arr中插入一条数据，如果为数组则追加到arr之后
      */
     base.arrPush = function (arr, obj) {
         if (!this.isArray(arr)) {
