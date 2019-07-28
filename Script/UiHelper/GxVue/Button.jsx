@@ -6,7 +6,7 @@
         //按钮显示值
         { field: "value", value: "Button" },
         //点击事件
-        { field: "click", value: function () { } },
+        { field: "onClick", value: function () { } },
         //启用
         { field: "enabled", value: true },
     ];
@@ -27,7 +27,7 @@
     optionObj.methods = {
         _baseClick: function () {
             //自定义click事件
-            this.click();
+            this.onClick();
         }
     };
     optionObj.computed = {

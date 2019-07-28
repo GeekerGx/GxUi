@@ -42,7 +42,13 @@
                 },
                 hide: function () {
                     this.display = false;
-                }
+                },
+                /**
+                 * 清除当前组件
+                 */
+                remove: function () {
+                    this.$el.remove();
+                },
             },
             //内置数据
             data: function () {
@@ -133,21 +139,13 @@
             return option;
         },
         vmProxy: function (target, keys) {
-            keys = Gx.base.arrPush(keys, [{
-                    field: "appendChildTo"
-                },
-                {
-                    field: "show"
-                },
-                {
-                    field: "hide"
-                },
-                {
-                    field: "width"
-                },
-                {
-                    field: "display"
-                },
+            keys = Gx.base.arrPush(keys, [
+                { field: "appendChildTo" },
+                { field: "show" },
+                { field: "hide" },
+                { field: "width" },
+                { field: "display" },
+                { field: "remove" },
             ]);
             keys.map(function (item) {
                 Gx.base.objProxy(target, item.field, target.root, item.field, item.setCheckFun);

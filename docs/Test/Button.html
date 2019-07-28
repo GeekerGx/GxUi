@@ -28,13 +28,13 @@
     });
     var buttonForClick = Gx.ui.createButton({
         el: "buttonForClick",
-        click: function () {
+        onClick: function () {
             alert("点击了此按钮");
         }
     });
     var buttonForEnabled = Gx.ui.createButton({
         el: "buttonForEnabled",
-        click: function () {
+        onClick: function () {
             alert("禁用");
             this.enabled = !this.enabled;
         }
