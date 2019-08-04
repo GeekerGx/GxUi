@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <!--第三方插件-->
+    <script src="../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../Lib/Vue/vue2.5.16.js"></script>
+    <script src="../Lib/Layui/layui.all.js"></script>
+    <link href="../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="../Lib/Bootstrap/bootstrap.js"></script>
+    <!--页面个性化插件-->
+    <!--GxUi-->
+    <link href="../Gx.All.css" rel="stylesheet" />
+    <script src="../Gx.All.js"></script>
+</head>
+<style>
+    .navbar {
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .navbar-center {
+        display: inline-block;
+        float: none;
+        margin-bottom: -5px;
+    }
+</style>
+
+<body>
+    <div id="Navbar"></div>
+    <!-- <div class="navbar navbar-collapse navbar-default navbar-fixed-bottom">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-center">
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div> -->
+</body>
+<script>
+    var Navbar = Gx.ui.createNavbar({
+        el: "Navbar",
+        fixed: "bottom",
+        /*left: [
+            {
+                "text": "Link",
+                "href": "#"
+            },
+            {
+                "text": "Link",
+                "hrefs": [
+                    {
+                        "text": "Link",
+                        "href": "#"
+                    },
+                    "-",
+                    {
+                        "text": "Link",
+                        "href": "#"
+                    },
+                ]
+            }
+        ],*/
+        center: [
+            {
+                "text": "Link",
+                "href": "#"
+            },
+            "-",
+            {
+                "text": "Link",
+                "hrefs": [
+                    {
+                        "text": "Link",
+                        "href": "#"
+                    },
+                    {
+                        "text": "Link",
+                        "href": "#"
+                    }
+                ]
+            }
+        ],
+        /*right: [
+            {
+                "text": "Link",
+                "href": "#"
+            },
+            "-",
+            {
+                "text": "Link",
+                "hrefs": [
+                    {
+                        "text": "Link",
+                        "href": "#"
+                    },
+                    {
+                        "text": "Link",
+                        "href": "#"
+                    }
+                ]
+            }
+        ],*/
+    });
+</script>
+
+</html>
