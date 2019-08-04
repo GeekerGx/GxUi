@@ -12,10 +12,10 @@
     ];
     optionObj.render = function (h) {
         if (!this.display) return;
-        
+
         return (
             <button
-                class={["btn", "navbar-btn", "btn-default"]}
+                class={["btn", "btn-default"]}
                 type="button"
                 disabled={!this.enabled}
                 onClick={this._baseClick}

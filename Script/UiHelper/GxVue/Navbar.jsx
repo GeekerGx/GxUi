@@ -12,7 +12,7 @@
         if (!this.display) {
             return;
         }
-        var toLi = function (menus) {
+        var toLi = function (menus, isSub) {
             var arrMenu = [];
             menus.map(function (item) {
                 if (item.href) {
@@ -21,21 +21,23 @@
                 }
                 if (item.hrefs) {
                     arrMenu.push(
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <li class={isSub ? "dropdown-submenu" : "dropdown"}>
+                            <a href="#"
+                                class="dropdown-toggle"
+                                data-toggle="dropdown"
+                            >
                                 {item.text}
-                                <span class="caret"></span>
+                                {isSub ? "" : <span class="caret"></span>}
                             </a>
                             <ul class="dropdown-menu">
-                                {toLi(item.hrefs)}
+                                {toLi(item.hrefs, true)}
                             </ul>
                         </li>
                     );
                     return;
                 }
                 if (item == "-") {
-                    arrMenu.push(<li role="separator" class="divider"></li>);
+                    arrMenu.push(<li class="divider"></li>);
                     return;
                 }
             });
