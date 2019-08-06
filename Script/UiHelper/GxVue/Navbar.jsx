@@ -2,7 +2,7 @@
 (function (win) {
     var optionObj = {};
     var setting = [
-        { field: "fixed", value: "top" },
+        { field: "fixed", value: "top" },//目前支持 top:顶部 bottom:底部
         { field: "left", value: [] },
         { field: "center", value: [] },
         { field: "right", value: [] },

@@ -28,6 +28,10 @@
     }
 
 
+    .dropdown:hover .menu-top {
+        display: block;
+    }
+
     .dropdown-submenu {
         position: relative;
     }
@@ -38,7 +42,7 @@
         margin-top: -6px;
         margin-left: -1px;
         -webkit-border-radius: 0 6px 6px 6px;
-        -moz-border-radius: 0 6px 6px;
+        -moz-border-radius: 0 6px 6px 6px;
         border-radius: 0 6px 6px 6px;
     }
 
@@ -55,16 +59,16 @@
         border-color: transparent;
         border-style: solid;
         border-width: 5px 0 5px 5px;
-        border-left-color: #ccc;
+        border-left-color: #cccccc;
         margin-top: 5px;
         margin-right: -10px;
     }
 
     .dropdown-submenu:hover>a:after {
-        border-left-color: #fff;
+        border-left-color: #ffffff;
     }
 
-    .dropdown-submenu.pull-left {
+    .dropdown-submenu .pull-left {
         float: none;
     }
 
@@ -78,82 +82,136 @@
 </style>
 
 <body>
-    <div id="Navbar"></div>
+    <div id="NavbarTop"></div>
+    <div id="NavbarBottom"></div>
 </body>
 <script>
-    var Navbar = Gx.ui.createNavbar({
-        el: "Navbar",
-        fixed: "bottom",
-        /*left: [
-            {
-                "text": "Link",
-                "href": "#"
-            },
-            {
-                "text": "Link",
-                "hrefs": [
-                    {
-                        "text": "Link",
-                        "href": "#"
-                    },
-                    "-",
-                    {
-                        "text": "Link",
-                        "href": "#"
-                    },
-                ]
-            }
-        ],*/
-        center: [
-            {
-                "text": "Link",
-                "href": "#"
-            },
-            {
-                "text": "Link",
-                "hrefs": [
-                    {
-                        "text": "Link",
-                        "href": "#"
-                    },
-                    "-",
-                    {
-                        "text": "Link",
-                        "hrefs": [
-                            {
-                                "text": "Link",
-                                "href": "#"
-                            },
-                            "-",
-                            {
-                                "text": "Link",
-                                "href": "#"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ],
-        /*right: [
-            {
-                "text": "Link",
-                "href": "#"
-            },
-            "-",
-            {
-                "text": "Link",
-                "hrefs": [
-                    {
-                        "text": "Link",
-                        "href": "#"
-                    },
-                    {
-                        "text": "Link",
-                        "href": "#"
-                    }
-                ]
-            }
-        ],*/
+    var left = [
+        {
+            "text": "Link",
+            "href": "#"
+        },
+        {
+            "text": "Link",
+            "hrefs": [{
+                    "text": "Link",
+                    "href": "#"
+                },
+                "-",
+                {
+                    "text": "Link",
+                    "href": "#"
+                },
+            ]
+        }
+    ];
+    var center = [
+        {
+            "text": "Link",
+            "href": "#"
+        },
+        {
+            "text": "Link",
+            "hrefs": [{
+                    "text": "Link",
+                    "href": "#"
+                },
+                "-",
+                {
+                    "text": "Link",
+                    "hrefs": [{
+                            "text": "Link",
+                            "href": "#"
+                        }, {
+                            "text": "Link",
+                            "href": "#"
+                        }, {
+                            "text": "Link",
+                            "href": "#"
+                        }, {
+                            "text": "Link",
+                            "href": "#"
+                        },
+                        "-",
+                        {
+                            "text": "Link",
+                            "hrefs": [{
+                                    "text": "Link",
+                                    "href": "#"
+                                },
+                                "-",
+                                {
+                                    "text": "Link",
+                                    "hrefs": [{
+                                            "text": "Link",
+                                            "href": "#"
+                                        },
+                                        "-",
+                                        {
+                                            "text": "Link",
+                                            "hrefs": [{
+                                                    "text": "Link",
+                                                    "href": "#"
+                                                },
+                                                "-",
+                                                {
+                                                    "text": "Link",
+                                                    "hrefs": [{
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }, {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }, {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }, {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        },
+                                                        "-", {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }, {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }, {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }, {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        },
+                                                        {
+                                                            "text": "Link",
+                                                            "href": "#"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+    var NavbarTop = Gx.ui.createNavbar({
+        el: "NavbarTop",
+        fixed: "top", //top bottom
+        left: left,
+        center: center,
+        right: left,
+    });
+    var NavbarBottom = Gx.ui.createNavbar({
+        el: "NavbarBottom",
+        fixed: "bottom", //top bottom
+        left: left,
+        center: center,
+        right: left,
     });
 </script>
 
