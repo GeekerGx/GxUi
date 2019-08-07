@@ -36,6 +36,10 @@
                     );
                     return;
                 }
+                if (item.text) {
+                    arrMenu.push(<li class="dropdown-header">{item.text}</li>);
+                    return;
+                }
                 if (item == "-") {
                     arrMenu.push(<li class="divider"></li>);
                     return;
