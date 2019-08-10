@@ -1,4 +1,4 @@
-# Select 下拉框
+# input 输入框
 ## 使用
 >html部分  
 
