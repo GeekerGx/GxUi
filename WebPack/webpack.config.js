@@ -1,6 +1,7 @@
 const path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     optimization: {
@@ -33,6 +34,12 @@ module.exports = {
         }
         ]
     },
+    /*babel: {
+        babelrc: false,
+        presets: [
+            ['es2015'],
+        ],
+    },*/
     plugins: [
         new CopyWebpackPlugin([
             // 复制插件
@@ -52,6 +59,19 @@ module.exports = {
             }]),
         new MiniCssExtractPlugin({
             filename: "[name].css",
+        }),
+        // 用于优化css文件
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessorOptions: {
+                safe: true,
+                autoprefixer: { disable: true },
+                mergeLonghand: false,
+                discardComments: {
+                    removeAll: true // 移除注释
+                }
+            },
+            canPrint: true
         }),
     ]
 };

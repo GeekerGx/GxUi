@@ -2,5 +2,5 @@
     "plugins": [
         "transform-vue-jsx",
         "jsx-v-model"
-    ]
+    ],
 }
