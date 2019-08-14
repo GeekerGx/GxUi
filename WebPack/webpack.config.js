@@ -2,9 +2,17 @@ const path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var UglifyESPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     optimization: {
+        minimizer: [
+            new UglifyESPlugin({
+                uglifyOptions: {
+                    mangle: false,
+                }
+            })
+        ]
     },
     entry: {
         "Gx.All": path.join(__dirname, 'Gx.All.js'),
@@ -18,7 +26,10 @@ module.exports = {
     module: {
         rules: [{
             test: /\.jsx$/,
-            use: 'babel-loader'
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015']
+            }
         },
         {
             test: /\.less$/,
@@ -34,12 +45,6 @@ module.exports = {
         }
         ]
     },
-    /*babel: {
-        babelrc: false,
-        presets: [
-            ['es2015'],
-        ],
-    },*/
     plugins: [
         new CopyWebpackPlugin([
             // 复制插件

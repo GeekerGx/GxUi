@@ -8,7 +8,7 @@ npm i vue vue-loader vue-template-compiler
 npm i babel-loader@7 babel-core babel-plugin-syntax-jsx babel-plugin-jsx-v-model babel-plugin-transform-vue-jsx babel-helper-vue-jsx-merge-props 
 npm i less css-loader less-loader style-loader 
 npm i copy-webpack-plugin mini-css-extract-plugin
-npm i optimize-css-assets-webpack-plugin
+npm i optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin babel-preset-es2015
 
 //极速版
 npm install
