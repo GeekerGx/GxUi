@@ -3,6 +3,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+    optimization: {
+    },
     entry: {
         "Gx.All": path.join(__dirname, 'Gx.All.js'),
         //文档使用
@@ -50,6 +52,6 @@ module.exports = {
             }]),
         new MiniCssExtractPlugin({
             filename: "[name].css",
-        })
+        }),
     ]
 };
