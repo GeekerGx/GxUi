@@ -69,8 +69,28 @@
         return Gx.ajax(url, data, success, error, async, config);
     };
 
+    var setting = {
+        url: "",
+        type: "post",
+        timeout: 1000 * 60,
+        async: true,
+        param: {},
+        success: function (data) { },
+        error: function (data) {
+            alert(data);
+        },
+    };
     //js原生ajax
-    Gx.ajaxXHR = function (url, data, success, error, async, type) {
+    Gx.ajaxXHR = function (url, param, success, error, async, type) {
+        var that = this;
+        var ajaxObj = Gx.base.mergeParam(setting, {
+            url: url,
+            type: type,
+            async: async,
+            param: param || undefined,
+            success: success,
+            error: error || undefined,
+        });
         var xhr = (function () {
             //#region 返回XMLHttpRequest
             if (window.XMLHttpRequest) {
@@ -81,7 +101,7 @@
         })();
 
         //回调函数
-        xhr.timeout = 0;
+        xhr.timeout = ajaxObj.timeout;
         xhr.responseType = "";
         xhr.onreadystatechange = function () { };
         xhr.abort = function () { };
@@ -103,42 +123,48 @@
         //#endregion
         xhr.onprogress = function () { };
         xhr.onload = function () {
+            //对获取的数据进行处理，目前支持string/标准json对象/arr数组
+            var resultObj = (function (result) {
+                try {
+                    var obj = Gx.convert.jsonToObj(result);
+                    if (Gx.base.isObject(obj) || Gx.base.isArray(obj)) {
+                        return obj;
+                    }
+                } catch (e) { }
+                return result;
+            })(this.responseText);
+
             if ((this.status < 200 || this.status >= 300) && this.status != 304) {
-                //请求异常
-                alert(this.responseText);
+                switch (this.status) {
+                    default:
+                        //其他类型异常
+                        alert(resultObj);
+                        break
+                }
                 return;
             }
-
-            //对获取的数据进行处理，目前支持string/标准json对象/arr数组
-            var resultObj = null;
-            try {
-                var obj = Gx.convert.jsonToObj(this.responseText);
-                if (Gx.base.isObject(obj) || Gx.base.isArray(obj)) {
-                    resultObj = obj;
-                }
-            } catch (e) { }
 
             //请求成功
             (function (result) {
                 if (result.state == false) {
-                    if (Gx.base.isFunction(error)) {
-                        error(result);
+                    if (Gx.base.isFunction(ajaxObj.error)) {
+                        ajaxObj.error.apply(that.result);
                     } else {
                         alert(result.msg);
                     }
                     return;
                 }
-                if (Gx.base.isFunction(success)) {
-                    success(result);
+                if (Gx.base.isFunction(ajaxObj.success)) {
+                    ajaxObj.success.apply(that, result);
                     return;
                 }
-            })(resultObj || this.responseText);
+            })(resultObj);
         };
         xhr.onloadend = function () { };
         //发送请求 请求类型：GET/POST；请求地址；是否异步true/false
-        xhr.open(type, url, async);
+        xhr.open(ajaxObj.type, ajaxObj.url, ajaxObj.async);
         //发送请求
-        xhr.send(Gx.convert.objToJson(data));
+        xhr.send(Gx.convert.objToJson(ajaxObj.param));
     };
 
     //同时调用多个ajax
