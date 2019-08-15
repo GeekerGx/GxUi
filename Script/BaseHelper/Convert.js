@@ -18,7 +18,13 @@
 
             //千分位转换
             if (isMicrometer) {
-                num = formatMicrometer(num);
+                num = (function (n) {
+                    n += '';
+                    if (!n.includes('.')) n += '.';
+                    return n.replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
+                        return $1 + ',';
+                    }).replace(/\.$/, '');
+                })(num);
             }
             return num
         },
@@ -26,13 +32,6 @@
         prefixInteger: function (num, length) {
             return (Array(length).join('0') + num).slice(-length);
         }
-    };
-    var formatMicrometer = function (num) {
-        num += '';
-        if (!num.includes('.')) num += '.';
-        return num.replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
-            return $1 + ',';
-        }).replace(/\.$/, '');
     };
     Gx.convert = convert;
 }(window));

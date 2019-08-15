@@ -69,20 +69,6 @@
         return Gx.ajax(url, data, success, error, async, config);
     };
 
-
-    var readyState = {
-        "Uninitialized": 0,//（未初始化）还没有调用send()方法
-        "Loading": 1,//（载入）已调用send()方法，正在发送请求
-        "Loaded": 2,//（载入完成）send()方法执行完成，已经接收到全部响应内容
-        "Interactive": 3,//（交互）正在解析响应内容
-        "Completed": 4,//（完成）响应内容解析完成，可以在客户端调用了
-    };
-    var status = {
-        "OK": 200,//一切正常
-        "Not Modified": 304,//客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告诉客户，原来缓冲的文档还可以继续使用
-        "Not Found": 404,//无法找到指定位置的资源
-    };
-
     //js原生ajax
     Gx.ajaxXHR = function (url, data, success, error, async, type) {
         var xhr = (function () {
@@ -90,17 +76,65 @@
             if (window.XMLHttpRequest) {
                 return new XMLHttpRequest();
             }
-            if (window.ActiveObject) {
-                return new ActiveObject("Microsoft.XMLHTTP");
-            }
             throw new Error("当前浏览器不支持使用Ajax");
             //#endregion
         })();
 
         //回调函数
-        xhr.onreadystatechange = function () {
-
+        xhr.timeout = 0;
+        xhr.responseType = "";
+        xhr.onreadystatechange = function () { };
+        xhr.abort = function () { };
+        xhr.ontimeout = function () {
+            alert("ajax超时");
         };
+        xhr.onerror = function () {
+            alert("ajax失败");
+        };
+
+        xhr.onloadstart = function () {
+            //在发送请求前的准备
+        };
+        //#region 发送数据阶段
+        xhr.upload.onloadstart = function () { };
+        xhr.upload.onload = function () { };
+        xhr.upload.onprogress = function () { };
+        xhr.upload.onloadend = function () { };
+        //#endregion
+        xhr.onprogress = function () { };
+        xhr.onload = function () {
+            if ((this.status < 200 || this.status >= 300) && this.status != 304) {
+                //请求异常
+                alert(this.responseText);
+                return;
+            }
+
+            //对获取的数据进行处理，目前支持string/标准json对象/arr数组
+            var resultObj = null;
+            try {
+                var obj = Gx.convert.jsonToObj(this.responseText);
+                if (Gx.base.isObject(obj) || Gx.base.isArray(obj)) {
+                    resultObj = obj;
+                }
+            } catch (e) { }
+
+            //请求成功
+            (function (result) {
+                if (result.state == false) {
+                    if (Gx.base.isFunction(error)) {
+                        error(result);
+                    } else {
+                        alert(result.msg);
+                    }
+                    return;
+                }
+                if (Gx.base.isFunction(success)) {
+                    success(result);
+                    return;
+                }
+            })(resultObj || this.responseText);
+        };
+        xhr.onloadend = function () { };
         //发送请求 请求类型：GET/POST；请求地址；是否异步true/false
         xhr.open(type, url, async);
         //发送请求
