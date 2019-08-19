@@ -1,7 +1,7 @@
 //ajax帮助类
 (function (win, $) {
 
-    //默认配置
+    /* //默认配置
     var _setting = {
         url: "", //发送请求的地址
         type: "post", //请求方法
@@ -28,7 +28,7 @@
             alert(data);
         }
     };
-
+ 
     //封装ajax
     Gx.ajax = function (url, data, success, error, async, config) {
         var ajaxObj = Gx.base.mergeParam(_setting, config);
@@ -57,16 +57,13 @@
             ajaxObj.async = async;
         }
         return $.ajax(ajaxObj);
+    };*/
+
+    Gx.ajaxPost = function (url, param, success, error, async) {
+        return Gx.ajax(url, param, success, error, async, "POST");
     };
-    Gx.ajaxPost = function (url, data, success, error, async, config) {
-        config = config || {};
-        config.type = "post";
-        return Gx.ajax(url, data, success, error, async, config);
-    };
-    Gx.ajaxGet = function (url, data, success, error, async, config) {
-        config = config || {};
-        config.type = "get";
-        return Gx.ajax(url, data, success, error, async, config);
+    Gx.ajaxGet = function (url, param, success, error, async) {
+        return Gx.ajax(url, param, success, error, async, "GET");
     };
 
     var setting = {
@@ -81,11 +78,11 @@
         },
     };
     //js原生ajax
-    Gx.ajaxXHR = function (url, param, success, error, async, type) {
+    Gx.ajax = function (url, param, success, error, async, type) {
         var that = this;
         var ajaxObj = Gx.base.mergeParam(setting, {
             url: url,
-            type: type,
+            type: type || undefined,
             async: async,
             param: param || undefined,
             success: success,
@@ -101,7 +98,9 @@
         })();
 
         //回调函数
-        xhr.timeout = ajaxObj.timeout;
+        if (ajaxObj.async) {
+            xhr.timeout = ajaxObj.timeout;
+        }
         xhr.responseType = "";
         xhr.onreadystatechange = function () { };
         xhr.abort = function () { };
@@ -146,16 +145,16 @@
 
             //请求成功
             (function (result) {
-                if (result.state == false) {
+                if (result.state === false) {
                     if (Gx.base.isFunction(ajaxObj.error)) {
-                        ajaxObj.error.apply(that.result);
+                        ajaxObj.error(result);
                     } else {
                         alert(result.msg);
                     }
                     return;
                 }
                 if (Gx.base.isFunction(ajaxObj.success)) {
-                    ajaxObj.success.apply(that, result);
+                    ajaxObj.success(result);
                     return;
                 }
             })(resultObj);

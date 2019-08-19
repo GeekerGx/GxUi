@@ -25,7 +25,7 @@
 <body id="marked" class="markdown-body">
 </body>
 <script>
-    Gx.ajax(Gx.url.getParam("src") + ".md", {}, function (data) {
+    Gx.ajaxGet(Gx.url.getParam("src") + ".md", {}, function (data) {
         marked.setOptions({
             renderer: new marked.Renderer(),
             gfm: true,
@@ -37,10 +37,7 @@
             smartypants: false
         });
         document.getElementById("marked").innerHTML = marked(data);
-    }, null, false, {
-        type: "get",
-        dataType: "text"
-    });
+    }, null, false);
 
     //添加行号
     var codeList = document.getElementsByTagName("code");
@@ -48,6 +45,7 @@
         var item = codeList[i];
         item.parentElement.classList.add("line-numbers");
     }
+
 </script>
 
 </html>
