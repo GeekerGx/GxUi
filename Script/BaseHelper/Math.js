@@ -1,5 +1,5 @@
 //所有的方法集成在Gx下
-(function (win) {
+(function () {
     Gx.math = {
         numToCN: function (num) {
             return numto({
@@ -42,4 +42,4 @@
         }
         return (flag ? "" : "-") + (num / Math.pow(lvNum, lv)) + "" + sizes[lv];
     };
-})(window);
+})();

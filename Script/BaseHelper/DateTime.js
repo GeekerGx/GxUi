@@ -1,5 +1,5 @@
 //dateTime帮助类
-(function (win) {
+(function () {
     var dateTime = {
         date: function (date) {
             if (!Gx.base.isDate(date)) {
@@ -142,4 +142,4 @@
     };
 
     Gx.dateTime = dateTime;
-})(window);
+})();

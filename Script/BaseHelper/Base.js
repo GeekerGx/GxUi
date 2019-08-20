@@ -1,5 +1,5 @@
 //基础帮助类
-(function (win) {
+(function () {
     var base = {};
 
     //#region 对象类型
@@ -187,4 +187,4 @@
     };
 
     Gx.base = base;
-})(window);
+})();

@@ -1,13 +1,13 @@
 
 //url帮助类
-(function (win) {
+(function () {
     var url = {};
 
     url.searchParam = {};
     url.hashParam = {};
     url._init = function () {
         var that = this;
-        this.searchParam._root = win.location.search.substr(1);
+        this.searchParam._root = window.location.search.substr(1);
         this.searchParam._root.split("&").map(function (item) {
             if (!item || item.indexOf("=") == -1) {
                 return;
@@ -15,7 +15,7 @@
             var r = item.split("=");
             that.searchParam[r[0]] = unescape(r[1]);
         });
-        this.hashParam._root = win.location.hash.split("?")[1] || "";
+        this.hashParam._root = window.location.hash.split("?")[1] || "";
         this.hashParam._root.split("&").map(function (item) {
             if (!item || item.indexOf("=") == -1) {
                 return;
@@ -34,7 +34,7 @@
      * @param  {string} url  url参数
      */
     url.replace = function (url) {
-        win.location.replace(url);
+        window.location.replace(url);
     };
     url.addParamForObj = function (uri, obj) {
         var that = this;
@@ -61,4 +61,4 @@
     }
 
     Gx.url = url;
-})(window);
+})();

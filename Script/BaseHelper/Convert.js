@@ -1,5 +1,5 @@
 //转换帮助类
-(function (win) {
+(function () {
     var convert = {
         objToJson: function (obj) {
             return JSON.stringify(obj);
@@ -34,4 +34,4 @@
         }
     };
     Gx.convert = convert;
-}(window));
+}());
