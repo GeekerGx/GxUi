@@ -72,18 +72,20 @@
         throw new Error("Unable to copy obj! Its type isn't supported.");
     };
 
-    //合并参数
-    base.mergeParam = function (setting, newSetting) {
-        return jQuery.extend(true, {}, cloneObj(setting), cloneObj(newSetting))
-    };
-
     //创建对象
     base.createObject = function (obj) {
-        if (this.isArray(obj)) {
-            return this.mergeParam([], obj);
-        } else {
-            return this.mergeParam({}, obj);
+        return cloneObj(obj);
+    };
+
+    //合并参数
+    base.mergeParam = function (setting, newSetting) {
+        var newDestination = this.createObject(setting);
+        var newSource = this.createObject(newSetting);
+        for (var property in newSource) {
+            var obj = newSource[property];
+            newDestination[property] = obj;
         }
+        return newDestination;
     };
 
     /**
@@ -127,22 +129,6 @@
         return value === undefined || value === null ? def : value;
     };
 
-    //对象代理
-    base.objProxy = function (targetObj, targetKey, sourceObj, sourceKey, setCheckFun) {
-        this.addGetSetFun(
-            targetObj,
-            targetKey,
-            function () {
-                return sourceObj[sourceKey]
-            },
-            function (val) {
-                if (setCheckFun && !setCheckFun(val)) {
-                    throw new Error("set时检查不通过！");
-                }
-                sourceObj[sourceKey] = val;
-            });
-    };
-
     /**
      * 添加Get Set属性
      * @param  {Object} obj  需要添加的对象
@@ -162,6 +148,22 @@
             get: getFun,
             set: setFun
         });
+    };
+
+    //对象代理
+    base.objProxy = function (targetObj, targetKey, sourceObj, sourceKey, setCheckFun) {
+        this.addGetSetFun(
+            targetObj,
+            targetKey,
+            function () {
+                return sourceObj[sourceKey]
+            },
+            function (val) {
+                if (setCheckFun && !setCheckFun(val)) {
+                    throw new Error("set时检查不通过！");
+                }
+                sourceObj[sourceKey] = val;
+            });
     };
     base.importLink = function (src) {
         var head = document.querySelector('head');
