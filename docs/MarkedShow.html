@@ -7,7 +7,6 @@
     <!--第三方插件-->
     <script src="Lib/Jquery/jquery-3.0.0.min.js"></script>
     <script src="Lib/Vue/vue.min.js"></script>
-    <script src="Lib/Layui/layui.all.js"></script>
     <link href="Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
     <script src="Lib/Bootstrap/bootstrap.js"></script>
     <!--页面个性化插件-->
@@ -37,15 +36,14 @@
             smartypants: false
         });
         document.getElementById("marked").innerHTML = marked(data);
-    }, null, false);
-
-    //添加行号
-    var codeList = document.getElementsByTagName("code");
-    for (var i = 0; i < codeList.length; i++) {
-        var item = codeList[i];
-        item.parentElement.classList.add("line-numbers");
-    }
-
+        //添加行号
+        var codeList = document.getElementsByTagName("code");
+        for (var i = 0; i < codeList.length; i++) {
+            var item = codeList[i];
+            item.parentElement.classList.add("line-numbers");
+        }
+        //手动高亮
+        Prism.highlightAll();
+    });
 </script>
-
 </html>

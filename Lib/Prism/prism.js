@@ -10800,8 +10800,10 @@ Prism.plugins.toolbar.registerButton('show-language', function(env) {
 				}
 			}
 		};
-
-		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		//页面解析到当前为止所有的script标签
+		script.src =(function(src){
+			return Prism.filename.replace("prism.js",src);
+		})('clipboard.min.js');
 		head.appendChild(script);
 	}
 

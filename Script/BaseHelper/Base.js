@@ -163,6 +163,28 @@
             set: setFun
         });
     };
+    base.importLink = function (src) {
+        var head = document.querySelector('head');
+        var thisPath = document.currentScript.src;
+        var libPath = thisPath.substring(0, thisPath.lastIndexOf('/')) + "/Lib/";
+
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = libPath + src;
+
+        head.appendChild(link);
+    };
+    base.importScript = function (src, onload) {
+        var head = document.querySelector('head');
+        var thisPath = document.currentScript.src;
+        var libPath = thisPath.substring(0, thisPath.lastIndexOf('/')) + "/Lib/";
+
+        var script = document.createElement('script');
+        script.onload = onload || function () { };
+        script.src = libPath + src;
+
+        head.appendChild(script);
+    };
 
     Gx.base = base;
 })(window);

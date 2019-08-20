@@ -1,5 +1,5 @@
 //方法参数
-(function (win, $) {
+(function () {
     var param = {
         getSerializeParam: function (paramList) {
             var paramObj = {
@@ -48,4 +48,4 @@
     };
 
     Gx.param = param;
-})(window, jQuery);
+})();

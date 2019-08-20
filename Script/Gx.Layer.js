@@ -1,8 +1,17 @@
 //封装Layer
-(function (win) {
-    var _layer = Gx.base.createObject(win.layer);
-    var layer = {};
+(function (factory) {
+    if (!window.layer) {
+        //如果第三方包不存在则自动引入
+        Gx.base.importScript("Layui/layui.all.js", function () {
+            factory(Gx.base.createObject(window.layer));
+        });
+    } else {
+        factory(Gx.base.createObject(window.layer));
+    }
+})(function (_layer) {
+    //将封装的方法以参数的形式传到闭包内
 
+    var layer = {};
     var _setting = {
         type: 0, //基本层类型
         title: false, //标题
@@ -19,7 +28,7 @@
     };
 
     //弹出窗
-    (function (win, $) {
+    (function () {
         var layerObj = Gx.base.createObject(_setting);
 
         layerObj = Gx.base.mergeParam(layerObj, {
@@ -51,22 +60,22 @@
             layerObj = Gx.base.mergeParam(layerObj, setting);
             return _layer.open(layerObj);
         };
-    })(window);
+    })();
 
     //重写Alter
-    (function (win) {
-        win.alert = function (msg) {
+    (function () {
+        window.alert = function (msg) {
             //如果是对象则转成json
             if (Gx.base.isObject(msg)) {
                 msg = Gx.convert.objToJson(msg);
             }
             _layer.msg(msg);
         };
-    })(window);
+    })();
 
     //重写Confirm
-    (function (win) {
-        win.confirm = function (msg, successFun, errorFun) {
+    (function () {
+        window.confirm = function (msg, successFun, errorFun) {
             _layer.confirm(msg, {
                 btn: ["Yes", "No"]
             },
@@ -89,7 +98,6 @@
                     }
                 });
         };
-    })(window);
-
+    })();
     Gx.layer = layer;
-})(window);
+});
