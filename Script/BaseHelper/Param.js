@@ -35,17 +35,19 @@
                 this._dataStore._root = Gx.base.mergeParam(this._dataStore._root, data);
             }
         },
-        _init: function () {
-            if (!this._dataStore._root && window != top && parent.Gx) {
-                var ts = Gx.url.getParam("timeStamp");
-                var ds = parent.Gx.param._dataStore['ts_' + ts];
-                this._dataStore._root = Gx.base.createObject(ds);
-            }
-        },
         get dataStore() {
             return this._dataStore._root;
         }
     };
 
     Gx.param = param;
+    //#region 加载时直接初始化内容
+    (function (that) {
+        if (!that._dataStore._root && window != top && parent.Gx) {
+            var ts = Gx.url.getParam("timeStamp");
+            var ds = parent.Gx.param._dataStore['ts_' + ts];
+            that._dataStore._root = Gx.base.createObject(ds);
+        }
+    })(Gx.param);
+    //#endregion
 })();
