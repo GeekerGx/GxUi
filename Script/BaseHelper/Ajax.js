@@ -24,11 +24,11 @@
         var that = this;
         var ajaxObj = Gx.base.mergeParam(setting, {
             url: url,
-            type: type || undefined,
+            type: type,
             async: async,
-            param: param || undefined,
+            param: param,
             success: success,
-            error: error || undefined,
+            error: error,
         });
         var xhr = (function () {
             //#region 返回XMLHttpRequest

@@ -83,7 +83,9 @@
         var newSource = this.createObject(newSetting);
         for (var property in newSource) {
             var obj = newSource[property];
-            newDestination[property] = obj;
+            if (obj !== null && obj !== undefined) {
+                newDestination[property] = obj;
+            }
         }
         return newDestination;
     };
