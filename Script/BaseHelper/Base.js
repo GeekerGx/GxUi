@@ -7,29 +7,35 @@
     base.getObjType = function (obj) {
         return Object.prototype.toString.call(obj);
     };
+    base.verifyObjType = function (obj, objType) {
+        if (objType) {
+            return this.getObjType(obj) == objType;
+        }
+        return this.getObjType(obj);
+    };
     base.isArray = function (obj) {
-        return this.getObjType(obj) == "[object Array]";
+        return this.verifyObjType(obj, "[object Array]");
     };
     base.isObject = function (obj) {
-        return this.getObjType(obj) == "[object Object]";
+        return this.verifyObjType(obj, "[object Object]");
     };
     base.isFunction = function (obj) {
-        return this.getObjType(obj) == "[object Function]";
+        return this.verifyObjType(obj, "[object Function]");
     };
     base.isBoolean = function (obj) {
-        return this.getObjType(obj) == "[object Boolean]";
+        return this.verifyObjType(obj, "[object Boolean]");
     };
     base.isString = function (obj) {
-        return this.getObjType(obj) == "[object String]";
+        return this.verifyObjType(obj, "[object String]");
     };
     base.isNumber = function (obj) {
-        return this.getObjType(obj) == "[object Number]";
+        return this.verifyObjType(obj, "[object Number]");
     };
     base.isHtml = function (obj) {
-        return this.getObjType(obj) == "[object HTMLDivElement]";
+        return this.verifyObjType(obj, "[object HTMLDivElement]");
     };
     base.isDate = function (obj) {
-        return this.getObjType(obj) == "[object Date]";
+        return this.verifyObjType(obj, "[object Date]");
     };
 
     //#endregion
