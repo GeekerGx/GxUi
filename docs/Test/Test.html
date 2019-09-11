@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <!--第三方插件-->
+    <script src="../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../Lib/Vue/vue.min.js"></script>
+    <link href="../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="../Lib/Bootstrap/bootstrap.js"></script>
+    <script src="../Lib/ECharts/echarts.min.js"></script>
+    <!--页面个性化插件-->
+    <!--GxUi-->
+    <link href="../Gx.All.css" rel="stylesheet" />
+    <script src="../Gx.All.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.on("dblclick", function (params) {
+        console.log(params);
+    });
+    var graph = {
+        "nodes": [
+            {
+                "id": "0",
+                "value": "Myriel",
+                "name": "Myriel",
+                "itemStyle": {
+                    "normal": {
+                        "color": "rgb(235,81,72)"
+                    }
+                },
+                "label": {
+                    "show": true
+                },
+                "symbolSize": 28.685715,
+                "x": -266.82776,
+                "y": 299.6904,
+                "attributes": {
+                    "modularity_class": 0
+                }
+            },
+            {
+                "id": "1",
+                "value": "Napoleon",
+                "name": "Napoleon",
+                "itemStyle": {
+                    "normal": {
+                        "color": "rgb(236,81,72)"
+                    }
+                },
+                "symbolSize": 4,
+                "x": -418.08344,
+                "y": 446.8853,
+                "attributes": {
+                    "modularity_class": 0
+                }
+            }
+        ],
+        "links": [
+            {
+                "id": "0",
+                "value": "null",
+                "source": "1",
+                "target": "0",
+                "label": {
+                    "show": true
+                },
+                "lineStyle": {
+                    "normal": {}
+                }
+            }
+        ]
+    };
+
+    var categories = [];
+    for (var i = 0; i < 9; i++) {
+        categories[i] = {
+            name: '类目' + i
+        };
+    }
+    graph.nodes.forEach(function (node) {
+        node.itemStyle = null;
+        node.symbolSize = 10;
+        node.value = node.symbolSize;
+        node.category = node.attributes.modularity_class;
+        // Use random x, y
+        node.x = node.y = null;
+        node.draggable = true;
+    });
+    option = {
+        title: {
+            text: 'Les Miserables',
+            subtext: 'Default layout',
+            top: 'bottom',
+            left: 'right'
+        },
+        tooltip: {},
+        legend: [{
+            // selectedMode: 'single',
+            data: categories.map(function (a) {
+                return a.name;
+            })
+        }],
+        animation: false,
+        series: [
+            {
+                name: 'Les Miserables',
+                type: 'graph',
+                layout: 'force',
+                data: graph.nodes,
+                links: graph.links,
+                categories: categories,
+                roam: true,
+                label: {
+                    normal: {
+                        position: 'right'
+                    }
+                },
+                force: {
+                    repulsion: 100
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+
+
+
+
+</script>
+
+</html>
