@@ -26,30 +26,38 @@
         <div id="display">
             这里是隐藏的内容
         </div>
+        <div id="tableTab">
+            <iframe src="Table.html"></iframe>
+        </div>
     </div>
 </body>
 <script>
     var button = Gx.ui.createButton({
         el: "button",
-        value: "显示值"
+        value: "显示值",
+        onClick: function () {
+
+        }
     });
+
     var tabs = Gx.ui.createTabs({
         el: "tabs",
         selectIndex: 0,
         data: [{
             id: "home",
             title: "首页",
-            click: function () {
+            onClick: function () {
                 console.log('点击了home', this);
             }
         }, {
             id: "ios",
             title: "苹果",
-            disabled: true
         }, {
             id: "display",
             title: "隐藏面板",
-            display: false,
+        }, {
+            id: "tableTab",
+            title: "表格",
         }]
     });
 </script>

@@ -4,11 +4,14 @@
         //控件id用来当做父组件的属性
         { field: "id", value: "" },
         //按钮显示值
-        { field: "value", value: "Button" },
+        { field: "text", value: "Button" },
         //点击事件
         { field: "onClick", value: function () { } },
-        //启用
-        { field: "enabled", value: true },
+        //宽度，覆盖公共,为空则自适应内容长度
+        { field: "width", value: null },
+        //todo 图标
+        //todo 背景颜色
+        //todo 大小
     ];
     optionObj.render = function (h) {
         if (!this.display) return;
@@ -19,8 +22,11 @@
                 type="button"
                 disabled={!this.enabled}
                 onClick={this._baseClick}
+                style={{
+                    width: this.width
+                }}
             >
-                {this.value}
+                {this.text}
             </button>
         );
     };

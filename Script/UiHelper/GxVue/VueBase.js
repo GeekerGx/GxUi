@@ -52,10 +52,14 @@
             },
             //内置数据
             data: function () {
-                var data = Gx.base.createObject(this.options);
+                var data = this.options;
                 return {
+                    id: Gx.base.getDefault(data.el, ""),
                     width: Gx.base.getDefault(data.width, "200px"),
-                    display: Gx.base.getDefault(data.display, true)
+                    //显示状态
+                    display: Gx.base.getDefault(data.display, true),
+                    //启用状态
+                    enabled: Gx.base.getDefault(data.enabled, true),
                 };
             },
             //创建前
@@ -94,13 +98,13 @@
             if (!key) {
                 return false;
             }
-            var sysKeepKeys = ["display"];
+            var sysKeepKeys = ["appendChildTo", "remove", "width", "hide", "show", "display"];
             return sysKeepKeys.indexOf(key.toLowerCase()) > -1;
         },
         getResultObj: function (optionObj, dataSetting) {
             if (dataSetting) {
                 optionObj.data = function () {
-                    var options = Gx.base.createObject(this.options);
+                    var options = this.options;
                     var data = {};
                     dataSetting.map(function (item) {
                         data[item.field] = Gx.base.getDefault(options[item.field], item.value);
@@ -119,7 +123,9 @@
                     'gx-select': this.coms.Select,
                     'gx-table': this.coms.Table,
                     'gx-toolbar': this.coms.Toolbar
-                }
+                },
+                //侦听属性
+                watch: {},
             }, optionObj);
             //添加基础混入
             obj.mixins = Gx.base.arrPush(obj.mixins, [mixins.base]);

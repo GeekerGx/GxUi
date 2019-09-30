@@ -37,6 +37,9 @@
     base.isDate = function (obj) {
         return this.verifyObjType(obj, "[object Date]");
     };
+    base.isNode = function (obj) {
+        return obj instanceof Node;
+    }
 
     //#endregion
 
@@ -60,9 +63,6 @@
             }
             return copy;
         }
-        if (obj instanceof HTMLDivElement) {
-            return obj;
-        }
         // js一切皆对象
         if (Gx.base.isObject(obj)) {
             if (obj == {}) {
@@ -74,6 +74,7 @@
             }
             return copy;
         }
+        return obj;
         console.log(obj, base);
         throw new Error("Unable to copy obj! Its type isn't supported.");
     };

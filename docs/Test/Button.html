@@ -23,16 +23,18 @@
 <script>
     var buttonForValue = Gx.ui.createButton({
         el: "buttonForValue",
-        value: "显示值"
+        text: "显示值"
     });
     var buttonForClick = Gx.ui.createButton({
         el: "buttonForClick",
+        text: "点击提示",
         onClick: function () {
             alert("点击了此按钮");
         }
     });
     var buttonForEnabled = Gx.ui.createButton({
         el: "buttonForEnabled",
+        text: "点击后禁用",
         onClick: function () {
             alert("禁用");
             this.enabled = !this.enabled;
