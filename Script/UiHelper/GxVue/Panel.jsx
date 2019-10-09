@@ -15,7 +15,7 @@
                 class={[
                     "tab-pane",
                     "fade",
-                    this.active ? "main" : "",
+                    this.active ? "flex-main" : "",
                     this.active ? "active" : "",
                     this.active ? "in" : "",
                 ]}

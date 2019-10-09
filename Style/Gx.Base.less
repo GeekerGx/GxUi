@@ -27,6 +27,7 @@ th,
 td,iframe {
     margin: 0;
     padding: 0;
+    border: 0;
 }
 
 body,
@@ -110,8 +111,26 @@ table {
 //#endregion
 
 html,
-body {
+body,iframe {
+    width: 100%;
     height: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-main {
+    flex: 1;
+}
+iframe{
+    display: flex;
 }
 
 //#region 基于bootstrap

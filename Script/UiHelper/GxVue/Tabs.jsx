@@ -62,7 +62,7 @@
                 <ul class="nav nav-tabs" >
                     {this.data.map(function () { return getTabHead.apply(that, [h, ...arguments]); })}
                 </ul>
-                <div ref="content" class="tab-content flex-column main" >
+                <div ref="content" class="tab-content flex-column flex-main" >
                     {this.data.map(function () { return getTabPanel.apply(that, [h, ...arguments]); })}
                 </div>
             </div>
