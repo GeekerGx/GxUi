@@ -16,77 +16,103 @@
     <script src="../Gx.All.js"></script>
 
     <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
         }
 
-        html,
-        body,
-        #box {
-            height: 100%;
-            font: small/1.5 "宋体", serif;
+        .flex-column {
+            display: flex;
+            flex-direction: column;
         }
 
-        body {
-            text-align: center;
+        .main {
+            flex: 1;
         }
 
-        #box {
-            text-align: left;
-            background: #666;
-            display: table;
-            width: 80%;
-            margin: 0 auto;
-            position: relative;
+        .header,
+        .footer {
+            background-color: red;
         }
 
-        #box>div {
-            display: table-row;
-        }
 
-        #header,
-        #footer {
-            background: #fcc;
-            height: 50px;
-        }
-
-        #main {
-            background: #ccf;
-        }
-
-        #main #wrap {
-            display: table-cell;
-            background: #ffc;
-            vertical-align: middle;
-        }
-
-        #text {
-            text-align: center;
+        .left,
+        .right {
+            background-color: blue;
         }
     </style>
 </head>
 
-<body>
-    <div id="box">
-        <div id="header">header</div>
-        <div id="main">
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
-            <p>内容内容</p>
+<body class="flex-column">
+    <div class="header">
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+        <p>header</p>
+    </div>
+    <div class="main flex-row">
+        <div class="left">
+            <p>left</p>
+            <p>left</p>
+            <p>left</p>
+            <p>left</p>
+            <p>left</p>
+            <p>left</p>
+            <p>left</p>
+            <p>left</p>
         </div>
-        <div id="footer">footer</div>
+        <div class="main  flex-column">
+            <div class="main">
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+                <p>内容内容</p>
+            </div>
+            <div class="footer">
+                <p>
+                    小导航
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <p>right</p>
+            <p>right</p>
+            <p>right</p>
+            <p>right</p>
+            <p>right</p>
+            <p>right</p>
+            <p>right</p>
+            <p>right</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>footer</p>
+        <p>footer</p>
+        <p>footer</p>
+        <p>footer</p>
+        <p>footer</p>
+        <p>footer</p>
+        <p>footer</p>
+        <p>footer</p>
     </div>
 </body>
 

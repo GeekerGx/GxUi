@@ -24,7 +24,7 @@ button,
 input,
 textarea,
 th,
-td {
+td,iframe {
     margin: 0;
     padding: 0;
 }
@@ -109,14 +109,16 @@ table {
 
 //#endregion
 
+html,
+body {
+    height: 100%;
+}
+
 //#region 基于bootstrap
 
 //表格内容垂直居中
 .table>tbody>tr>td {
     vertical-align: middle;
-}
-.tab-content .tab-pane {
-    height: 100%;
 }
 
 //#endregion

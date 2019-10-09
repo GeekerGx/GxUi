@@ -58,11 +58,11 @@
         }
 
         return (
-            <div ref="tabs" >
+            <div ref="tabs" class="flex-column" style="height: 100%;" >
                 <ul class="nav nav-tabs" >
                     {this.data.map(function () { return getTabHead.apply(that, [h, ...arguments]); })}
                 </ul>
-                <div ref="content" class="tab-content" >
+                <div ref="content" class="tab-content flex-column main" >
                     {this.data.map(function () { return getTabPanel.apply(that, [h, ...arguments]); })}
                 </div>
             </div>
