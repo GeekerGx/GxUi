@@ -60,8 +60,6 @@
         { field: "onClickRow", value: function (row, $el) { } },
         //双击行
         { field: "onDblClickRow", value: function (row, $el) { } },
-        //高度
-        { field: "height", value: undefined },
         //页面改变事件
         { field: "onPageChange", value: function (number, size) { } }
     ];
