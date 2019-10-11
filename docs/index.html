@@ -2,30 +2,140 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <!--第三方插件-->
-    <script src="Lib/Jquery/jquery-3.0.0.min.js"></script>
-    <script src="Lib/Vue/vue.min.js"></script>
-    <link href="Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
-    <script src="Lib/Bootstrap/bootstrap.js"></script>
-    <!--页面个性化插件-->
-    <link href="Lib/Bootstrap/Table/bootstrap-table.css" rel="stylesheet" />
-    <script src="Lib/Bootstrap/Table/bootstrap-table.js"></script>
-    <link href="Lib/Marked/github-markdown.css" rel="stylesheet">
-    <script src="Lib/Marked/marked.js"></script>
-    <link href="Lib/Prism/prism.css" rel="stylesheet" />
-    <script src="Lib/Prism/prism.js"></script>
-    <!--GxUi-->
-    <link href="Gx.All.css" rel="stylesheet" />
-    <script src="Gx.All.js"></script>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="./../Lib/HPlus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="./../Lib/HPlus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="./../Lib/HPlus/css/animate.min.css" rel="stylesheet">
+    <link href="./../Lib/HPlus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
 </head>
 
-<body>
-    <div style="width: 300px;">
-        //这里是导航
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span><img alt="image" class="img-circle" src="" /></span>
+                            <span class="clear">
+                                <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
+                                <span class="text-muted text-xs block">超级管理员</span>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">主页</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="https://www.baidu.com" data-index="0">主页示例一</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="index_v2.html">主页示例二</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="index_v3.html">主页示例三</a>
+                            </li>
+                            <li>
+                                <a href="index_v5.html" target="_blank">主页示例五</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">表单</span><span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="form_basic.html">基本表单</a>
+                            </li>
+                            <li><a class="J_menuItem" href="form_validate.html">表单验证</a>
+                            </li>
+                            <li><a class="J_menuItem" href="form_advanced.html">高级插件</a>
+                            </li>
+                            <li><a class="J_menuItem" href="form_wizard.html">表单向导</a>
+                            </li>
+                            <li>
+                                <a href="#">文件上传 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="form_file_upload.html">DropzoneJS</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="form_avatar.html">头像裁剪上传</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">编辑器 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="form_editors.html">富文本编辑器</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="form_simditor.html">simditor</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="form_markdown.html">MarkDown编辑器</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="code_editor.html">代码编辑器</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="J_menuItem" href="suggest.html">搜索自动补全</a>
+                            </li>
+                            <li><a class="J_menuItem" href="layerdate.html">日期选择器layerDate</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">
+                        关闭操作<span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="MarkedShow.html?src=GxVue/input"
+                    frameborder="0" data-id="index_v1.html" seamless></iframe>
+            </div>
+        </div>
+        <!--右侧部分结束-->
     </div>
-    <iframe id="ifm" style="width:100%;height:550px;" src="MarkedShow.html?src=GxVue/Select"></iframe>
+    <script src="./Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="./Lib/Bootstrap/bootstrap.js"></script>
+    <script src="./Lib/Jquery/jquery.metisMenu.js"></script>
+    <script src="./../Lib/HPlus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="./../Lib/HPlus/js/plugins/layer/layer.min.js"></script>
+    <script src="./../Lib/HPlus/js/hplus.min.js"></script>
+    <script src="./../Lib/HPlus/js/contabs.min.js"></script>
 </body>
+
 
 </html>
