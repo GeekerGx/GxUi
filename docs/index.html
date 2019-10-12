@@ -15,11 +15,22 @@
     <link href="Lib/HPlus/css/style.min862f.css" rel="stylesheet">
     <script src="Lib/Jquery/jquery.metisMenu.js"></script>
     <script src="Lib/Jquery/jquery.slimscroll.min.js"></script>
-    <script src="Lib/HPlus/js/hplus.min.js"></script>
     <script src="contabs.min.js"></script>
     <!--GxUi-->
     <link href="Gx.All.css" rel="stylesheet" />
     <script src="Gx.All.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#side-menu").metisMenu();
+                $(".sidebar-collapse").slimScroll({
+                    size: "4px",
+                    height: "100%",
+                    railOpacity: .9,
+                    alwaysVisible: !1
+                });
+                /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && $("#content-main").css("overflow-y", "auto");
+            });
+    </script>
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
