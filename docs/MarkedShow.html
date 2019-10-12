@@ -10,6 +10,7 @@
     <link href="Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
     <script src="Lib/Bootstrap/bootstrap.js"></script>
     <!--页面个性化插件-->
+    <link href="indexContent/css/style.min.css" rel="stylesheet">
     <link href="Lib/Bootstrap/Table/bootstrap-table.css" rel="stylesheet" />
     <script src="Lib/Bootstrap/Table/bootstrap-table.js"></script>
     <link href="Lib/Marked/github-markdown.css" rel="stylesheet">
@@ -21,7 +22,8 @@
     <script src="Gx.All.js"></script>
 </head>
 
-<body id="marked" class="markdown-body">
+<body class="wrapper-content">
+    <div id="marked" class="markdown-body"></div>
 </body>
 <script>
     Gx.ajaxGet(Gx.url.getParam("src") + ".md", {}, function (data) {
@@ -46,4 +48,5 @@
         Prism.highlightAll();
     });
 </script>
+
 </html>
