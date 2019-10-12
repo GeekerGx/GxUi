@@ -26,100 +26,54 @@
             (function () {
                 var menus = [
                     {
-                        href: "#",
-                        icon: "fa-home",
-                        name: "API",
+                        name: "GxBase",
+                        href: "MarkedShow.html?src=GxScript/Base"
+                    },
+                    {
+                        name: "GxUi",
                         childs: [
                             {
-                                href: "https://www.baidu.com",
-                                name: "主页示例一",
-                            },
-                            {
-                                href: "index_v2.html",
-                                name: "主页示例二",
-                            },
-                            {
-                                href: "index_v3.html",
-                                name: "主页示例三",
-                            },
-                            {
-                                href: "index_v5.html",
-                                target: "_blank",
-                                name: "主页示例五",
+                                name: "GxVue",
+                                childs: [
+                                    {
+                                        name: "Button(未完善)",
+                                    },
+                                    {
+                                        name: "ButtonGroups(未完善)",
+                                    },
+                                    {
+                                        name: "CheckBox(未完善)",
+                                    },
+                                    {
+                                        name: "Default(未完善)",
+                                    },
+                                    {
+                                        name: "Input(未完善)",
+                                    },
+                                    {
+                                        name: "Navbar(未完善)",
+                                    },
+                                    {
+                                        name: "Panel(未完善)",
+                                    },
+                                    {
+                                        name: "Select(未完善)",
+                                    },
+                                    {
+                                        name: "Table(未完善)",
+                                    },
+                                    {
+                                        name: "Tabs(未完善)",
+                                    },
+                                    {
+                                        name: "Toolbar(未完善)",
+                                    },
+                                ]
                             },
                         ]
                     },
                     {
-                        href: "#",
-                        icon: "fa-edit",
-                        name: "Demo",
-                        childs: [
-                            {
-                                href: "Demo/Button.html",
-                                name: "Button",
-                            },
-                            {
-                                href: "form_validate.html",
-                                name: "表单验证",
-                            },
-                            {
-                                href: "form_advanced.html",
-                                name: "高级插件",
-                            },
-                            {
-                                href: "form_wizard.html",
-                                name: "表单向导",
-                            },
-                            {
-                                icon: "fa-home",
-                                href: "#",
-                                name: "文件上传",
-                                childs: [
-                                    {
-                                        href: "form_webuploader.html",
-                                        name: "百度WebUploader",
-                                    },
-                                    {
-                                        href: "form_file_upload.html",
-                                        name: "DropzoneJS",
-                                    },
-                                    {
-                                        href: "form_avatar.html",
-                                        name: "头像裁剪上传",
-                                    },
-                                ]
-                            },
-                            {
-                                href: "#",
-                                name: "编辑器",
-                                childs: [
-                                    {
-                                        href: "form_editors.html",
-                                        name: "富文本编辑器",
-                                    },
-                                    {
-                                        href: "form_simditor.html",
-                                        name: "simditor",
-                                    },
-                                    {
-                                        href: "form_markdown.html",
-                                        name: "MarkDown编辑器",
-                                    },
-                                    {
-                                        href: "code_editor.html",
-                                        name: "代码编辑器",
-                                    },
-                                ]
-                            },
-                            {
-                                href: "suggest.html",
-                                name: "搜索自动补全",
-                            },
-                            {
-                                href: "layerdate.html",
-                                name: "日期选择器layerDate",
-                            },
-                        ]
+                        name: "GxLayer(未完善)",
                     }
                 ];
                 var createMenu = function (node, menuList) {
@@ -131,7 +85,7 @@
                         node.append(li);
                         var a = document.createElement("a");
                         li.append(a);
-                        a.href = item.href;
+                        a.href = item.href || "#";
                         if (item.childs) {
                             if (item.icon) {
                                 var i = document.createElement("i");
@@ -233,7 +187,7 @@
                 <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="MarkedShow.html?src=GxVue/input"
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="MarkedShow.html?src=README"
                     frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
         </div>
