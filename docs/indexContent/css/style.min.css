@@ -38,7 +38,7 @@ a:focus {
 .nav>li>a {
     color: #a7b1c2;
     font-weight: 600;
-    padding: 14px 20px 14px 25px
+    padding: 14px 15px 14px 25px
 }
 
 .nav li>a {
@@ -6847,19 +6847,6 @@ body.skin-3 {
 .J_menuTab {
     -webkit-transition: all .3s ease-out 0s;
     transition: all .3s ease-out 0s
-}
-
-::-webkit-scrollbar-track {
-    background-color: #F5F5F5
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-    background-color: #F5F5F5
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #999
 }
 
 .gohome {

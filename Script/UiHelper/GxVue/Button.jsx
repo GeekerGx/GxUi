@@ -2,23 +2,37 @@
     var optionObj = {};
     var setting = [
         //控件id用来当做父组件的属性
-        { field: "id", value: "" },
+        { field: "id", value: null },
         //按钮显示值
         { field: "text", value: "Button" },
-        //点击事件
-        { field: "onClick", value: function () { } },
         //宽度，覆盖公共,为空则自适应内容长度
         { field: "width", value: null },
-        //todo 图标
+        // 图标
+        { field: "icon", value: null },
         //todo 背景颜色
-        //todo 大小
+        // 大小
+        { field: "size", value: null },
+        //点击事件
+        { field: "onClick", value: function () { } },
     ];
     optionObj.render = function (h) {
+        var that = this;
         if (!this.display) return;
+        var sizeClass = (function () {
+            switch (that.size) {
+                case "lg":
+                    return "btn-lg";
+                case "sm":
+                    return "btn-sm";
+                case "xs":
+                    return "btn-xs";
+            }
+        })()
 
         return (
             <button
-                class={["btn", "btn-default"]}
+                id={this.id || this.options.el}
+                class={["btn", "btn-default", sizeClass]}
                 type="button"
                 disabled={!this.enabled}
                 onClick={this._baseClick}
@@ -26,6 +40,11 @@
                     width: this.width
                 }}
             >
+                {(function () {
+                    if (that.icon) {
+                        return (<i class={"glyphicon glyphicon-" + that.icon} ></i>);
+                    }
+                })()}
                 {this.text}
             </button>
         );
