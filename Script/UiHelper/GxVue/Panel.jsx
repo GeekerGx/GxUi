@@ -52,34 +52,47 @@
     };
     optionObj.render = function (h) {
         var that = this;
-        return (
-            <div
-                id={this.id}
-                class={[
-                    //panel
-                    this.isTabs ? "" : "panel",
-                    this.isTabs ? "" : "panel-default",
-
-                    //tabs
-                    this.isTabs ? "tab-pane" : "",
-                    this.isTabs ? "fade" : "",
-
-                    this.active ? "flex-main" : "",
-                    this.active ? "active" : "",
-                    this.active ? "in" : "",
-                ]}
-            >
-                {createPanelHead(h, that)}
+        if (this.isTabs) {
+            return (
                 <div
+                    id={this.id}
                     class={[
-                        this.isTabs ? "" : "panel-body"
+                        //tabs
+                        this.isTabs ? "tab-pane" : "",
+                        this.isTabs ? "fade" : "",
+                        this.active ? "flex-main" : "",
+                        this.active ? "active" : "",
+                        this.active ? "in" : "",
                     ]}
                     ref="content"
                 >
                 </div>
-                {createPanelFoot(h, that)}
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div
+                    id={this.id}
+                    class={[
+                        //panel
+                        this.isTabs ? "" : "panel",
+                        this.isTabs ? "" : "panel-default",
+                        this.active ? "flex-main" : "",
+                        this.active ? "active" : "",
+                        this.active ? "in" : "",
+                    ]}
+                >
+                    {createPanelHead(h, that)}
+                    <div
+                        class={[
+                            this.isTabs ? "" : "panel-body"
+                        ]}
+                        ref="content"
+                    >
+                    </div>
+                    {createPanelFoot(h, that)}
+                </div>
+            );
+        }
     };
     optionObj.mounted = function () {
         var that = this;
