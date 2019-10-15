@@ -140,6 +140,22 @@ table {
 
 //#region 基于bootstrap
 
+* > .panel:first-child {
+    margin-top: 5px;
+}
+.panel {
+    margin-bottom: 5px;
+}
+.panel .panel-heading{
+    display:flex;
+}
+.panel .panel-heading .panel-title{
+    flex:1;
+}
+.panel .panel-heading .panel-toolbar{
+    align-self:flex-end;
+}
+
 //表格内容垂直居中
 .table>tbody>tr>td {
     vertical-align: middle;

@@ -5,22 +5,73 @@
     var setting = [
         { field: "id", value: "panel_" + Gx.base.getGuid(8, 16) },
         { field: "active", value: true },
-        { field: "childNodes", value: [] }
+        { field: "childNodes", value: [] },
+        { field: "title", value: null },
+        { field: "foot", value: null },
+        { field: "isTabs", value: false },
+        //todo 工具栏
+        { field: "toolbar", value: null },
     ];
 
+    var createPanelHead = function (h, that) {
+        if (!that.title && !that.toolbar) {
+            return null;
+        }
+        return (
+            <div class="panel-heading">
+                <div class="panel-title">
+                    {that.title || ""}
+                </div>
+                {(function () {
+                    if (that.toolbar) {
+                        return (
+                            <div class="panel-toolbar">
+                                右边放toolbar
+                            </div>
+                        );
+                    }
+                })()}
+            </div>
+        );
+    };
+    var createPanelFoot = function (h, that) {
+        if (!that.foot) {
+            return null;
+        }
+        return (
+            <div class="panel-footer">
+                {that.foot}
+            </div>
+        );
+    };
     optionObj.render = function (h) {
+        var that = this;
         return (
             <div
                 id={this.id}
                 class={[
-                    "tab-pane",
-                    "fade",
+                    //panel
+                    this.isTabs ? "" : "panel",
+                    this.isTabs ? "" : "panel-default",
+
+                    //tabs
+                    this.isTabs ? "tab-pane" : "",
+                    this.isTabs ? "fade" : "",
+
                     this.active ? "flex-main" : "",
                     this.active ? "active" : "",
                     this.active ? "in" : "",
                 ]}
-                ref="content"
             >
+                {createPanelHead(h, that)}
+                <div
+                    class={[
+                        this.isTabs ? "" : "panel-body"
+                    ]}
+                    ref="content"
+                >
+                </div>
+                {createPanelFoot(h, that)}
             </div>
         );
     };

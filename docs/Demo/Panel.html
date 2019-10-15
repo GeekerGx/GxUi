@@ -21,10 +21,37 @@
         <span>12312</span>
         <div>456</div>
     </div>
+    <div id="panel1">
+        123
+        <span>12312</span>
+        <div>456</div>
+    </div>
+    <div id="panel2">
+        123
+        <span>12312</span>
+        <div>456</div>
+    </div>
+    <div id="panel3">
+        123
+        <span>12312</span>
+        <div>456</div>
+    </div>
 </body>
 <script>
-    var panel = Gx.ui.createPanel( {
-        el:"panel",
+    var panel = Gx.ui.createPanel({
+        el: "panel",
+    });
+    var panel1 = Gx.ui.createPanel({
+        el: "panel1",
+        title: "panel1-title",
+    });
+    var panel2 = Gx.ui.createPanel({
+        el: "panel2",
+        toolbar: "panel2-toolbar",
+    });
+    var panel3 = Gx.ui.createPanel({
+        el: "panel3",
+        foot: "panel3-foot",
     });
 </script>
 
