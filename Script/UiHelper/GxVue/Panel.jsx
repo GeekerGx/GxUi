@@ -24,9 +24,15 @@
                 </div>
                 {(function () {
                     if (that.toolbar) {
+
+                        var props = {
+                            options: {
+                                data: Gx.base.createObject(that.toolbar)
+                            }
+                        };
                         return (
                             <div class="panel-toolbar">
-                                右边放toolbar
+                                <gx-toolbar {...{ props }}></gx-toolbar>
                             </div>
                         );
                     }

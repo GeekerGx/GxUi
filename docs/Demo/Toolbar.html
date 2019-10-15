@@ -23,19 +23,19 @@
         el: "toolbar",
         data: [{
                 id: "add",
-                value: "添加",
-                click: function () {
+                text: "添加",
+                onClick: function () {
                     alert("点击了添加！");
                 }
             },
             {
-                value: "此按钮不可用",
+                text: "此按钮不可用",
                 enabled: false,
             },
             {
                 id: "changeEnabled",
-                value: "点击后不可用",
-                click: function () {
+                text: "点击后不可用",
+                onClick: function () {
                     this.enabled = false;
                 }
             }

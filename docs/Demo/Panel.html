@@ -47,7 +47,26 @@
     });
     var panel2 = Gx.ui.createPanel({
         el: "panel2",
-        toolbar: "panel2-toolbar",
+        toolbar: [
+            {
+                id: "add",
+                text: "添加",
+                onClick: function () {
+                    alert("点击了添加！");
+                }
+            },
+            {
+                text: "此按钮不可用",
+                enabled: false,
+            },
+            {
+                id: "changeEnabled",
+                text: "点击后不可用",
+                onClick: function () {
+                    this.enabled = false;
+                }
+            }
+        ],
     });
     var panel3 = Gx.ui.createPanel({
         el: "panel3",

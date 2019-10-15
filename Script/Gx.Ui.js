@@ -10,7 +10,6 @@ import './UiHelper/GxVue/Navbar.jsx';
 //复合组件
 import './UiHelper/GxVue/Toolbar.jsx';
 import './UiHelper/GxVue/Table.jsx';
-import './UiHelper/GxVue/ButtonGroups.jsx';
 
 //布局组件
 import './UiHelper/GxVue/Panel.jsx';

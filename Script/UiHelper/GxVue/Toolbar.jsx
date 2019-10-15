@@ -13,6 +13,9 @@
                 style={{
                     display: !this.display ? "none" : ""
                 }}
+                class={[
+                    "btn-group"
+                ]}
             >
                 {this.data.map(function (item) {
                     if (Gx.ui.checkSysKeepKey(item.id)) {
