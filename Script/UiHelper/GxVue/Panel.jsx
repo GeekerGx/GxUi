@@ -57,10 +57,10 @@
                 <div
                     id={this.id}
                     class={[
+                        "gx-panel",
                         //tabs
                         this.isTabs ? "tab-pane" : "",
                         this.isTabs ? "fade" : "",
-                        this.active ? "flex-main" : "",
                         this.active ? "active" : "",
                         this.active ? "in" : "",
                     ]}
@@ -73,10 +73,10 @@
                 <div
                     id={this.id}
                     class={[
+                        "gx-panel",
                         //panel
                         this.isTabs ? "" : "panel",
                         this.isTabs ? "" : "panel-default",
-                        this.active ? "flex-main" : "",
                         this.active ? "active" : "",
                         this.active ? "in" : "",
                     ]}

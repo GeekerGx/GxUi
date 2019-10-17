@@ -59,11 +59,11 @@
         }
 
         return (
-            <div ref="tabs" class="flex-column" style="height: 100%;" >
+            <div ref="tabs" class="gx-tabs">
                 <ul class="nav nav-tabs" >
                     {this.data.map(function () { return getTabHead.apply(that, [h, ...arguments]); })}
                 </ul>
-                <div ref="content" class="tab-content flex-column flex-main" >
+                <div ref="content" class="tab-content" style="height: calc(100% - 42px);" >
                     {this.data.map(function () { return getTabPanel.apply(that, [h, ...arguments]); })}
                 </div>
             </div>

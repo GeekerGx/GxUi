@@ -116,6 +116,9 @@ html,body,iframe{
     overflow-x: hidden;
     overflow-y: auto;
 }
+iframe{
+    vertical-align: bottom;
+}
 
 .flex-row {
     display: flex;
@@ -147,20 +150,31 @@ html,body,iframe{
 
 //#region 基于bootstrap
 
-* > .panel:first-child {
+//panel组件
+
+.gx-panel {
+    margin-bottom: 5px;
+    .panel-heading{
+        display:flex;
+        .panel-title{
+            flex:1;
+        }
+        .panel-toolbar{
+            align-self:flex-end;
+        }
+    }
+}
+* > .gx-panel:first-child {
     margin-top: 5px;
 }
-.panel {
-    margin-bottom: 5px;
-}
-.panel .panel-heading{
-    display:flex;
-}
-.panel .panel-heading .panel-title{
-    flex:1;
-}
-.panel .panel-heading .panel-toolbar{
-    align-self:flex-end;
+//tabs组件
+.gx-tabs{
+    height: 100%;
+    .gx-panel{
+        height: 100%;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
 }
 
 //表格内容垂直居中

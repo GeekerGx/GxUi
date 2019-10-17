@@ -228,6 +228,31 @@
             });
             /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && $("#content-main").css("overflow-y", "auto");
         });
+        window.myObj = {
+            closeOther: function () {
+                $(".page-tabs-content").children("[data-id]").not(":first").not(".active").each(function () {
+                    $('.J_iframe[data-id="' + $(this).data("id") + '"]').remove();
+                    $(this).remove()
+                });
+                $(".page-tabs-content").css("margin-left", "0")
+            },
+            closeAll: function () {
+                $(".page-tabs-content").children("[data-id]").not(":first").each(function () {
+                    $('.J_iframe[data-id="' + $(this).data("id") + '"]').remove();
+                    $(this).remove()
+                });
+                $(".page-tabs-content").children("[data-id]:first").each(function () {
+                    $('.J_iframe[data-id="' + $(this).data("id") + '"]').show();
+                    $(this).addClass("active")
+                });
+                $(".page-tabs-content").css("margin-left", "0")
+            },
+            refreshPage: function () {
+                $(".page-tabs-content").children(".active").each(function () {
+                    $('.J_iframe[data-id="' + $(this).data("id") + '"]').attr("src", $(this).data("id"));
+                });
+            }
+        };
     </script>
 </head>
 
@@ -257,20 +282,22 @@
                 </button>
                 <nav class="page-tabs J_menuTabs">
                     <div class="page-tabs-content">
-                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
+                        <a href="javascript:;" class="active J_menuTab" data-id="MarkedShow.html?src=README">首页</a>
                     </div>
                 </nav>
                 <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
                 </button>
                 <div class="btn-group roll-nav roll-right">
                     <button class="dropdown J_tabClose" data-toggle="dropdown">
-                        关闭操作<span class="caret"></span>
+                        菜单操作<span class="caret"></span>
                     </button>
                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        <li onclick="myObj.closeAll()"><a>关闭全部菜单</a>
+                        </li>
+                        <li onclick="myObj.closeOther()"><a>关闭其他菜单</a>
                         </li>
                         <li class="divider"></li>
-                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        <li onclick="myObj.refreshPage()"><a>刷新</a>
                         </li>
                     </ul>
                 </div>
@@ -278,7 +305,7 @@
             </div>
             <div class="row J_mainContent" id="content-main">
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="MarkedShow.html?src=README"
-                    frameborder="0" data-id="index_v1.html" seamless></iframe>
+                    frameborder="0" data-id="MarkedShow.html?src=README" seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->
