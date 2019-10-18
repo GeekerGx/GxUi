@@ -22,6 +22,7 @@
                         item.id = item.id + "" + Gx.base.getGuid(8, 16);
                     }
                     item.id = item.id || Gx.base.getGuid(8, 16);
+                    item.size="xs";
 
                     var props = { options: Gx.base.createObject(item) };
 
