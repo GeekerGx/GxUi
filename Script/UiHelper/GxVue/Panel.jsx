@@ -30,6 +30,9 @@
                                 data: Gx.base.createObject(that.toolbar)
                             }
                         };
+                        props.options.data.map(function (item) {
+                            item.size = item.size || "xs";
+                        });
                         return (
                             <div class="panel-toolbar">
                                 <gx-toolbar {...{ props }}></gx-toolbar>
