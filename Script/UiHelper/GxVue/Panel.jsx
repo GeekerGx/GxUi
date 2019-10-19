@@ -3,14 +3,14 @@
 (function (win) {
     var optionObj = {};
     var setting = [
-        { field: "id", value: "panel_" + Gx.base.getGuid(8, 16) },
+        { field: "id", value: null },
         { field: "active", value: true },
         { field: "childNodes", value: [] },
         { field: "title", value: null },
         { field: "foot", value: null },
         { field: "isTabs", value: false },
-        //todo 工具栏
         { field: "toolbar", value: null },
+        { field: "height", value: null },
     ];
 
     var createPanelHead = function (h, that) {
@@ -55,6 +55,9 @@
     };
     optionObj.render = function (h) {
         var that = this;
+        if (!this.id) {
+            this.id = "panel_" + Gx.base.getGuid(8, 16);
+        }
         if (this.isTabs) {
             return (
                 <div
@@ -89,6 +92,9 @@
                         class={[
                             this.isTabs ? "" : "panel-body"
                         ]}
+                        style={{
+                            height: this.height
+                        }}
                         ref="content"
                     >
                     </div>
