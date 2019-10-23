@@ -10,7 +10,7 @@
 
     var setting = {
         url: "",
-        type: "post",
+        type: "POST",
         timeout: 1000 * 60,
         async: true,
         param: {},
@@ -56,13 +56,8 @@
         xhr.onloadstart = function () {
             //在发送请求前的准备
         };
-        //#region 发送数据阶段
-        xhr.upload.onloadstart = function () { };
-        xhr.upload.onload = function () { };
-        xhr.upload.onprogress = function () { };
-        xhr.upload.onloadend = function () { };
-        //#endregion
         xhr.onprogress = function () { };
+        xhr.onloadend = function () { };
         xhr.onload = function () {
             //对获取的数据进行处理，目前支持string/标准json对象/arr数组
             var resultObj = (function (result) {
@@ -101,7 +96,6 @@
                 }
             })(resultObj);
         };
-        xhr.onloadend = function () { };
         //发送请求 请求类型：GET/POST；请求地址；是否异步true/false
         xhr.open(ajaxObj.type, ajaxObj.url, ajaxObj.async);
         //发送请求
