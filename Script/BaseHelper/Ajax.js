@@ -23,7 +23,7 @@
     Gx.ajax = function (url, param, success, error, async, type) {
         var that = this;
         var ajaxObj = Gx.base.mergeParam(setting, {
-            url: url,
+            url: Gx.config.ajax.urlPrefix + url,
             type: type,
             async: async,
             param: param,
