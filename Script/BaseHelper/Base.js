@@ -196,6 +196,12 @@
 
         head.appendChild(script);
     };
+    base.templateReplace = function (str, data) {
+        var computed = str.replace(/\{(\w+)\}/g, function (match, key) {
+            return data[key];
+        })
+        return computed;
+    };
 
     Gx.base = base;
 })();

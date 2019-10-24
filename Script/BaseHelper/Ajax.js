@@ -104,7 +104,7 @@
         };
         //发送请求 请求类型：GET/POST；请求地址；是否异步true/false
         xhr.open(ajaxObj.type, ajaxObj.url, ajaxObj.async);
-        xhr.setRequestHeader("content-type","application/json");
+        xhr.setRequestHeader("content-type","application/json; charset=utf-8");
         //发送请求
         xhr.send(Gx.convert.objToJson(ajaxObj.param));
     };
