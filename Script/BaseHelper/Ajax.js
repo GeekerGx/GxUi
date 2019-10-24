@@ -7,6 +7,12 @@
     Gx.ajaxGet = function (url, param, success, error, async) {
         return Gx.ajax(url, param, success, error, async, "GET");
     };
+    Gx.ajaxPut = function (url, param, success, error, async) {
+        return Gx.ajax(url, param, success, error, async, "PUT");
+    };
+    Gx.ajaxDelete = function (url, param, success, error, async) {
+        return Gx.ajax(url, param, success, error, async, "DELETE");
+    };
 
     var setting = {
         url: "",
