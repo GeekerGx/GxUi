@@ -8,9 +8,10 @@
         { field: "childNodes", value: [] },
         { field: "title", value: null },
         { field: "foot", value: null },
-        { field: "isTabs", value: false },
+        { field: "parentType", value: null },
         { field: "toolbar", value: null },
         { field: "height", value: null },
+        { field: "layoutIsMain", value: false },
     ];
 
     var createPanelHead = function (h, that) {
@@ -58,49 +59,75 @@
         if (!this.id) {
             this.id = "panel_" + Gx.base.getGuid(8, 16);
         }
-        if (this.isTabs) {
-            return (
-                <div
-                    id={this.id}
-                    class={[
-                        "gx-panel",
-                        //tabs
-                        this.isTabs ? "tab-pane" : "",
-                        this.isTabs ? "fade" : "",
-                        this.active ? "active" : "",
-                        this.active ? "in" : "",
-                    ]}
-                    ref="content"
-                >
-                </div>
-            );
-        } else {
-            return (
-                <div
-                    id={this.id}
-                    class={[
-                        "gx-panel",
-                        //panel
-                        this.isTabs ? "" : "panel",
-                        this.isTabs ? "" : "panel-default",
-                        this.active ? "active" : "",
-                        this.active ? "in" : "",
-                    ]}
-                >
-                    {createPanelHead(h, that)}
+
+        switch (this.parentType) {
+            case "gx-tabs":
+                return (
                     <div
+                        id={this.id}
                         class={[
-                            this.isTabs ? "" : "panel-body"
+                            "gx-panel",
+                            //tabs
+                            "tab-pane",
+                            "fade",
+                            this.active ? "active" : "",
+                            this.active ? "in" : "",
                         ]}
-                        style={{
-                            height: this.height
-                        }}
                         ref="content"
                     >
                     </div>
-                    {createPanelFoot(h, that)}
-                </div>
-            );
+                );
+            case "gx-layout":
+                return (
+                    <div
+                        id={this.id}
+                        class={[
+                            "gx-panel",
+                            "panel",
+                            "panel-default",
+                            this.active ? "active" : "",
+                            this.active ? "in" : "",
+                            this.layoutIsMain?"flex-main":""
+                        ]}
+                    >
+                        <div
+                            class={[
+                                "panel-body"
+                            ]}
+                            style={{
+                                height: this.height
+                            }}
+                            ref="content"
+                        >
+                        </div>
+                    </div>
+                );
+            default:
+                return (
+                    <div
+                        id={this.id}
+                        class={[
+                            "gx-panel",
+                            "panel",
+                            "panel-default",
+                            this.active ? "active" : "",
+                            this.active ? "in" : "",
+                        ]}
+                    >
+                        {createPanelHead(h, that)}
+                        <div
+                            class={[
+                                "panel-body"
+                            ]}
+                            style={{
+                                height: this.height
+                            }}
+                            ref="content"
+                        >
+                        </div>
+                        {createPanelFoot(h, that)}
+                    </div>
+                );
         }
     };
     optionObj.mounted = function () {

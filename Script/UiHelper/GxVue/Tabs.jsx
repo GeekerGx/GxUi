@@ -46,7 +46,7 @@
                 id: item.id,
                 childNodes: item.childNodes,
                 active: isActive,
-                isTabs: true,
+                parentType: "gx-tabs",
             }
         };
         return (<gx-panel {...{ props }} />);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <!--第三方插件-->
+    <script src="../Lib/Jquery/jquery-3.0.0.min.js"></script>
+    <script src="../Lib/Vue/vue.min.js"></script>
+    <link href="../Lib/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="../Lib/Bootstrap/bootstrap.js"></script>
+    <!--页面个性化插件-->
+    <link href="../Lib/Bootstrap/Table/bootstrap-table.css" rel="stylesheet" />
+    <script src="../Lib/Bootstrap/Table/bootstrap-table.js"></script>
+    <link href="../Lib/Marked/github-markdown.css" rel="stylesheet">
+    <script src="../Lib/Marked/marked.js"></script>
+    <link href="../Lib/Prism/prism.css" rel="stylesheet" />
+    <script src="../Lib/Prism/prism.js"></script>
+    <!--GxUi-->
+    <link href="../Gx.All.css" rel="stylesheet" />
+    <script src="../Gx.All.js"></script>
+</head>
+
+<body>
+    <div id="layout">
+        <div id="top">123321</div>
+        <div id="main">
+            <iframe src="../MarkedShow.html?src=GxScript/Base"></iframe>
+        </div>
+        <div id="bottom">123321</div>
+    </div>
+</body>
+<script>
+    Gx.ui.createLayout({
+        el: "layout",
+        align: "column",//"row"
+        data: [
+            { id: "top" },
+            { id: "main", isMain: true },
+            { id: "bottom" }
+        ]
+    });
+</script>
+
+</html>

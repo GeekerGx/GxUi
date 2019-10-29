@@ -14,6 +14,7 @@ import './UiHelper/GxVue/Table.jsx';
 //布局组件
 import './UiHelper/GxVue/Panel.jsx';
 import './UiHelper/GxVue/Tabs.jsx';
+import './UiHelper/GxVue/Layout.jsx';
 
 import './UiHelper/GxVue/Default.jsx';
 
