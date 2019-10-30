@@ -2,7 +2,7 @@
 (function (win) {
     var optionObj = {};
     var setting = [
-        { field: "align", value: "column" },//row
+        { field: "align", value: "column" },//column、row
         { field: "data", value: [] },
     ];
 

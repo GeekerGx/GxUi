@@ -164,6 +164,7 @@ iframe{
         }
     }
     .panel-body{
+        height: 100%;
         overflow: hidden;
         overflow-y: auto;
     }
@@ -185,8 +186,15 @@ iframe{
 //layout组件
 .gx-layout{
     display:flex;
+    height: 100%;
+    
 }
-
+.gx-layout.flex-row{
+    >.gx-panel{
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+}
 //表格内容垂直居中
 .table>tbody>tr>td {
     vertical-align: middle;
