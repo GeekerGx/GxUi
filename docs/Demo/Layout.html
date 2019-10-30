@@ -25,7 +25,6 @@
     <div id="colLayout">
         <div id="top">
             上边高自适应
-            <p>123</p>
         </div>
         <div id="colMain">
             <div id="rowLayout">
@@ -33,6 +32,7 @@
                     左边宽150px
                     <p>123</p>
                     <div id=btnAdd></div>
+                    <div id=btnDel></div>
                     <div id=btnResize></div>
                 </div>
                 <div id="rowMain">
@@ -62,11 +62,20 @@
         }
     });
     Gx.ui.createButton({
+        el: "btnDel",
+        text: "删除最早的一段话",
+        onClick: function () {
+            var p=document.querySelector("#top p");
+            if(p){
+                p.remove();
+            }
+        }
+    });
+    Gx.ui.createButton({
         el: "btnResize",
         text: "修改body样式",
         onClick: function () {
             var width = document.querySelector("body").style.width;
-            console.log(width);
             document.querySelector("body").style.width = width ? "" : "50%";
         }
     });
