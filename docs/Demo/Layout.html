@@ -65,8 +65,8 @@
         el: "btnDel",
         text: "删除最早的一段话",
         onClick: function () {
-            var p=document.querySelector("#top p");
-            if(p){
+            var p = document.querySelector("#top p");
+            if (p) {
                 p.remove();
             }
         }
@@ -84,6 +84,7 @@
         align: "column",//column row
         data: [
             {
+                title: "查询框",
                 id: "top"
             },
             { id: "colMain", layoutIsMain: true },
@@ -97,7 +98,9 @@
             {
                 id: "left", width: "150px"
             },
-            { id: "rowMain", layoutIsMain: true },
+            {
+                title: "主要内容", id: "rowMain", layoutIsMain: true
+            },
             { id: "right", width: "200px" }
         ]
     });
