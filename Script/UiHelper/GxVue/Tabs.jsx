@@ -41,14 +41,12 @@
     var getTabPanel = function (h, item, index) {
         var that = this;
         var isActive = index == that.selectIndex;
-        var props = {
-            options: {
-                id: item.id,
-                childNodes: item.childNodes,
-                active: isActive,
-                parentType: "gx-tabs",
-            }
-        };
+        
+        var props = { options: {} };
+        props.options = Gx.base.mergeParam({
+            parentType: "gx-tabs",
+            active: isActive,
+        }, item);
         return (<gx-panel {...{ props }} />);
     };
 

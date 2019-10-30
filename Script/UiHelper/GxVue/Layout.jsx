@@ -9,14 +9,11 @@
     //标签面板
     var getLayoutPanel = function (h, item, index) {
         var that = this;
-        var props = {
-            options: {
-                id: item.id,
-                childNodes: item.childNodes,
-                parentType: "gx-layout",
-                layoutIsMain: item.isMain || false
-            }
-        };
+        var props = { options: {} };
+        props.options = Gx.base.mergeParam({
+            parentType: "gx-layout",
+            layoutIsMain: item.isMain || false,
+        }, item);
         return (<gx-panel {...{ props }} />);
     };
 
@@ -26,10 +23,12 @@
             return;
         }
         return (
-            <div class={[
-                "gx-layout",
-                "flex-" + this.align
-            ]}>
+            <div
+                id={this.el}
+                class={[
+                    "gx-layout",
+                    "flex-" + this.align
+                ]}>
                 {this.data.map(function () { return getLayoutPanel.apply(that, [h, ...arguments]); })}
             </div>
         );

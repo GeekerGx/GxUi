@@ -11,6 +11,7 @@
         { field: "parentType", value: null },
         { field: "toolbar", value: null },
         { field: "height", value: null },
+        { field: "width", value: null },
         { field: "layoutIsMain", value: false },
     ];
 
@@ -80,17 +81,21 @@
             case "gx-layout":
                 return (
                     <div
-                        id={this.id}
                         class={[
                             "gx-panel",
                             "panel",
                             "panel-default",
                             this.active ? "active" : "",
                             this.active ? "in" : "",
-                            this.layoutIsMain?"flex-main":""
+                            this.layoutIsMain ? "flex-main" : ""
                         ]}
+                        style={{
+                            width: this.width
+                        }}
                     >
+                        {createPanelHead(h, that)}
                         <div
+                            id={this.id}
                             class={[
                                 "panel-body"
                             ]}
@@ -113,6 +118,9 @@
                             this.active ? "active" : "",
                             this.active ? "in" : "",
                         ]}
+                        style={{
+                            width: this.width
+                        }}
                     >
                         {createPanelHead(h, that)}
                         <div

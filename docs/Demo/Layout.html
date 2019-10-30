@@ -22,24 +22,109 @@
 </head>
 
 <body>
-    <div id="layout">
-        <div id="top">123321</div>
-        <div id="main">
-            <iframe src="../MarkedShow.html?src=GxScript/Base"></iframe>
+    <div id="colLayout">
+        <div id="top">
+            上边高自适应
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
         </div>
-        <div id="bottom">123321</div>
+        <div id="colMain">
+            <div id="rowLayout">
+                <div id="left">
+                    左边宽150px
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                </div>
+                <div id="rowMain">
+                    <iframe src="../MarkedShow.html?src=GxScript/Base"></iframe>
+                </div>
+                <div id="right">
+                    右边宽200px
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                    <p>123</p>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            下边高100px
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+        </div>
     </div>
 </body>
 <script>
     Gx.ui.createLayout({
-        el: "layout",
-        align: "row",//column row
+        el: "colLayout",
+        align: "column",//column row
         data: [
-            { id: "top" },
-            { id: "main", isMain: true },
-            { id: "bottom" }
+            {
+                id: "top"
+            },
+            { id: "colMain", layoutIsMain: true },
+            { id: "bottom", height: "100px" }
         ]
     });
+    Gx.ui.createLayout({
+        el: "rowLayout",
+        align: "row",//column row
+        data: [
+            {
+                id: "left", width: "150px"
+            },
+            { id: "rowMain", layoutIsMain: true },
+            { id: "right", width: "200px" }
+        ]
+    });
+    window.addItem = function () {
+        var p = document.createElement("p");
+        p.innerText = "123";
+        document.querySelector("#top").append(p);
+    };
 </script>
 
 </html>
