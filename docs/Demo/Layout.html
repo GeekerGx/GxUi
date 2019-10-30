@@ -26,37 +26,14 @@
         <div id="top">
             上边高自适应
             <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
         </div>
         <div id="colMain">
             <div id="rowLayout">
                 <div id="left">
                     左边宽150px
                     <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
+                    <div id=btnAdd></div>
+                    <div id=btnResize></div>
                 </div>
                 <div id="rowMain">
                     <iframe src="../MarkedShow.html?src=GxScript/Base"></iframe>
@@ -64,40 +41,35 @@
                 <div id="right">
                     右边宽200px
                     <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
-                    <p>123</p>
                 </div>
             </div>
         </div>
         <div id="bottom">
             下边高100px
             <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
-            <p>123</p>
         </div>
     </div>
 </body>
 <script>
+    var count = 0;
+    Gx.ui.createButton({
+        el: "btnAdd",
+        text: "向头部添加内容",
+        onClick: function () {
+            var p = document.createElement("p");
+            p.innerText = "这是一段话：" + (count++);
+            document.querySelector("#top").append(p);
+        }
+    });
+    Gx.ui.createButton({
+        el: "btnResize",
+        text: "修改body样式",
+        onClick: function () {
+            var width = document.querySelector("body").style.width;
+            console.log(width);
+            document.querySelector("body").style.width = width ? "" : "50%";
+        }
+    });
     Gx.ui.createLayout({
         el: "colLayout",
         align: "column",//column row
@@ -120,11 +92,6 @@
             { id: "right", width: "200px" }
         ]
     });
-    window.addItem = function () {
-        var p = document.createElement("p");
-        p.innerText = "123";
-        document.querySelector("#top").append(p);
-    };
 </script>
 
 </html>
