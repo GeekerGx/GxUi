@@ -150,8 +150,12 @@ iframe{
 
 //#region markdown样式
 .markdown-body{
-    ul,ol {
-        list-style-type:decimal;
+    ul { 
+        counter-reset: item 
+    }
+    li:before { 
+        content: counters(item, ".") "、"; 
+        counter-increment: item 
     }
 }
 
