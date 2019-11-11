@@ -8,6 +8,10 @@
         //多选
         { field: "multiple", value: false },
     ];
+    var dataSetting = {
+        value: null,
+        name: null
+    };
 
     optionObj.render = function (h) {
         var that = this;
@@ -15,17 +19,21 @@
         this.data.forEach(function (item, index) {
             list.push(
                 <li>
-                    <input
-                        type={that.multiple ? "checkbox" : "radio"}
-                        value={item.value}
-                        name={that.name}
-                    />
-                    {item.text}
+                    <label>
+                        <input
+                            type={that.multiple ? "checkbox" : "radio"}
+                            value={item.value}
+                            name={that.name}
+                        />
+                        {item.text}
+                    </label>
                 </li>
             );
         });
         return (
-            <ul>
+            <ul class={[
+                "gx-check-box"
+            ]}>
                 {list}
             </ul>
         );
