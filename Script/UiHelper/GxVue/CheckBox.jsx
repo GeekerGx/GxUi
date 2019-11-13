@@ -10,7 +10,9 @@
     ];
     var dataSetting = {
         value: null,
-        name: null
+        name: null,
+        disabled:false,
+        checked:false,
     };
 
     optionObj.render = function (h) {
@@ -24,7 +26,10 @@
                             type={that.multiple ? "checkbox" : "radio"}
                             value={item.value}
                             name={that.name}
+                            disabled={item.disabled ? "disabled" : null}
+                            checked={item.checked ? "checked" : null}
                         />
+                        <i class="icon"></i>
                         {item.text}
                     </label>
                 </li>

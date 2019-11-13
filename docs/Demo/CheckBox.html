@@ -17,18 +17,54 @@
 
 <body>
     <div id="radioForData"></div>
+    <div id="checkboxForData"></div>
 </body>
 <script>
     var radioForData = Gx.ui.createCheckBox({
         el: "radioForData",
         name: "radioForData",
-        //multiple: true,
-        data:[{
-            value:"man",
-            text:"man"
+        multiple: false,
+        data: [{
+            value: "好吃的",
+            text: "好吃的",
+            disabled: true,
+            checked: true,
+        }, {
+            value: "好玩的",
+            text: "好玩的",
+            disabled: true,
+            checked: false,
         },{
-            value:"women",
-            text:"women"
+            value: "好玩的",
+            text: "好玩的",
+            disabled: false,
+            checked: false,
+        }]
+    });
+    var checkboxForData = Gx.ui.createCheckBox({
+        el: "checkboxForData",
+        name: "checkboxForData",
+        multiple: true,
+        data: [{
+            value: "好吃的",
+            text: "好吃的",
+            disabled: true,
+            checked: true,
+        }, {
+            value: "好玩的",
+            text: "好玩的",
+            disabled: true,
+            checked: false,
+        }, {
+            value: "好喝的",
+            text: "好喝的",
+            disabled: false,
+            checked: true,
+        }, {
+            value: "好玩的",
+            text: "好玩的",
+            disabled: false,
+            checked: false,
         }]
     });
 </script>
