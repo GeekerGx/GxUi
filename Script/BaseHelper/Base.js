@@ -177,7 +177,7 @@
     base.importLink = function (src) {
         var head = document.querySelector('head');
         var thisPath = document.currentScript.src;
-        var libPath = thisPath.substring(0, thisPath.lastIndexOf('/')) + "/Lib/";
+        var libPath = thisPath.substring(0, thisPath.lastIndexOf('/')) + "/../";
 
         var link = document.createElement('link');
         link.rel = "stylesheet";
