@@ -15,10 +15,12 @@ module.exports = {
         ]
     },
     entry: {
-        "Gx.All": path.join(__dirname, 'Gx.All.js'),
+        "Lib/GxUi/Gx.All": path.join(__dirname, 'Gx.All.js'),
+        //文档使用
+        "docs/Lib/GxUi/Gx.All": path.join(__dirname, 'Gx.All.js'),
     },
     output: {
-        path: path.join(__dirname, '../Lib/GxUi'),
+        path: path.join(__dirname, '..'),
         filename: '[name].js',
     },
     module: {
@@ -52,6 +54,12 @@ module.exports = {
             },
             // 复制插件
             {
+                from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
+                to: path.join(__dirname, '../docs/Lib/GxUi/Gx.Config.js')
+            },
+            // 复制插件
+            {
+                ignore:["GxUi/*"],
                 from: path.join(__dirname, '../Lib'),
                 to: path.join(__dirname, '../docs/Lib')
             },]),
