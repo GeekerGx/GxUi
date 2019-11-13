@@ -188,7 +188,7 @@
     base.importScript = function (src, onload) {
         var head = document.querySelector('head');
         var thisPath = document.currentScript.src;
-        var libPath = thisPath.substring(0, thisPath.lastIndexOf('/')) + "/Lib/";
+        var libPath = thisPath.substring(0, thisPath.lastIndexOf('/')) + "/../";
 
         var script = document.createElement('script');
         script.onload = onload || function () { };
