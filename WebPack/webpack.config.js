@@ -15,6 +15,7 @@ module.exports = {
         ]
     },
     entry: {
+        //生成js css文件
         "Lib/GxUi/Gx.All": path.join(__dirname, 'Gx.All.js'),
         //文档使用
         "docs/Lib/GxUi/Gx.All": path.join(__dirname, 'Gx.All.js'),
@@ -47,19 +48,19 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            // 复制插件
+            //#region 复制Gx配置文件
             {
                 from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
                 to: path.join(__dirname, '../Lib/GxUi/Gx.Config.js')
             },
-            // 复制插件
             {
                 from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
                 to: path.join(__dirname, '../docs/Lib/GxUi/Gx.Config.js')
             },
-            // 复制插件
+            //#endregion
+            // 复制Lib插件
             {
-                ignore:["GxUi/*"],
+                ignore: ["GxUi/Gx.*"],
                 from: path.join(__dirname, '../Lib'),
                 to: path.join(__dirname, '../docs/Lib')
             },]),
