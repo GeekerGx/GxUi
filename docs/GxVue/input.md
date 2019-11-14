@@ -1,11 +1,15 @@
 # input 输入框
+
 ## 使用
+
 >html部分  
 
 ```html
 <div id="input"></div>
 ```
+
 >js部分  
+
 ```js
 var input = Gx.ui.createInput("input", {
     type: "number",
@@ -22,8 +26,11 @@ var input = Gx.ui.createInput("input", {
     }
 });
 ```
+
 ## API
+
 ### 属性
+
 |#|名称|类型|默认值|说明|
 |--|--|--|--|--|
 |[root](#root)|vue对象|`Object`|无法形容|获取Vue实例对象，可直接操作。|
@@ -36,6 +43,7 @@ var input = Gx.ui.createInput("input", {
 |[type](#type)|输入框类型|`String`|`text`|输入框类型目前支持`[textarea,number,text,password]`|
 
 ### 方法
+
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
 |[appendChildTo(el)](#appendChildTo)|挂载到元素结尾|`String el`元素id|无|将此实例挂载到对应元素结尾。|
@@ -44,6 +52,7 @@ var input = Gx.ui.createInput("input", {
 ||
 
 ### 事件
+
 |#|名称|参数类型|返回内容|说明|
 |--|--|--|--|--|
 ||
@@ -53,17 +62,22 @@ var input = Gx.ui.createInput("input", {
 |[onValidation(val)](#onValidation)|验证事件|`String val`|`Boolean`类型|失焦后继续验证如果验证通过则正常，否则提示问题。|
 
 ### <span id="isMicrometer">isMicrometer 是否千分符</span>
+
 >类型：`Boolean`  
 >默认：`false`  
 >说明：显示货币千分符。  
+
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.isMicrometer=true;
 ```
+
 ### <span id="onBlur">onBlur 失焦事件</span>
+
 >参数类型：无  
 >默认：`function(){}`  
 >说明：输入框失去焦点后触发的事件。  
+
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.onBlur=function(){
@@ -72,10 +86,13 @@ input.onBlur=function(){
     alert(that.value);
 };
 ```
+
 ### <span id="onChange">onChange 改变事件</span>
+
 >参数类型：无  
 >默认：`function(){}`  
 >说明：输入框内容发生改变后触发的事件。  
+
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.onChange=function(){
@@ -84,10 +101,13 @@ input.onChange=function(){
     alert(that.value);
 };
 ```
+
 ### <span id="onFocus">onFocus 获焦事件</span>
+
 >参数类型：无  
 >默认：`function(){}`  
 >说明：输入框获得焦点后触发的事件。  
+
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.onFocus=function(){
@@ -96,35 +116,47 @@ input.onFocus=function(){
     alert(that.value);
 };
 ```
+
 ### <span id="prompt">prompt 预期值提示信息</span>
+
 >参数类型：`String`  
 >默认：`''`  
 >说明：可描述输入字段预期值的提示信息。  
+
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.prompt='请输入数字';
 ```
+
 ### <span id="text">text 输入框显示值</span>
+
 >参数类型：`String`  
 >默认：获取value属性值  
 >说明：可描述输入字段预期值的提示信息。此字段无法赋值！！！  
+
 ```js
 //为方便数字型千分符的拓展。
 //请勿对该属性赋值，会报错！
 ```
+
 ### <span id="type">type 输入框类型</span>
+
 >参数类型：`String`  
 >默认：`text`  
 >说明：输入框类型目前支持`[textarea,number,text,password]`  
+
 ```js
 //虽然可以在创建实例后进行修改但是不推荐。
 //因为修改后value值还是原来的值
 input.type='textarea';
 ```
+
 ### <span id="onValidation">onValidation(val) 验证事件</span>
+
 >参数类型：`String val`  
 >默认：`function (val) { return true; }`  
 >说明：失焦后继续验证如果验证通过则正常，否则提示问题。  
+
 ```js
 //除了在创建实例时赋值，还可以在创建后直接给对象赋值。
 input.onValidation=function (val) {
