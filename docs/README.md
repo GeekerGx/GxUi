@@ -22,14 +22,14 @@ GxUi基于vue框架开发的前端插件
 - GxUi
     - Button
     - CheckBox
-        - [ ] 添加输入框验证验证样式（上移或直接显示错误信息）
+        - [x] 添加复选框、单选框样式
     - Default
     - Input
+        - [ ] 添加输入框验证样式
     - Layout
     - Navbar
     - Panel
     - Select
-        - [ ] 添加选择框样式
     - Table
     - Tabs
     - Toolbar
