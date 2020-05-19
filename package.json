@@ -1,6 +1,6 @@
 {
   "name": "gxui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GxUi基于vue框架开发的前端插件",
   "main": "Gx.All.js",
   "directories": {
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/CoderGx/GxUi/issues"
   },
-  "homepage": "https://github.com/CoderGx/GxUi#readme",
+  "homepage": "https://codergx.github.io/GxUi/docs/",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
