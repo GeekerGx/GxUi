@@ -1,26 +1,33 @@
 {
   "name": "gxui",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "GxUi基于vue框架开发的前端插件",
-  "main": "Gx.All.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "watch": "webpack --config WebPack/webpack.config.js --watch",
-    "build": "webpack --config WebPack/webpack.config.js"
+  "keywords": [
+    "ui",
+    "GxUi",
+    "gxui"
+  ],
+  "homepage": "https://codergx.github.io/GxUi/docs/",
+  "bugs": {
+    "url": "https://github.com/CoderGx/GxUi/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CoderGx/GxUi.git"
   },
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CoderGx/GxUi/issues"
+  "contributors": [
+    "GeekGx/CoderGx"
+  ],
+  "main": "Lib/GxUi/Gx.All.js",
+  "author": "",
+  "directories": {
+    "doc": "docs"
   },
-  "homepage": "https://codergx.github.io/GxUi/docs/",
+  "scripts": {
+    "watch": "webpack --config WebPack/webpack.config.js --watch",
+    "build": "webpack --config WebPack/webpack.config.js"
+  },
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
