@@ -1,17 +1,8 @@
 const path = require('path');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var UglifyESPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     optimization: {
         minimizer: [
-            new UglifyESPlugin({
-                uglifyOptions: {
-                    mangle: false,
-                }
-            })
         ]
     },
     entry: {
@@ -25,6 +16,14 @@ module.exports = {
         filename: '[name].js',
         libraryTarget: 'umd'
     },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
+        alias: {
+            '@': path.join(__dirname, ".."),
+            '@components': path.join(__dirname, "..", 'src/components'),
+            '@helper': path.join(__dirname, "..", 'src/helper'),
+        }
+    },
     module: {
         rules: [{
             test: /\.jsx$/,
@@ -32,54 +31,9 @@ module.exports = {
             query: {
                 presets: ['es2015']
             }
-        },
-        {
-            test: /\.less$/,
-            use: [{
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                    publicPath: '../Lib/GxUi'
-                }
-            },
-                "css-loader",
-                "less-loader"
-            ]
         }
         ]
     },
     plugins: [
-        new CopyWebpackPlugin([
-            //#region 复制Gx配置文件
-            {
-                from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
-                to: path.join(__dirname, '../Lib/GxUi/Gx.Config.js')
-            },
-            {
-                from: path.join(__dirname, '../Script/BaseHelper/Config.js'),
-                to: path.join(__dirname, '../docs/Lib/GxUi/Gx.Config.js')
-            },
-            //#endregion
-            // 复制Lib插件
-            {
-                ignore: ["GxUi/Gx.*"],
-                from: path.join(__dirname, '../Lib'),
-                to: path.join(__dirname, '../docs/Lib')
-            },]),
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-        }),
-        // 用于优化css文件
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessorOptions: {
-                safe: true,
-                autoprefixer: { disable: true },
-                mergeLonghand: false,
-                discardComments: {
-                    removeAll: true // 移除注释
-                }
-            },
-            canPrint: true
-        }),
     ]
 };

@@ -1,10 +1,6 @@
 //import '../WebPack/Gx.Script.js';
 //import '../WebPack/Gx.Style.js';
-
+import src from '@/src';
 module.exports = {
-    GxHelper: {
-        test: function () {
-            console.log("this is GxHelper.test");
-        }
-    },
-}
+    aa:123
+};
