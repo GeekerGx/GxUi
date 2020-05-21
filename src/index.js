@@ -1,3 +1,1 @@
-export default {
-    aa: 123
-};
+export default 123334433;
