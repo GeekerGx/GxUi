@@ -3,10 +3,13 @@ const joinPath = (url) => {
     return path.join(__dirname, url);
 };
 module.exports = {
-    entry: joinPath('../src/index.js'),
+    entry:{
+        "Gx.All":joinPath('../src/index.js'),
+        "docs/static/GxUi/Gx.All":joinPath('../src/index.js'),
+    } ,
     output: {
-        path: joinPath('../docs'),
-        filename: 'Gx.All.js',
+        path: joinPath('..'),
+        filename: '[name].js',
         libraryExport: "default",
         library: 'GxUi',
         libraryTarget: "umd",

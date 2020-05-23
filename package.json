@@ -1,6 +1,6 @@
 {
   "name": "gxui",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "GxUi基于vue框架开发的前端插件",
   "keywords": [
     "ui",
@@ -19,7 +19,7 @@
   "contributors": [
     "GeekGx/CoderGx"
   ],
-  "main": "docs/Gx.All.js",
+  "main": "Gx.All.js",
   "author": "",
   "directories": {
     "doc": "docs"
