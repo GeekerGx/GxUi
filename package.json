@@ -1,6 +1,6 @@
 {
   "name": "gxui",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "GxUi基于vue框架开发的前端插件",
   "keywords": [
     "ui",
@@ -28,7 +28,8 @@
     "start": "node ./node_modules/babel-cli/bin/babel-node --plugins dynamic-import-node ./src/server/index.js",
     "build": "webpack --config WebPack/webpack.config.js"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "express": "^4.17.1",
