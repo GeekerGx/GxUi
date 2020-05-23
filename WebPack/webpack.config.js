@@ -20,4 +20,5 @@ module.exports = {
             '@helper': joinPath("../src/helper"),
         }
     },
+    mode: 'production'
 };
