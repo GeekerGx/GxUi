@@ -1,11 +1,12 @@
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
 const webpackConfig = require("../../WebPack/webpack.config.js");
+const joinPath = require("./pathHelper.js");
 
 const option = {
-    host: webpackConfig.devServer.host,
-    port: webpackConfig.devServer.port,
-    contentBase: webpackConfig.output.path,
+    host: "localhost",
+    port: 3000,
+    contentBase: joinPath('docs'),
     overlay: true,
     stats: "errors-only",
     quiet: false,
@@ -13,17 +14,17 @@ const option = {
 };
 webpackDevServer.addDevServerEntrypoints(webpackConfig, option);
 
-const comiler = webpack(webpackConfig);
+const compiler = webpack(webpackConfig);
 let bundleStart = null;
-comiler.plugin("compile", () => {
+compiler.plugin("compile", () => {
     console.log("Bundling...");
     bundleStart = Date.now();
 });
-comiler.plugin("done", () => {
+compiler.plugin("done", () => {
     console.log(`Bundled in ${Date.now() - bundleStart} ms!`);
 });
 
-const bundler = new webpackDevServer(comiler, option);
-bundler.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, () => {
+const bundler = new webpackDevServer(compiler, option);
+bundler.listen(option.port, option.host, () => {
     console.log("Bundling project, please wait...");
 });
