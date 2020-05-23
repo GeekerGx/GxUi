@@ -1,12 +1,7 @@
-const gx = {
-    test: 12345
-};
-const add = {
-    add: (a, b) => {
-        return a + b;
-    }
-}
+import * as helper from './helper';
+import * as components from './components';
+
 export default {
-    ...gx,
-    ...add,
+    ...helper,
+    ...components
 };

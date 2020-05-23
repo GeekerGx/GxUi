@@ -2,11 +2,11 @@ const joinPath = require("../src/server/pathHelper.js");
 
 module.exports = {
     entry: {
-        "Gx.All.js": joinPath('src/index.js'),
-        "docs/static/GxUi/Gx.All.js": joinPath('src/index.js'),
+        "../Gx.All.js": joinPath('src/index.js'),
+        "static/GxUi/Gx.All.js": joinPath('docs/index.js'),
     },
     output: {
-        path: joinPath(''),
+        path: joinPath('docs'),
         filename: '[name]',
         libraryExport: "default",
         library: 'GxUi',
@@ -14,9 +14,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@': joinPath(""),
-            '@components': joinPath("src/components"),
-            '@helper': joinPath("src/helper"),
+            '@src': joinPath("src"),
         }
     },
     mode: 'production',

@@ -7,7 +7,6 @@ const option = {
     host: "localhost",
     port: 3000,
     contentBase: joinPath('docs'),
-    publicPath: '/static/GxUi/',
     overlay: true,
     stats: "errors-only",
     quiet: false,
