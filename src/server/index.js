@@ -1,13 +1,19 @@
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
-const express = require("express");
-const app = express();
-app.use(express.static(__dirname + "./../../docs"));
-webpackConfig = require("../../WebPack/webpack.config.js");
+const webpackConfig = require("../../WebPack/webpack.config.js");
 
-webpackDevServer.addDevServerEntrypoints(webpackConfig, webpackConfig.devServer);
+const option = {
+    host: webpackConfig.devServer.host,
+    port: webpackConfig.devServer.port,
+    contentBase: webpackConfig.output.publicPath,
+    overlay: true,
+    stats: "errors-only",
+    quiet: false,
+    compress: false,
+};
+webpackDevServer.addDevServerEntrypoints(webpackConfig, option);
+
 const comiler = webpack(webpackConfig);
-console.log(`Webpack running on localhost:3000`);
 let bundleStart = null;
 comiler.plugin("compile", () => {
     console.log("Bundling...");
@@ -16,11 +22,8 @@ comiler.plugin("compile", () => {
 comiler.plugin("done", () => {
     console.log(`Bundled in ${Date.now() - bundleStart} ms!`);
 });
-const bundler = new webpackDevServer(comiler, webpackConfig.devServer);
-bundler.listen(3000, "localhost", () => {
-    console.log("Bundling project, please wait...");
-});
 
-app.listen(3000, () => {
-    console.log(`Server running on port ${3000}`);
+const bundler = new webpackDevServer(comiler, option);
+bundler.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, () => {
+    console.log("Bundling project, please wait...");
 });

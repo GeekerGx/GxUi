@@ -1,1 +1,5 @@
-export default 123334433;
+const gx = {
+    test: 12345
+};
+console.log(gx);
+export default gx;
