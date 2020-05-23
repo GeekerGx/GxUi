@@ -7,7 +7,9 @@ module.exports = {
     output: {
         path: joinPath('../docs'),
         filename: 'Gx.All.js',
-        publicPath: joinPath('../docs'),
+        libraryExport: "default",
+        library: 'GxUi',
+        libraryTarget: "umd",
     },
     devServer: {
         host: "localhost",
@@ -20,5 +22,5 @@ module.exports = {
             '@helper': joinPath("../src/helper"),
         }
     },
-    mode: 'production'
+    mode: 'production',
 };

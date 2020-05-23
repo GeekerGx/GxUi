@@ -5,7 +5,7 @@ const webpackConfig = require("../../WebPack/webpack.config.js");
 const option = {
     host: webpackConfig.devServer.host,
     port: webpackConfig.devServer.port,
-    contentBase: webpackConfig.output.publicPath,
+    contentBase: webpackConfig.output.path,
     overlay: true,
     stats: "errors-only",
     quiet: false,
