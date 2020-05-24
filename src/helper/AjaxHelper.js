@@ -13,7 +13,7 @@ const parseResponse = (response) => {
     }
 };
 
-const get = (url) => {
+export const get = (url) => {
     return new Promise((resolve, reject) => {
         fetch(url)
             .then(parseResponse)
@@ -21,7 +21,7 @@ const get = (url) => {
             .catch(err => reject(err));
     });
 };
-const post = (url, data) => {
+export const post = (url, data) => {
     return new Promise((resolve, reject) => {
         fetch(url, {
             method: 'POST',
@@ -34,8 +34,4 @@ const post = (url, data) => {
             .then(data => resolve(data))
             .catch(err => reject(err));
     })
-};
-
-export default {
-    get, post
 };

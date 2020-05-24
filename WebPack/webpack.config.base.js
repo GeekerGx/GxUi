@@ -1,6 +1,8 @@
-const joinPath = require("../src/server/pathHelper.js");
+const joinPath = require("../src/server/pathHelper");
 
-module.exports = {
+module.exports = ({
+    mode = 'production'
+}) => ({
     entry: {
         "../Gx.All.js": joinPath('src/index.js'),
         "static/GxUi/Gx.All.js": joinPath('docs/index.js'),
@@ -17,5 +19,5 @@ module.exports = {
             '@src': joinPath("src"),
         }
     },
-    mode: 'production',
-};
+    mode,
+});

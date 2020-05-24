@@ -1,2 +1,2 @@
-const test = "123";
-export { test };
+import { Button } from 'antd';
+export { Button };

@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
-const webpackConfig = require("../../WebPack/webpack.config.js");
-const joinPath = require("./pathHelper.js");
+const webpackConfig = require("../../WebPack/webpack.config.dev");
+const joinPath = require("./pathHelper");
 
 const option = {
     host: "localhost",
@@ -11,6 +11,7 @@ const option = {
     stats: "errors-only",
     quiet: false,
     compress: false,
+    open: true,
 };
 webpackDevServer.addDevServerEntrypoints(webpackConfig, option);
 
