@@ -1,8 +1,10 @@
 const joinPath = require("../src/server/pathHelper");
+const webpack = require("webpack");
 
 module.exports = ({
     mode = 'production'
 }) => ({
+    mode,
     entry: {
         "../Gx.All.js": joinPath('src/index.js'),
         "static/GxUi/Gx.All.js": joinPath('docs/src/index.jsx'),
@@ -10,7 +12,6 @@ module.exports = ({
     output: {
         path: joinPath('docs'),
         filename: '[name]',
-        libraryExport: "default",
         library: 'GxUi',
         libraryTarget: "umd",
     },
@@ -19,5 +20,19 @@ module.exports = ({
             '@src': joinPath("src"),
         }
     },
-    mode,
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: "babel-loader",
+                options: { presets: ["@babel/env"] }
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            }
+        ]
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 });

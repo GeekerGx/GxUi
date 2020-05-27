@@ -1,23 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GxUi from '@src';
+import GxUi, { Button } from '@src';
+
 
 if (!document.getElementById("root")) {
     const div = document.createElement("div");
     div.id = 'root';
     document.body.appendChild(div);
 }
-const App = () => {
-    return 123;
-}
 let root = document.getElementById("root");
-ReactDOM.hydrate(
-    <App />,
+
+const rederMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+rederMethod(
+    <Button />,
     root
 );
-
-
-
-console.log(GxUi);
-
 export default GxUi;
