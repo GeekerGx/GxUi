@@ -17,7 +17,7 @@ module.exports = ({
     },
     resolve: {
         alias: {
-            '@src': joinPath("src"),
+            '@gxui': joinPath("src"),
         }
     },
     module: {

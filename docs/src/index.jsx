@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GxUi, { Button } from '@src';
+import GxUi, { Button } from '@gxui';
 
 
 if (!document.getElementById("root")) {
@@ -12,7 +12,7 @@ let root = document.getElementById("root");
 
 const rederMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 rederMethod(
-    <Button />,
+    <Button>Default</Button>,
     root
 );
 export default GxUi;
