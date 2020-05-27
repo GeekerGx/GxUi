@@ -7,9 +7,12 @@ if (!document.getElementById("root")) {
     div.id = 'root';
     document.body.appendChild(div);
 }
+const App = () => {
+    return 123;
+}
 let root = document.getElementById("root");
 ReactDOM.hydrate(
-    <div>123</div>,
+    <App />,
     root
 );
 
