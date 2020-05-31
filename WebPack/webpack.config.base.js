@@ -26,11 +26,30 @@ module.exports = ({
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel-loader",
-                options: { presets: ["@babel/env"] }
+                options: {
+                    presets: ["@babel/env"],
+                    /*plugins: [
+                        '@babel/plugin-transform-runtime',
+                        [
+                            'import', {
+                                libraryName: 'antd',
+                                style: 'css'
+                            }
+                        ]
+                    ]*/
+                }
             },
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                test: /\.(css|less)$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true
+                        }
+                    }]
             }
         ]
     },

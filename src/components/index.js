@@ -1,2 +1,4 @@
-import { Button } from 'antd';
-export { Button };
+
+import {Button} from "antd";
+
+export {Button};
