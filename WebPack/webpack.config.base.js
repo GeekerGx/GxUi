@@ -28,15 +28,6 @@ module.exports = ({
                 loader: "babel-loader",
                 options: {
                     presets: ["@babel/env"],
-                    /*plugins: [
-                        '@babel/plugin-transform-runtime',
-                        [
-                            'import', {
-                                libraryName: 'antd',
-                                style: 'css'
-                            }
-                        ]
-                    ]*/
                 }
             },
             {
@@ -47,7 +38,9 @@ module.exports = ({
                     {
                         loader: 'less-loader',
                         options: {
-                            javascriptEnabled: true
+                            lessOptions: {
+                                javascriptEnabled: true
+                            }
                         }
                     }]
             }
