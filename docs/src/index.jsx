@@ -12,7 +12,7 @@ let root = document.getElementById("root");
 
 const rederMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 rederMethod(
-    <Button>Default</Button>,
+    <Button>Defa3ult</Button>,
     root
 );
 export default GxUi;

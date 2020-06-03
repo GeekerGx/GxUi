@@ -1,4 +1,4 @@
 import 'antd/dist/antd.less';
-import {Button} from "antd";
 
-export {Button};
+export { default as Button } from './Button';
+export { default as Input } from './Input';
