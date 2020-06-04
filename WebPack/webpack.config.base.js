@@ -18,7 +18,8 @@ module.exports = ({
     resolve: {
         alias: {
             '@gxui': joinPath("src"),
-        }
+        },
+        extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
     },
     module: {
         rules: [
