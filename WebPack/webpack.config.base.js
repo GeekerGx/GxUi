@@ -1,4 +1,4 @@
-const joinPath = require("../src/server/pathHelper");
+const joinPath = require("../src/server/PathHelper");
 const webpack = require("webpack");
 
 module.exports = ({

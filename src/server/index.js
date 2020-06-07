@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
 const webpackConfig = require("../../WebPack/webpack.config.dev");
-const joinPath = require("./pathHelper");
+const joinPath = require("./PathHelper");
 
 const option = {
     host: "localhost",
