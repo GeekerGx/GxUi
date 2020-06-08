@@ -12,12 +12,14 @@ export default class Component extends PureComponent {
             children,
             style,
             row = false,
+            main = false,
         } = this.props;
         return (
             <div
                 className={[
                     "gx-layout",
-                    "gx-layout-" + (row ? "row" : "column")
+                    "gx-layout-" + (row ? "row" : "column"),
+                    main ? "gx-layout-main" : null,
                 ].join(" ")}
                 style={{
                     ...style
