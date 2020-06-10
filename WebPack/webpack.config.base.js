@@ -18,11 +18,16 @@ module.exports = ({
     resolve: {
         alias: {
             '@gxui': joinPath("src"),
+            '@docs': joinPath("docs"),
         },
         extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
     },
     module: {
         rules: [
+            {
+                test: /\.md$/,
+                use: "raw-loader"
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
