@@ -7,7 +7,7 @@ module.exports = ({
     mode,
     entry: {
         "../Gx.All.js": joinPath('src/index.js'),
-        "static/GxUi/Gx.All.js": joinPath('docs/src/index.jsx'),
+        "static/GxUi/Gx.All.js": joinPath('docs/src/index.js'),
     },
     output: {
         path: joinPath('docs'),
