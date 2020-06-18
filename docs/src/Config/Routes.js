@@ -1,15 +1,12 @@
 import Home from '../Home';
-import Test from '../Test';
+import MarkedShow from '../MarkedShow';
 
 export default [
     {
         path: "/", component: Home,
         routes: [
             {
-                path: "/Test", component: Test,
-                routes: [
-                    { path: "/Test/Test", component: Test },
-                ]
+                path: "/MarkedShow/:type/:mdName", component: MarkedShow,
             },
         ]
     },
