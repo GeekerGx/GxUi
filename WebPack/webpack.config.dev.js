@@ -1,5 +1,6 @@
 const base = require("./webpack.config.base");
 
 module.exports = base({
-    mode: "development"
+    mode: "development",
+    devtool:"inline-source-map"
 });

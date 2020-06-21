@@ -2,9 +2,11 @@ const joinPath = require("../src/server/PathHelper");
 const webpack = require("webpack");
 
 module.exports = ({
-    mode = 'production'
+    mode = 'production',
+    devtool
 }) => ({
     mode,
+    devtool,
     entry: {
         "../Gx.All.js": joinPath('src/index.js'),
         "static/GxUi/Gx.All.js": joinPath('docs/src/index.js'),
