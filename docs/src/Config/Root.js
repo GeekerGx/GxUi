@@ -7,7 +7,7 @@ const Router = HashRouter;
 
 export default class Component extends PureComponent {
 
-    render() {
+    render = () => {
         return (
             <Router>
                 <Switch>
@@ -20,7 +20,7 @@ export default class Component extends PureComponent {
                                     return <Component {...{
                                         ...props,
                                         routes,
-                                        menus:Menus
+                                        menus: Menus
                                     }} />
                                 }}
                                 exact={routes.length == 0}

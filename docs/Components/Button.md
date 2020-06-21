@@ -5,20 +5,20 @@
 >html部分  
 
 ```html
-    <div id="button"></div>
+<div id="button"></div>
 ```
 
 >js部分  
 
 ```js
-    var input = Gx.ui.createButton({
-        el: "button",
-        text: "Button",
-        width:null,
-        icon:null,
-        size:null,
-        onClick: function () {},
-    });
+var input = Gx.ui.createButton({
+    el: "button",
+    text: "Button",
+    width:null,
+    icon:null,
+    size:null,
+    onClick: function () {},
+});
 ```
 
 ## API

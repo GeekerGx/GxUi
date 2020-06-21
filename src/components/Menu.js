@@ -8,26 +8,36 @@ const renderMenu = (menus) => {
         if (menu.menus) {
             return <SubMenu key={menu.key} title={menu.text}>{renderMenu(menu.menus)}</SubMenu>;
         } else {
-            return <Menu.Item key={menu.key}>{menu.text}</Menu.Item>;
+            return <Menu.Item {...menu} key={menu.key} href={menu.href}>{menu.text}</Menu.Item>;
         }
     });
 };
 
 /**
  * 布局
- * @param {ReactNode} children 子对象
+ * @param {function({ item, key, keyPath, domEvent })} onClick 点击 MenuItem 调用此函数
+ * 
  */
 export default class Component extends PureComponent {
 
-    render() {
+    baseOnClick = ({ item, key, keyPath, domEvent }) => {
+        const { onClick = () => { } } = this.props;
+        onClick({
+            ...item.props,
+            href: item.props.href,
+            key,
+            keyPath,
+        });
+    }
+
+    render = () => {
         const {
-            onClick = () => { },
             style,
             menus
         } = this.props;
         return (
             <Menu
-                onClick={onClick}
+                onClick={this.baseOnClick}
                 style={style}
                 mode="inline"
             >

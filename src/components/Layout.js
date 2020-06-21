@@ -7,7 +7,7 @@ import "./Layout.less";
  */
 export default class Component extends PureComponent {
 
-    render() {
+    render = () => {
         const {
             children,
             style,

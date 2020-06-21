@@ -23,14 +23,17 @@ export default class Component extends PureComponent {
             markdown: '',//文本
         };
     }
-    componentDidMount() {
+    componentDidMount = () => {
         this.renderMarkDown();
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.renderMarkDown();
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
+        this.renderMarkDown(prevProps.match.url);
     }
-    renderMarkDown() {
-        const { type, mdName } = this.props.match.params;
+    renderMarkDown = (prevUrl) => {
+        const { url, params: { type, mdName } } = this.props.match;
+        if (prevUrl == url) {
+            return;
+        }
         GxUi.AjaxHelper.get(`/${type}/${mdName}.md`).then(result => {
             this.setState({
                 markdown: result
@@ -47,7 +50,7 @@ export default class Component extends PureComponent {
             });
         });
     }
-    render() {
+    render = () => {
         var markdownHtml = myMarked(this.state.markdown || '');
         return (
             <div

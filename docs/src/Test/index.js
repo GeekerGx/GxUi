@@ -18,7 +18,7 @@ myMarked.setOptions({
 });
 
 export default class Component extends PureComponent {
-    componentDidMount() {
+    componentDidMount = () => {
         if (this.markdownBody) {
             //添加行号
             var codeList = this.markdownBody.getElementsByTagName("code");
@@ -28,7 +28,7 @@ export default class Component extends PureComponent {
             }
         }
     }
-    render() {
+    render = () => {
         var markdownHtml = myMarked(markdown);
 
         return (

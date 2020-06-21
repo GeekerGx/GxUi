@@ -6,7 +6,7 @@ export default [
         path: "/", component: Home,
         routes: [
             {
-                path: "/MarkedShow/:type/:mdName", component: MarkedShow,
+                path: "/:type/:mdName", component: MarkedShow,
             },
         ]
     },

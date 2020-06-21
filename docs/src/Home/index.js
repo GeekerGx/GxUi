@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { Layout, Menu } from '@gxui';
 
 export default class Component extends PureComponent {
-    render() {
+    render = () => {
         const { routes, menus: { Home: menus } } = this.props;
         return (
             <Layout row>
@@ -14,8 +14,8 @@ export default class Component extends PureComponent {
                 >
                     <Menu
                         menus={menus}
-                        onClick={({ item, key, keyPath, domEvent }) => {
-                            console.log(item, key, keyPath, domEvent);
+                        onClick={({ href, key, keyPath }) => {
+                            window.location.hash = href;
                         }}
                     />
                 </Layout>
