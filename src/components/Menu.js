@@ -6,9 +6,15 @@ const { SubMenu } = Menu;
 const renderMenu = (menus) => {
     return menus.map((menu) => {
         if (menu.menus) {
+            if (menu.group) {
+                return <Menu.ItemGroup key={menu.key} title={menu.text}>{renderMenu(menu.menus)}</Menu.ItemGroup>;
+            }
             return <SubMenu key={menu.key} title={menu.text}>{renderMenu(menu.menus)}</SubMenu>;
         } else {
-            return <Menu.Item {...menu} key={menu.key} href={menu.href}>{menu.text}</Menu.Item>;
+            if (menu.key) {
+                return <Menu.Item {...menu} key={menu.key} href={menu.href}>{menu.text}</Menu.Item>;
+            }
+            return <Menu.Divider />
         }
     });
 };

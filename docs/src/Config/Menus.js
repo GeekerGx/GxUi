@@ -4,9 +4,16 @@ import MarkedShow from '../MarkedShow';
 export default {
     Home: [
         {
+            key: "Home",
+            text: "介绍",
+            href: "/",
+        },
+        {
             key: "Components",
             text: "组件",
+            group: true,
             menus: [
+                {},
                 {
                     key: "Button",
                     text: "Button 按钮",
@@ -27,7 +34,9 @@ export default {
         {
             key: "Helper",
             text: "类库",
+            group: true,
             menus: [
+                {},
                 {
                     key: "Base",
                     text: "Base 基础",
