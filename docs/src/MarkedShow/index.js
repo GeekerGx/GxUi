@@ -34,7 +34,7 @@ export default class Component extends PureComponent {
         if (prevUrl == url) {
             return;
         }
-        const mdUrl = type && mdName ? `/${type}/${mdName}.md` : "README.md";
+        const mdUrl = type && mdName ? `${type}/${mdName}.md` : "README.md";
         GxUi.AjaxHelper.get(mdUrl).then(result => {
             this.setState({
                 markdown: result
