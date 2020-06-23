@@ -1,0 +1,34 @@
+{
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "WebPack",
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "./",
+        "paths": {
+            "@gxui": [
+                "./src"
+            ],
+            "@docs/*": [
+                "./docs/*"
+            ],
+        },
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "target": "ESNext",
+        "module": "esnext",
+        "jsx": "preserve",
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false
+    }
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GxUi, { Button } from '@gxui';
 import Root from './Config/Root';
 
 if (!document.getElementById("root")) {
@@ -17,4 +16,5 @@ rederMethod(
     <Root />,
     root
 );
-export default GxUi;
+
+export * from '@gxui';

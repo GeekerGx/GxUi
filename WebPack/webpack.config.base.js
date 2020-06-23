@@ -22,7 +22,7 @@ module.exports = ({
             '@gxui': joinPath("src"),
             '@docs': joinPath("docs"),
         },
-        extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
+        extensions: ['.js', '.ts', '.jsx', '.tsx']
     },
     module: {
         rules: [

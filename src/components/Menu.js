@@ -4,7 +4,7 @@ import { Menu } from "antd";
 const { SubMenu } = Menu;
 
 const renderMenu = (menus) => {
-    return menus.map((menu) => {
+    return menus.map((menu, index) => {
         if (menu.menus) {
             if (menu.group) {
                 return <Menu.ItemGroup key={menu.key} title={menu.text}>{renderMenu(menu.menus)}</Menu.ItemGroup>;
@@ -14,7 +14,7 @@ const renderMenu = (menus) => {
             if (menu.key) {
                 return <Menu.Item {...menu} key={menu.key} href={menu.href}>{menu.text}</Menu.Item>;
             }
-            return <Menu.Divider />
+            return <Menu.Divider key={`divider_${index}`} />
         }
     });
 };

@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import myMarked from "marked";
 import 'github-markdown-css';
 import prismjs from 'prismjs';
-import GxUi from '@gxui';
+import { AjaxHelper } from '@gxui';
 
 myMarked.setOptions({
     renderer: new myMarked.Renderer(),
@@ -35,7 +35,7 @@ export default class Component extends PureComponent {
             return;
         }
         const mdUrl = type && mdName ? `${type}/${mdName}.md` : "README.md";
-        GxUi.AjaxHelper.get(mdUrl).then(result => {
+        AjaxHelper.get(mdUrl).then(result => {
             this.setState({
                 markdown: result
             }, () => {
