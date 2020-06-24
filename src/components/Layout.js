@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import "./Layout.less";
+import "@gxui/style/Layout.less";
 
 /**
  * 布局
