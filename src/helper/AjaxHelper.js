@@ -35,3 +35,6 @@ export const post = (url, data) => {
             .catch(err => reject(err));
     })
 };
+export const waitAll = (arrp) => {
+    return Promise.all(arrp);
+};
